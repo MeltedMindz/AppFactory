@@ -1,88 +1,54 @@
-# App Factory specific
-runs/*
-!runs/.gitkeep
+# App Factory Production Gitignore
+# Conservative approach: better to ignore too much than leak sensitive data
 
-# Environment files
-.env*
-config.local.*
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Logs
-*.log
-logs/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Flutter/Dart (for generated Flutter projects)
-**/build/
-**/.dart_tool/
-**/.packages
-**/.pub-cache/
-**/.pub/
-**/pubspec.lock
-
-# iOS
-**/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/flutter_export_environment.sh
-**/ios/.symlinks/
-
-# Android
-**/android/app/debug
-**/android/app/profile
-**/android/app/release
-**/android/.gradle/
-**/android/captures/
-**/android/gradlew
-**/android/gradlew.bat
-**/android/local.properties
-
-# Web
-**/web/
-
-# Build artifacts
-dist/
-build/
-*.tar.gz
-*.zip
-
-# Temporary files
-*.tmp
-*.temp
-temp/
-tmp/
-
-# Cache directories
-node_modules/
+# Runtime & local artifacts - never commit user run data
+runs/
+runs/**
+.appfactory/
+.state/
 .cache/
-.parcel-cache/
+.tmp/
+test_claude_logs/
+**/outputs/*.log
+**/*.exitcode
+**/*.stderr.log
+**/*.stdout.log
 
-# Editor backup files
-*~
-*.bak
-*.backup
-
-# API keys and secrets (though should be in env files)
-**/secrets.*
-**/keys.*
+# Environment & secrets - never commit keys or tokens
+.env
+.env.*
+*.key
 *.pem
-*.p12
-*.keystore
+*.secret
+*token*
+*credentials*
 
-# Generated documentation
-docs/build/
+# Claude / AI tooling - local AI artifacts
+.claude/
+.claude-cache/
+claude.log
+*.prompt.log
+
+# OS & editor noise - platform-specific files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Test & debug artifacts - development-only files  
+test-output/
+debug/
+*.trace
+*.log
+
+# User-specific or machine-specific data
+# Any file generated during local pipeline runs
+# Any cached model outputs  
+# Any active run tracking state
+
+# XDG compliance - local config/cache directories
+.config/appfactory/
+.local/share/appfactory/
+.cache/appfactory/
