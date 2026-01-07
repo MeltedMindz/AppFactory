@@ -1,29 +1,38 @@
-# App Factory Agent-Native Constitution
+# App Factory Control Plane
 
-**Version**: 2.0  
-**Status**: BINDING CONSTITUTION FOR ALL CLAUDE OPERATIONS  
-**Scope**: Agent-native execution where Claude is the primary runner  
+**Version**: 3.1  
+**Status**: MANDATORY — CONSTITUTION FOR ALL CLAUDE OPERATIONS  
+**Applies to**: All pipeline stages, agents, and Claude interactions
+
+## 🔒 EXECUTION SCOPE & EDITING MODE (MANDATORY)
+
+This document defines behavior.  
+Editing this file MUST NOT trigger execution.
+
+Claude MUST treat all instructions in this file as specification and enforcement rules, not as commands to run immediately.
+
+Execution only occurs when the user explicitly types a supported command listed below.  
 
 ---
 
 ## ARCHITECTURE: CLAUDE IS THE BUILDER (AGENT-NATIVE)
 
-App Factory operates as an agent-native pipeline where Claude executes all stages directly within this repository. There are no subprocess calls to external Claude instances. Claude owns correctness, artifact generation, and pipeline orchestration.
+App Factory is an end-to-end system that researches markets, generates validated app ideas, designs UX/monetization/brand, produces launch-ready specs, and builds real React Native apps. Claude executes all stages directly within this repository without subprocess calls or hand-holding.
 
 ### Core Execution Model
 - **Claude reads** stage templates from `templates/agents/`
-- **Claude reads** prior stage outputs from `runs/.../stages/`
-- **Claude writes** JSON stage artifacts to disk
-- **Claude validates** JSON against schemas
-- **Claude renders** markdown specifications
-- **Claude logs** execution details
-- **Claude never outputs** raw JSON in chat
+- **Claude reads** prior stage outputs from runs directories
+- **Claude writes** JSON stage artifacts to disk with strict validation
+- **Claude validates** against schemas with hard-fail on mismatch
+- **Claude renders** markdown specifications automatically
+- **Claude logs** execution details with binding proof
+- **Claude never outputs** raw JSON in chat - only disk artifacts
 
 ### Truth Enforcement
-- Filesystem is the source of truth
-- No stage is complete without artifacts on disk
-- Success claims require file existence verification
-- No stubs, no placeholder content, no false success
+- **Filesystem is source of truth**: If artifacts aren't on disk, it didn't happen
+- **No stubs, no placeholders, no false success claims**
+- **Fail fast**: Schema validation failures stop execution immediately
+- **Isolation enforcement**: Each idea pack has strict boundary controls
 
 ---
 
@@ -31,141 +40,304 @@ App Factory operates as an agent-native pipeline where Claude executes all stage
 
 Claude supports exactly these commands when opened in this repository:
 
-### Primary Commands
-- **`run app factory`** - Execute full pipeline (stages 01-10)
-- **`run stage 01`** - Execute specific stage
-- **`run stages 01-09`** - Execute stage range (specs only)
-- **`run stage 10`** - Execute Stage 10 (build /mobile app)
-- **`resume last run`** - Continue interrupted pipeline
-- **`validate run`** - Check current run artifacts
-- **`show status`** - Display pipeline progress
+## COMMANDS (THE ONLY SUPPORTED UX)
 
-### Command Execution Rules
-1. Create run directory if none exists
-2. Read stage template and requirements
-3. Generate and validate JSON output
-4. Write artifacts to disk
-5. Print only file paths, never JSON content
+### Command: `run app factory`
+Runs the default end-to-end batch specification workflow.
+
+**Behavior (MANDATORY)**:
+- Executes Stage 01 once and generates EXACTLY 10 ranked app ideas
+- Automatically executes Stages 02–09 for EACH of the 10 ideas in the same run
+- Produces a complete idea pack per idea, including:
+  - validated JSON artifacts
+  - rendered markdown specifications
+  - execution logs
+  - boundary metadata
+
+**AUTO-CONTINUE is mandatory**:
+- Once started, Claude MUST proceed stage-by-stage and idea-by-idea
+- Claude MUST NOT stop after any stage to ask the user to type "continue"
+- Stop conditions are ONLY:
+  - Explicit user interruption, or
+  - Hard failure (must write failure artifact(s) to disk and stop)
+
+### Command: `build <IDEA_ID_OR_NAME>`
+Builds ONE selected idea into a runnable Expo / React Native app using Stage 10.
+
+**Behavior (MANDATORY)**:
+- Resolves `<IDEA_ID_OR_NAME>` using `runs/.../meta/idea_index.json`
+- Reads and applies ONLY that idea pack's Stage 02–09 JSON outputs as binding constraints
+- Enforces NO CROSS-CONTAMINATION:
+  - Hard-fail if run_id, idea_id, or boundary paths do not match
+- Writes build output to: `builds/<idea_dir>/`
+  - ❌ Never write builds to a fixed `/mobile` directory
+
+### Command: `validate run`
+Validates the most recent run (or current run if active):
+- Confirms Stage JSON artifacts exist on disk and validate against schemas
+- Confirms Stage 01 produced exactly 10 ideas
+- Confirms each idea pack contains:
+  - boundary metadata
+  - correct meta.* fields for every stage
+- No generation. Validation only.
+
+### Command: `show status`
+Prints the current run status using run manifests and per-idea stage_status.json files.
+- No generation. No mutation.
+
+### Command Execution Semantics
+
+## 🌐 GLOBAL LEADERBOARD (CROSS-RUN, APPEND-ONLY)
+
+### Purpose
+App Factory MUST maintain a global, cross-run leaderboard that aggregates all app ideas generated across all runs, using Stage 01 ranking signals.
+
+This leaderboard exists for:
+- long-term idea quality tracking
+- analytics
+- external tools (e.g. App Miner)
+- dashboards
+
+It MUST NOT affect downstream stages.
+
+### Canonical Files (MANDATORY)
+```
+leaderboards/
+  app_factory_all_time.json   # authoritative
+  app_factory_all_time.csv    # derived mirror
+```
+
+### When the Leaderboard Is Updated
+- The leaderboard MUST be updated immediately after Stage 01 completes successfully
+- It MUST NOT wait for Stages 02–09
+- If Stage 01 fails, the leaderboard MUST NOT be modified
+
+### Leaderboard Entry Rules
+- One entry per idea per run (10 entries per successful Stage 01)
+- Append-only. Never rewrite or re-rank historical entries
+- Identity key: idea_id + run_id
+- Each entry MUST include:
+  - run_id
+  - run_date
+  - rank (1–10, local to the run)
+  - score (if available)
+  - idea_id
+  - idea_name
+  - idea_slug
+  - market
+  - target_user
+  - core_loop
+  - evidence_summary
+  - source paths to the originating run + stage01.json
+
+### Sorting Semantics (GLOBAL VIEW)
+Global ordering is defined as:
+1. score (descending, if present)
+2. run_date (descending)
+3. rank (ascending)
+
+### Isolation Rule (CRITICAL)
+- Stages 02–10 MUST NOT read from the leaderboard
+- The leaderboard is write-only at Stage 01 and read-only for humans and external tools
+- Idea packs remain fully isolated
+
+### Failure Handling
+If leaderboard append fails:
+- Write `leaderboards/leaderboard_failure.md` with:
+  - run_id
+  - missing/invalid fields
+  - remediation steps
+- Stop execution immediately
+
+**Output Structure**:
+```
+runs/YYYY-MM-DD/<run_name>/
+  stage01/stages/stage01.json (10 ideas)
+  ideas/01_focusflow_ai__focus_ai_001/stages/stage02.json...stage09.json
+  ideas/02_deepwork_zones__deep_work_002/stages/stage02.json...stage09.json
+  ...10 complete idea packs
+  meta/idea_index.json
+```
+
+## 📘 README ENFORCEMENT (UX CONSISTENCY)
+
+README.md MUST present only these two user-facing commands:
+- `run app factory`
+- `build <IDEA_NAME>`
+
+Any mention of:
+- `run app factory (batch specs)`
+- or other variants
+
+MUST be removed or treated as internal aliases only.
+
+### IMPLEMENTATION NOTE (NON-NEGOTIABLE)
+Internally, "batch specs mode" may still exist as a concept, but it MUST be implicit and default.
+
+Concretely:
+- `run app factory` == batch workflow
+- No other modes are user-visible
+- CLAUDE.md and README.md must agree
 
 ---
 
 ## RUN DIRECTORY CONTRACT
 
-Every pipeline execution creates this exact structure:
+### Batch Specs Mode Structure
+`run app factory (batch specs)` creates this structure:
 
 ```
 runs/YYYY-MM-DD/<run_name>/
 ├── inputs/
-│   └── 00_intake.md              # User requirements input
-├── outputs/  
-│   ├── stage01_execution.md      # What Claude did for each stage
-│   ├── stage02_execution.md
-│   ├── ...
-│   ├── stage01_validation.json   # Schema validation results
-│   ├── stage02_validation.json
-│   └── ...
-├── stages/
-│   ├── stage01.json              # Raw JSON output (schema-validated)
-│   ├── stage02.json
-│   ├── ...
-│   └── stage10.json
-├── spec/
-│   ├── 01_market_research.md     # Human-readable specifications
-│   ├── 02_product_spec.md
-│   ├── ...
-│   └── 10_react_native_app.md
+│   └── 00_intake.md                    # User requirements input
+├── stage01/                           # Market research (shared)
+│   ├── stages/stage01.json            # 10 validated app ideas  
+│   ├── outputs/stage01_execution.md
+│   └── spec/01_market_research.md
+├── ideas/                             # Idea packs (isolated)
+│   ├── 01_focusflow_ai__focus_ai_001/
+│   │   ├── meta/
+│   │   │   ├── idea.json              # Canonical idea definition
+│   │   │   ├── boundary.json          # Isolation enforcement
+│   │   │   ├── name.alias             # Human-readable name
+│   │   │   └── stage_status.json      # Progress for this idea
+│   │   ├── stages/
+│   │   │   ├── stage02.json...stage09.json
+│   │   ├── outputs/
+│   │   │   ├── stage02_execution.md...stage09_execution.md
+│   │   └── spec/
+│   │       └── 02_product_spec.md...09_release_planning.md
+│   ├── 02_deepwork_zones__deep_work_002/
+│   │   └── [same structure for idea 2]
+│   └── ...10 complete idea packs
 └── meta/
-    ├── stage_status.json         # Pipeline progress tracking
-    └── run_manifest.json         # Run configuration and metadata
+    ├── idea_index.json                # ID->name->directory mapping
+    ├── run_manifest.json              # Run metadata
+    └── batch_status.json              # Overall progress
 ```
 
-### Stage 10 Additional Output
-When Stage 10 executes, it also creates:
+### Build Mode Structure  
+`build app <IDEA_ID_OR_NAME>` adds:
+
 ```
-/mobile/                          # Complete Expo React Native app
-├── package.json
-├── app.json
-├── App.js
-├── src/
-│   ├── screens/
-│   ├── components/
-│   └── services/
-└── README.md
+builds/
+└── <idea_dir>/                        # Clean build output
+    ├── package.json                   # Complete Expo app
+    ├── app.json
+    ├── App.js
+    ├── src/screens/...
+    └── README.md
+
+runs/.../ideas/<idea_dir>/
+├── stages/stage10.json                # Build plan (plan-only)
+├── outputs/stage10_build.log          # Binding proof
+└── outputs/stage10_research.md        # Sources consulted
 ```
+
+### Finder-Friendly Naming (MANDATORY)
+Idea directories use deterministic naming: `<rank>_<idea_slug>__<idea_id>`
+- `rank`: 01-10 from Stage 01 ranking  
+- `idea_slug`: sanitized name (lowercase, underscores, alphanumeric only)
+- `idea_id`: canonical ID from Stage 01
+- Example: `01_focusflow_ai__focus_ai_001`
 
 ---
 
-## STAGE EXECUTION CONTRACT
+## ISOLATION AND BOUNDARY ENFORCEMENT
 
-For each stage (01-10), Claude must:
+### Idea Pack Boundaries (MANDATORY)
+Each idea pack in `runs/.../ideas/<idea_dir>/` has strict isolation:
 
-### 1. Read Requirements
-- Template: `templates/agents/NN_*.md`
-- Prior outputs: `runs/.../stages/stage*.json` (for stages > 01)
-- Schemas: Extract from template or use `schemas/stageNN.json`
+**Allowed Paths** (per idea pack):
+- `runs/.../ideas/<idea_dir>/` - ONLY this specific idea directory  
+- `runs/.../stage01/stages/stage01.json` - lookup/confirmation only
+- `runs/.../meta/idea_index.json` - lookup only
 
-### 2. Generate JSON Output
-- Create valid JSON conforming to stage schema
-- Include all required fields
-- Use real data, no placeholders
+**Forbidden Paths**:
+- `runs/.../ideas/` (other idea directories)
+- Any other runs directories
+- Any stage JSON files outside the idea pack's boundary
 
-### 3. Write and Validate Artifacts
-```
-# Write JSON
-Write: runs/.../stages/stageNN.json
+**Enforcement**:
+- Every Stage 02-10 JSON MUST include meta fields:
+  ```json
+  "meta": {
+    "run_id": "string",
+    "idea_id": "string", 
+    "idea_name": "string",
+    "idea_dir": "string",
+    "source_root": "runs/.../ideas/<idea_dir>/",
+    "input_stage_paths": ["explicit list of files read"],
+    "boundary_path": "runs/.../ideas/<idea_dir>/meta/boundary.json"
+  }
+  ```
 
-# Validate against schema  
-Run: python -m appfactory.schema_validate schemas/stageNN.json runs/.../stages/stageNN.json
+**Cross-Contamination Prevention**:
+- Stage 10 MUST verify all consumed Stage 02-09 JSONs have identical run_id and idea_id
+- Stage 10 MUST verify all paths reside under the correct idea pack directory
+- If mismatch detected: write `stage10_failure.md` and stop without building
 
-# Write validation results
-Write: runs/.../outputs/stageNN_validation.json
+### Stage Execution Contract
 
-# Write execution log
-Write: runs/.../outputs/stageNN_execution.md
-```
+#### Stage 01 (Market Research) 
+- Generates EXACTLY 10 ideas with unique idea_ids
+- Validation fails if count != 10
+- Creates shared stage01 directory structure
+- Creates idea_index.json mapping
 
-### 4. Render Specification
-```
-# Render human-readable spec
-Run: python -m appfactory.render_markdown stageNN runs/.../stages/stageNN.json
+#### Stages 02-09 (Per Idea Pack)
+**For each idea (automatic batch execution):**
+- Read: `runs/.../ideas/<idea_dir>/meta/idea.json` (canonical idea)
+- Read: Prior stage JSONs from same idea pack only
+- Write: `runs/.../ideas/<idea_dir>/stages/stageNN.json` 
+- Validate: Against schema with boundary enforcement
+- Log: `runs/.../ideas/<idea_dir>/outputs/stageNN_execution.md`
+- Render: `runs/.../ideas/<idea_dir>/spec/NN_*.md`
 
-# Verify spec file exists
-Verify: runs/.../spec/NN_*.md exists
-```
-
-### 5. Update Status
-```
-# Update pipeline progress
-Update: runs/.../meta/stage_status.json
-```
+#### Stage 10 (Build Mode)
+- Triggered by: `build app <IDEA_ID_OR_NAME>`
+- Reads: Selected idea pack's Stage 02-09 JSONs only
+- Validates: All inputs have matching meta.idea_id and meta.run_id
+- Researches: Official Expo/RevenueCat docs + category UI patterns
+- Writes: Complete Expo app to `builds/<idea_dir>/`
+- Proves: Binding constraints from specs to implementation
 
 ---
 
 ## DEFINITION OF DONE
 
-Claude must NEVER claim stage completion without verifying:
+### Batch Specs Mode (`run app factory (batch specs)`)
+**MUST verify ALL of these before claiming completion:**
 
-### Per Stage Requirements
-- [ ] `runs/.../stages/stageNN.json` exists and validates
-- [ ] `runs/.../outputs/stageNN_execution.md` documents actions taken
-- [ ] `runs/.../outputs/stageNN_validation.json` shows validation passed
-- [ ] `runs/.../spec/NN_*.md` specification exists and is non-empty
-- [ ] `runs/.../meta/stage_status.json` marks stage as completed
+**Stage 01 Complete**:
+- [ ] `runs/.../stage01/stages/stage01.json` exists with EXACTLY 10 ideas
+- [ ] Each idea has unique idea_id
+- [ ] `runs/.../meta/idea_index.json` created with rank/slug/directory mapping
 
-### Stage 10 Additional Requirements  
-- [ ] `/mobile/` directory exists with complete Expo project
-- [ ] `/mobile/package.json` has required dependencies
-- [ ] `/mobile/src/` contains screens, components, services
-- [ ] `/mobile/README.md` has setup instructions
+**All 10 Idea Packs Complete** (Stages 02-09):
+- [ ] 10 directories: `runs/.../ideas/01_*__*/ ... 10_*__*/`
+- [ ] Each has `meta/idea.json`, `meta/boundary.json`, `meta/stage_status.json`
+- [ ] Each has `stages/stage02.json...stage09.json` (all validated)
+- [ ] Each has `outputs/stage02_execution.md...stage09_execution.md`
+- [ ] Each has `spec/02_*.md...09_*.md` 
+- [ ] All stage JSONs have proper meta fields with matching idea_id
 
-### Pipeline Completion Requirements
-- [ ] All stages 01-10 show "completed" in stage_status.json
-- [ ] All JSON files validate against schemas
-- [ ] All spec markdown files exist and are substantial
-- [ ] No execution logs show errors
-- [ ] For Stage 10: /mobile app can theoretically run with `npx expo start`
+**Auto-Continuation Rules**:
+- NO PAUSES between stages or ideas
+- Continues until all 10 idea packs have Stage 09 complete
+- Only stops on: hard failure OR user interruption
 
-**CRITICAL**: If any artifact is missing, Claude must report failure and stop.
+### Build Mode (`build app <IDEA_ID_OR_NAME>`)
+**MUST verify ALL of these:**
+- [ ] `builds/<idea_dir>/` exists with complete Expo app
+- [ ] `builds/<idea_dir>/package.json` has required dependencies  
+- [ ] `builds/<idea_dir>/src/` contains screens, components, services
+- [ ] `runs/.../ideas/<idea_dir>/stages/stage10.json` (plan-only JSON)
+- [ ] `runs/.../ideas/<idea_dir>/outputs/stage10_build.log` (binding proof)
+- [ ] `runs/.../ideas/<idea_dir>/outputs/stage10_research.md` (sources cited)
+- [ ] Boundary verification: all inputs from correct idea pack only
+
+**CRITICAL**: If ANY artifact is missing, Claude MUST write failure report and stop.
 
 ---
 
@@ -274,6 +446,24 @@ python -m appfactory.paths validate_structure <run_path>
 - Execution logs: `stageNN_execution.md`
 - Validation files: `stageNN_validation.json`
 - Specs: `NN_descriptive_name.md`
+
+---
+
+## GENERATED ARTIFACTS & CLEANUP
+
+### Generated Directories (Non-Source)
+- **`runs/`** - All pipeline execution outputs, logs, and specifications
+- **`builds/`** - Complete React Native apps built from selected ideas  
+
+These directories contain generated artifacts and are ignored by git.
+
+### Mode-Specific Behavior
+- **EDIT MODE**: Claude may delete `runs/` and `builds/` as part of cleanup requests
+- **RUN MODE**: These are the ONLY places new artifacts should be written
+- **Build output**: MUST go to `builds/<idea_dir>/` (never `/mobile`)
+
+### Repository Hygiene
+Generated artifacts are cleaned via `scripts/clean_repo.sh` and ship-readiness verified via `scripts/ship_check.sh`. Source code directories (`templates/`, `schemas/`, `standards/`, `runbooks/`, `scripts/`) are never modified during cleanup.
 
 ---
 

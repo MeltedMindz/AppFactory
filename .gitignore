@@ -1,15 +1,21 @@
 # App Factory Production Gitignore
 # Conservative approach: better to ignore too much than leak sensitive data
 
-# Runtime & local artifacts - never commit user run data
-runs/
+# Generated pipeline artifacts - NEVER commit these
+# runs/ contains all pipeline execution outputs
+# builds/ contains generated React Native apps
 runs/**
+builds/**
+**/outputs/**
+*.log
+*.tmp
+
+# Runtime & local artifacts - never commit user run data
 .appfactory/
 .state/
 .cache/
 .tmp/
 test_claude_logs/
-**/outputs/*.log
 **/*.exitcode
 **/*.stderr.log
 **/*.stdout.log
@@ -17,11 +23,21 @@ test_claude_logs/
 # Environment & secrets - never commit keys or tokens
 .env
 .env.*
+!.env.example
 *.key
 *.pem
 *.secret
 *token*
 *credentials*
+
+# Mobile app build artifacts
+node_modules/
+.expo/
+.expo-shared/
+ios/
+android/
+*.keystore
+*.jks
 
 # Claude / AI tooling - local AI artifacts
 .claude/

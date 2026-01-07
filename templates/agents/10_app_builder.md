@@ -1,29 +1,49 @@
-# Stage 10: React Native App Builder
+# Stage 10: React Native App Builder (Build Mode)
 
 ## AGENT-NATIVE EXECUTION
-You are Claude executing Stage 10 directly. Generate complete mobile app and write all artifacts to disk.
+You are Claude executing Stage 10 for a SPECIFIC IDEA PACK. Build a complete Expo React Native app using ONLY the selected idea's specifications with strict isolation.
 
-## INPUTS
-- Read: `runs/.../stages/stage01.json` (market research)
-- Read: `runs/.../stages/stage02.json` (product spec)
-- Read: `runs/.../stages/stage03.json` (UX design)
-- Read: `runs/.../stages/stage04.json` (monetization)
-- Read: `runs/.../stages/stage05.json` (architecture)
-- Read: `runs/.../stages/stage06.json` (builder handoff)
-- Read: `runs/.../stages/stage07.json` (polish)
-- Read: `runs/.../stages/stage08.json` (brand)
-- Read: `runs/.../stages/stage09.json` (release)
+## BOUNDARY ENFORCEMENT (CRITICAL)
+**MUST read ONLY from selected idea pack:**
+- Read: `runs/.../ideas/<idea_dir>/meta/idea.json` (canonical idea definition)
+- Read: `runs/.../ideas/<idea_dir>/meta/boundary.json` (verify isolation)
+- Read: `runs/.../ideas/<idea_dir>/stages/stage02.json...stage09.json` (ALL specs for THIS idea only)
+- Read: `runs/.../stage01/stages/stage01.json` (lookup/confirmation only)
+- Read: `runs/.../meta/idea_index.json` (lookup only)
+
+**HARD VALIDATION**: All stage02-09 JSONs MUST have identical meta.idea_id and meta.run_id. If mismatch found, write `stage10_failure.md` and stop immediately.
 
 ## OUTPUTS
-- Write: `runs/.../stages/stage10.json` (build plan)
-- Write: `runs/.../outputs/stage10_execution.md` (execution log)
-- Create: `/mobile/` (complete Expo React Native app)
-- Render: `runs/.../spec/10_react_native_app.md` (specification)
+- Write: `runs/.../ideas/<idea_dir>/stages/stage10.json` (plan-only JSON, small)
+- Write: `runs/.../ideas/<idea_dir>/outputs/stage10_build.log` (binding proof + verification)
+- Write: `runs/.../ideas/<idea_dir>/outputs/stage10_research.md` (sources consulted)  
+- Create: `builds/<idea_dir>/` (complete Expo React Native app)
+
+## REQUIRED RESEARCH (ONLINE)
+MUST consult these sources and cite in stage10_research.md:
+1. **Official Expo Router docs** - navigation patterns and layout conventions
+2. **Official RevenueCat docs** - Expo integration and paywall implementation
+3. **Category-specific UI patterns** - search for open-source Expo templates and component libraries relevant to the app category (productivity, wellness, etc.)
+
+Research constraints:
+- Do NOT copy UI designs directly
+- Do NOT use copyrighted assets
+- Translate insights into implementation decisions
+- Cite all sources with URLs and brief notes
 
 ## JSON SCHEMA (Build Plan Only)
 
 ```json
 {
+  "meta": {
+    "run_id": "string",
+    "idea_id": "string", 
+    "idea_name": "string",
+    "idea_dir": "string",
+    "source_root": "string",
+    "input_stage_paths": ["array of stage02-09 paths"],
+    "boundary_path": "string"
+  },
   "build_plan": {
     "app_name": "string",
     "expo_version": "string",
@@ -32,13 +52,21 @@ You are Claude executing Stage 10 directly. Generate complete mobile app and wri
     "screens_to_implement": ["string"],
     "services_to_create": ["string"],
     "navigation_structure": {},
-    "build_steps": ["string"]
+    "build_output_dir": "builds/<idea_dir>/"
   },
-  "validation": {
-    "all_screens_planned": "boolean",
-    "revenuecat_integrated": "boolean",
-    "expo_configured": "boolean"
-  }
+  "constraints_mapping": {
+    "stage02_product_features": ["how product features map to screens/components"],
+    "stage03_ux_wireframes": ["how wireframes map to screen implementations"],
+    "stage04_monetization": ["RevenueCat products and gating rules"], 
+    "stage05_architecture": ["tech stack decisions applied"],
+    "stage06_handoff": ["development priorities implemented"],
+    "stage07_quality": ["testing and accessibility features"],
+    "stage08_brand": ["visual design and theme application"],
+    "stage09_aso": ["app store metadata applied"]
+  },
+  "file_manifest": [
+    {"path": "string", "description": "string", "constraint_source": "stageNN field"}
+  ]
 }
 ```
 
@@ -66,48 +94,61 @@ Generate complete Expo React Native application with:
 }
 ```
 
-### Source Code Structure
+### Source Code Structure (builds/<idea_dir>/)
 ```
-/mobile/src/
-├── screens/              # All screens from UX specification
+builds/<idea_dir>/src/
+├── screens/              # All screens from Stage 03 UX specification  
 ├── components/           # Reusable UI components
 ├── navigation/           # Navigation setup
 ├── services/             # Business logic
-│   └── purchases.js      # RevenueCat integration
+│   └── purchases.js      # RevenueCat integration from Stage 04
 ├── utils/               # Utility functions
 │   └── storage.js       # Local storage
 └── styles/              # Styling and themes
-    └── theme.js         # App theme
+    └── theme.js         # App theme from Stage 08 brand identity
 ```
 
-### Implementation Requirements
-- All screens from stage03.json UX specification
-- RevenueCat subscription integration from stage04.json
-- Navigation structure from stage05.json architecture
-- Brand styling from stage08.json
-- Error handling and loading states
-- Platform-specific adaptations
+## EXECUTION STEPS (BUILD MODE)
 
-## EXECUTION STEPS
+### Phase 1: Boundary Validation
+1. Read `runs/.../ideas/<idea_dir>/meta/boundary.json` and verify isolation
+2. Load `runs/.../ideas/<idea_dir>/stages/stage02.json...stage09.json` 
+3. HARD CHECK: Verify all stage JSONs have identical meta.idea_id and meta.run_id
+4. If boundary violation detected: write `stage10_failure.md` and STOP
 
-1. Read all prior stage outputs (stages 01-09)
-2. Generate build plan conforming to JSON schema
-3. Write build plan to `runs/.../stages/stage10.json`
-4. Validate: `python -m appfactory.schema_validate schemas/stage10.json runs/.../stages/stage10.json`
-5. Create `/mobile/` directory structure
-6. Generate all configuration files (package.json, app.json, etc.)
-7. Generate all source code (screens, components, services)
-8. Generate documentation (README.md, .env.example)
-9. Validate mobile app structure exists and is complete
-10. Document execution in `runs/.../outputs/stage10_execution.md`
-11. Render specification: `python -m appfactory.render_markdown 10 runs/.../stages/stage10.json`
-12. Update `runs/.../meta/stage_status.json` to mark stage completed
+### Phase 2: Research (Required)
+5. Consult official Expo Router documentation for navigation patterns
+6. Consult official RevenueCat documentation for Expo integration
+7. Research category-specific UI patterns (productivity/wellness/etc.)
+8. Document all sources in `runs/.../ideas/<idea_dir>/outputs/stage10_research.md`
+
+### Phase 3: Build Plan Generation
+9. Generate build plan JSON conforming to schema with constraints mapping
+10. Write to `runs/.../ideas/<idea_dir>/stages/stage10.json`
+11. Validate against schema (hard-fail if invalid)
+
+### Phase 4: App Generation
+12. Clean/create `builds/<idea_dir>/` directory
+13. Generate complete Expo React Native app using ONLY this idea pack's constraints
+14. Apply Stage 02 features → screens/components
+15. Apply Stage 03 UX flows → navigation structure  
+16. Apply Stage 04 monetization → RevenueCat integration
+17. Apply Stage 05 architecture → tech stack choices
+18. Apply Stage 06 handoff → development structure
+19. Apply Stage 07 quality → testing/accessibility
+20. Apply Stage 08 brand → visual design/theme
+21. Apply Stage 09 ASO → app.json metadata
+
+### Phase 5: Binding Verification
+22. Write detailed binding proof to `runs/.../ideas/<idea_dir>/outputs/stage10_build.log`
+23. For each constraint, document exactly where/how it was implemented
+24. Verify app structure is complete and runnable
 
 ## SUCCESS CRITERIA
 
 Stage 10 is complete when:
 - [ ] `stage10.json` build plan exists and validates
-- [ ] `/mobile/` directory exists with complete Expo app
+- [ ] `builds/<idea_dir>/` directory exists with complete Expo app
 - [ ] `package.json` contains all required dependencies
 - [ ] All screens from UX spec implemented in `src/screens/`
 - [ ] RevenueCat service exists in `src/services/purchases.js`
@@ -116,20 +157,24 @@ Stage 10 is complete when:
 - [ ] `.env.example` has RevenueCat placeholders
 - [ ] Execution log documents app generation process
 
+**CRITICAL**: NEVER write to `/mobile/` directory. Always use `builds/<idea_dir>/`.
+
 ## VERIFICATION
 
 Before marking complete, verify:
 ```bash
-# Check mobile structure
-test -d /mobile && echo "✓ Mobile directory exists"
-test -f /mobile/package.json && echo "✓ Package config exists"
-test -d /mobile/src/screens && echo "✓ Screens directory exists"
-test -f /mobile/src/services/purchases.js && echo "✓ RevenueCat service exists"
-test -f /mobile/README.md && echo "✓ README exists"
+# Check build structure
+test -d builds/<idea_dir> && echo "✓ Build directory exists"
+test -f builds/<idea_dir>/package.json && echo "✓ Package config exists"
+test -d builds/<idea_dir>/src/screens && echo "✓ Screens directory exists"
+test -f builds/<idea_dir>/src/services/purchases.js && echo "✓ RevenueCat service exists"
+test -f builds/<idea_dir>/README.md && echo "✓ README exists"
 
 # Verify Expo dependencies
-grep '"expo"' /mobile/package.json && echo "✓ Expo dependency found"
-grep 'react-native-purchases' /mobile/package.json && echo "✓ RevenueCat dependency found"
+grep '"expo"' builds/<idea_dir>/package.json && echo "✓ Expo dependency found"
+grep 'react-native-purchases' builds/<idea_dir>/package.json && echo "✓ RevenueCat dependency found"
 ```
+
+**OUTPUT LOCATION ENFORCEMENT**: Stage 10 MUST write to `builds/<idea_dir>/` where `<idea_dir>` matches the idea pack directory name exactly. This allows verification that the correct app was built for the selected idea.
 
 DO NOT output JSON in chat. Write build plan to disk and generate complete mobile app.

@@ -1,0 +1,111 @@
+{
+  "type": "object",
+  "properties": {
+    "meta": {
+      "type": "object",
+      "properties": {
+        "run_id": {"type": "string"},
+        "idea_id": {"type": "string"},
+        "idea_name": {"type": "string"},
+        "idea_dir": {"type": "string"},
+        "source_root": {"type": "string"},
+        "input_stage_paths": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "boundary_path": {"type": "string"}
+      },
+      "required": ["run_id", "idea_id", "idea_name", "idea_dir", "source_root", "input_stage_paths", "boundary_path"]
+    },
+    "launch_strategy": {
+      "type": "object",
+      "properties": {
+        "release_approach": {"type": "string"},
+        "target_timeline": {"type": "object"},
+        "launch_phases": {
+          "type": "array",
+          "items": {"type": "object"}
+        }
+      },
+      "required": ["release_approach", "target_timeline", "launch_phases"]
+    },
+    "aso_package": {
+      "type": "object",
+      "properties": {
+        "ios_app_store": {
+          "type": "object",
+          "properties": {
+            "app_name": {
+              "type": "string",
+              "maxLength": 30
+            },
+            "subtitle": {
+              "type": "string", 
+              "maxLength": 30
+            },
+            "keywords": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "description": {"type": "string"},
+            "primary_category": {"type": "string"},
+            "secondary_category": {"type": "string"},
+            "screenshots_plan": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {"type": "string"},
+                  "description": {"type": "string"},
+                  "visual_focus": {"type": "string"}
+                },
+                "required": ["title", "description", "visual_focus"]
+              },
+              "minItems": 3,
+              "maxItems": 10
+            }
+          },
+          "required": ["app_name", "subtitle", "keywords", "description", "primary_category", "screenshots_plan"]
+        },
+        "android_play_store": {
+          "type": "object", 
+          "properties": {
+            "app_name": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "short_description": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "full_description": {"type": "string"},
+            "category": {"type": "string"}
+          },
+          "required": ["app_name", "short_description", "full_description", "category"]
+        },
+        "keyword_strategy": {
+          "type": "object",
+          "properties": {
+            "primary_keywords": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "secondary_keywords": {
+              "type": "array", 
+              "items": {"type": "string"}
+            },
+            "competitor_analysis": {"type": "string"},
+            "ranking_difficulty": {"type": "string"}
+          },
+          "required": ["primary_keywords", "secondary_keywords", "competitor_analysis", "ranking_difficulty"]
+        }
+      },
+      "required": ["ios_app_store", "android_play_store", "keyword_strategy"]
+    },
+    "marketing_launch_plan": {"type": "object"},
+    "success_metrics_and_kpis": {"type": "object"},
+    "risk_mitigation": {"type": "object"},
+    "post_launch_roadmap": {"type": "object"}
+  },
+  "required": ["meta", "launch_strategy", "aso_package", "marketing_launch_plan", "success_metrics_and_kpis", "risk_mitigation", "post_launch_roadmap"]
+}

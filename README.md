@@ -4,151 +4,209 @@
 
 # App Factory
 
-**Open Source Mobile App Factory** - Claude runs a 10-stage pipeline to generate complete mobile app specifications and optionally a runnable Expo React Native app.
+**Build market-ready mobile apps — from research to React Native code — in one command.**
 
-## Quickstart
+App Factory is an agent-native workflow that designs, validates, and builds mobile apps with product, monetization, UX, ASO, and launch strategy baked in.
 
-**Open Claude in this repository and type:**
-```
-run app factory
-```
-
-That's it. Claude will execute all stages and generate:
-- Complete market research and 10 ranked app ideas
-- Detailed product specifications and UX design
-- Technical architecture and monetization strategy  
-- Optionally: Complete runnable React Native/Expo app
+No prompts. No hand-holding. Artifacts on disk or it didn't happen.
 
 ## What You Get
 
-### Pipeline Output
+✅ Market research with evidence  
+✅ 10 validated app ideas per run  
+✅ Full product specs for each idea  
+✅ UX flows, IA, and accessibility guidance  
+✅ Monetization strategy (subscriptions, pricing, trials)  
+✅ Technical architecture decisions  
+✅ Brand identity & positioning  
+✅ ASO package (App Store title/subtitle/keywords + screenshot plan)  
+✅ Release planning  
+✅ A real Expo / React Native app (when you build)  
+
+**Everything is written to disk. Everything is validated. Everything is reproducible.**
+
+## The Two Core Commands
+
+**Open Claude in this repository and type:**
+
 ```
-runs/YYYY-MM-DD/<app-name>/
-├── stages/           # JSON outputs (validated against schemas)
-├── spec/             # Human-readable specifications  
-├── outputs/          # Execution logs and validation results
-└── meta/             # Pipeline status and manifest
+run app factory (batch specs)
+```
+*Generates complete specifications for 10 validated app ideas*
 
-/mobile/              # Stage 10 output (if executed)
-└── Complete Expo React Native app
+```
+build app <IDEA_NAME>
+```  
+*Builds a complete Expo React Native app for your selected idea*
+
+## The Two Core Commands
+
+**Open Claude in this repository and type:**
+
+### Generate Complete Specifications
+```
+run app factory
+```
+*Generates complete specifications for 10 validated app ideas automatically*
+
+- **Input**: Market signals and user constraints  
+- **Output**: 80 specification files (8 stages × 10 ideas)
+- **Duration**: ~3 hours (fully automated)
+- **Result**: 10 store-ready app concepts with complete product specs
+
+### Build Selected App  
+```
+build app <IDEA_NAME>
+```  
+*Builds a complete Expo React Native app for your selected idea*
+
+- **Input**: One idea from your batch specs run
+- **Output**: Complete React Native app in `builds/` directory  
+- **Duration**: ~45 minutes (fully automated)
+- **Result**: Store-ready mobile application
+
+### Example Workflow
+```bash
+# Step 1: Generate 10 complete app specifications
+run app factory
+
+# Step 2: Pick your favorite idea and build it
+build app "FocusFlow AI"
+
+# Result: Complete mobile app ready for App Store submission
 ```
 
-### Specifications Generated
-1. **Market Research** - 10 ranked app ideas from real user signals
-2. **Product Specification** - Features, success metrics, MVP scope
-3. **UX Design** - User flows, wireframes, accessibility requirements
-4. **Monetization Strategy** - RevenueCat subscription integration
-5. **Technical Architecture** - React Native, state management, services
-6. **Quality Standards** - Testing strategy, performance requirements
-7. **Brand Identity** - Visual guidelines, messaging, positioning
-8. **Release Planning** - Store submission checklist, launch strategy
+## Why This Is Different
 
-### Mobile App (Stage 10)
-- Complete React Native/Expo application
-- All screens and components implemented
-- RevenueCat subscription integration
-- Navigation, state management, styling
-- Store-ready app structure
-- Setup and deployment instructions
+**Connected Decisions, Not Isolated Templates**
+
+Most AI tools generate disconnected outputs. App Factory ensures every specification connects:
+
+- Market research **directly informs** product features
+- Product features **directly inform** UX wireframes  
+- UX wireframes **directly inform** technical architecture
+- Technical architecture **directly informs** the actual React Native code
+- Monetization strategy **directly informs** RevenueCat integration
+- Brand identity **directly informs** UI theme and styling
+
+**Result**: Every line of generated code traces back to market evidence.
 
 ## Truth Enforcement
 
-**Success is files-on-disk.** App Factory enforces truth through filesystem artifacts:
+**Success is files-on-disk.** No stubs, no placeholders, no false success claims.
 
-- All JSON outputs validate against schemas
-- All execution steps documented in logs
-- All specifications rendered to markdown
-- Mobile app (if generated) is complete and runnable
+✅ All 80+ JSON outputs validate against schemas  
+✅ All execution steps documented in logs  
+✅ All specifications rendered to markdown  
+✅ Mobile app (when built) is complete and runnable  
+✅ Every constraint maps to actual implementation  
 
-**No stubs, no placeholders, no false success claims.**
+**If it's not written to disk with binding proof, it didn't happen.**
 
-## Commands
+## Tech Stack
 
-Claude supports these interactive commands:
+**Modern, Proven, Store-Ready**
 
-- `run app factory` - Full pipeline (stages 01-10)
-- `run stage 01` - Single stage execution
-- `run stages 01-09` - Specification stages only
-- `run stage 10` - Mobile app generation only
-- `validate run` - Check current run artifacts
-- `show status` - Pipeline progress
+- **Framework**: React Native + Expo (latest stable)
+- **Navigation**: Expo Router (file-based)
+- **Monetization**: RevenueCat (subscription-first)
+- **Storage**: AsyncStorage + SQLite
+- **Auth**: Guest-first, optional accounts
+- **Platforms**: iOS + Android simultaneously
 
-## Technology Stack
+**Why These Choices**: Each technology decision traces back to market research and monetization strategy from your specifications.
 
-- **Framework**: React Native with Expo (latest stable)
-- **Languages**: TypeScript for type safety
-- **Navigation**: React Navigation
-- **State**: Context API + AsyncStorage
-- **Monetization**: RevenueCat subscriptions
-- **Platforms**: iOS + Android
-- **Architecture**: Guest-first auth, offline-capable
+## Getting Started
 
-## Schemas and Validation
+**Prerequisites**: Claude subscription + this repository
 
-Every stage output validates against JSON schemas:
 ```bash
-python -m appfactory.schema_validate schemas/stage01.json runs/.../stages/stage01.json
+# 1. Clone the repository
+git clone <this-repo>
+cd app-factory
+
+# 2. Open Claude and point it to this directory  
+# (Claude will automatically read CLAUDE.md constitution)
+
+# 3. Generate complete specifications for 10 app ideas
+run app factory
+
+# 4. Build your favorite idea into a complete app
+build app "Your Chosen Idea Name"
+
+# 5. Your app is ready in builds/ directory
+cd builds/01_your_idea__idea_id_001
+npm install
+npm start
 ```
 
-Validation ensures:
-- Consistent output format
-- Required fields present
-- Type safety
-- Business rule compliance
+**That's it.** No configuration, no prompts, no hand-holding.
 
-## Agent-Native Architecture  
+## Who This Is For
 
-App Factory operates as an agent-native pipeline:
-- **Claude reads** stage templates and prior outputs
-- **Claude writes** JSON artifacts to disk
-- **Claude validates** outputs against schemas
-- **Claude generates** complete mobile applications
-- **No external processes** or subprocess calls
+**Builders who want outcomes, not processes:**
 
-## Pipeline Timing
+✅ **Indie developers** - Generate validated app ideas + complete implementations  
+✅ **Agencies** - Deliver complete mobile apps with full documentation  
+✅ **Product managers** - Get market-backed specifications for any app concept  
+✅ **Entrepreneurs** - Turn market research into store-ready applications  
+✅ **Technical founders** - Skip months of specification work  
 
-- **Stages 01-09**: ~30 minutes (specifications)
-- **Stage 10**: ~45 minutes (mobile app generation)
-- **Total**: ~75 minutes for complete app
+**Not for**: Teams that enjoy writing specifications manually, or developers who prefer building everything from scratch.
 
-*Actual timing varies based on complexity and validation.*
+**Perfect for**: Anyone who wants to ship mobile apps faster with market validation baked in.
 
-## File Structure
+## Output Structure
+
+After running batch specs, you get:
 
 ```
-├── CLAUDE.md                 # Agent-native constitution
-├── README.md                 # This file
-├── LICENSE                   # MIT license
-├── schemas/                  # JSON schemas for validation
-├── templates/
-│   ├── agents/               # Stage execution templates
-│   └── spec/                 # Specification templates
-├── runbooks/                 # Operational documentation  
-├── appfactory/               # Python utilities
-│   ├── schema_validate.py    # Schema validation
-│   ├── render_markdown.py    # Spec rendering
-│   ├── paths.py              # Directory utilities
-│   └── logging_utils.py      # Status and logging
-├── runs/                     # All pipeline outputs
-└── standards/                # Quality requirements
+runs/YYYY-MM-DD/your-run-name/
+├── ideas/
+│   ├── 01_focusflow_ai__focus_ai_001/     # Idea pack 1
+│   │   ├── stages/                           # 8 JSON specs (02-09)
+│   │   ├── spec/                             # Human-readable markdown
+│   │   └── meta/                             # Idea metadata & isolation
+│   ├── 02_mindful_habits__habits_002/     # Idea pack 2
+│   └── ...                               # 8 more idea packs
+└── meta/
+    └── idea_index.json                   # Master index of all 10 ideas
+
+builds/
+└── 01_focusflow_ai__focus_ai_001/        # Built app (after build command)
+    ├── package.json                      # Complete Expo config
+    ├── src/screens/                      # All app screens
+    ├── src/services/purchases.js         # RevenueCat integration
+    └── README.md                         # Setup instructions
 ```
+
+## Repository Hygiene
+
+**Generated outputs** (`runs/` and `builds/`) are ignored by git and never committed:
+
+- **`runs/`** - All pipeline execution outputs and specifications
+- **`builds/`** - Complete React Native apps built from selected ideas
+
+**Clean repository**: `scripts/clean_repo.sh`  
+**Check ship-readiness**: `scripts/ship_check.sh`
+
+All builds go to `builds/<idea_dir>/` - never a fixed location.
+
+---
 
 ## Contributing
 
-App Factory is **open source** and welcomes contributions from the community. See `CONTRIBUTING.md` for guidelines.
+**Key Principles:**
+- Agent-native execution (Claude is the primary runner)
+- Filesystem as source of truth (no false success claims)
+- Schema-validated outputs (everything validates)
+- Connected specifications (every decision traces to market research)
 
-**Key principles:**
-- Agent-native execution (Claude is the runner)
-- Filesystem as source of truth
-- Schema-validated outputs
-- No subprocess delegation
-- Truth enforcement over convenience
-
-**Ways to contribute:**
+**Ways to Contribute:**
 - 🐛 Report bugs and issues
-- 💡 Suggest new features or improvements
-- 📝 Improve documentation
-- 🧪 Add tests and validation
+- 💡 Suggest new pipeline stages or improvements  
+- 📝 Improve documentation and templates
+- 🧪 Add validation and quality checks
 - 🔧 Submit pull requests
 
 ## License
@@ -183,4 +241,4 @@ Every contribution, whether code or financial, helps make App Factory better for
 
 ---
 
-*App Factory generates store-ready mobile app specifications and complete React Native applications through agent-native execution.*
+**App Factory: From market research to React Native code — in two commands.**
