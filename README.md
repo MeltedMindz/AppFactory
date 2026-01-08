@@ -8,7 +8,7 @@
 
 This repository contains two isolated factory systems:
 - **App Factory** (`/the_factory/`) - Consumer mobile apps with subscription monetization  
-- **Web3 Factory** (`/web3-factory/`) - Tokenized web apps with onchain integration
+- **Web3 Factory** (`/web3-factory/`) - **🚧 IN DEVELOPMENT 🚧** - Tokenized web apps with onchain integration
 
 ## 🏭 Choose Your Factory
 
