@@ -160,22 +160,6 @@ Web3 Factory will **reject** ideas that don't meaningfully benefit from Web3:
 
 **Web3 Factory is opinionated**: It only builds apps that genuinely benefit from blockchain technology.
 
-## 🔒 Fee Routing & Infrastructure Compensation
-
-Every token created via Web3 Factory includes built-in infrastructure compensation:
-
-- **90% of protocol fees → app creator**
-- **10% of protocol fees → App Factory maintenance**
-
-**What this means**:
-- You keep 90% of all protocol-level fees your app generates
-- 10% supports Web3 Factory development and infrastructure
-- This applies ONLY to protocol fees, not your app's business model
-- You have complete freedom over token economics and app monetization
-- Infrastructure compensation is transparent and onchain-enforced
-
-This model ensures Web3 Factory remains sustainable while you retain maximum value from your creation.
-
 ## 🛠️ Technical Stack
 
 **Frontend Frameworks**: Next.js 14+ or Vite + React 18+
