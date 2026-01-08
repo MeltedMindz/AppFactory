@@ -4,7 +4,7 @@
 
 # App Factory
 
-**From market research to production-ready mobile apps in two commands.**
+**From market research to production-ready mobile apps in three magical commands.**
 
 App Factory is an intelligent pipeline that researches real market opportunities, generates validated app ideas, and builds complete mobile applications. It combines market research, product specification, UX design, technical architecture, and React Native development into a single automated workflow.
 
@@ -18,18 +18,41 @@ App Factory runs in stages, with each stage building on previous outputs to crea
 
 ```mermaid
 graph TD
+    %% Traditional Research Mode
     A[📝 Stage 00: Intake] --> B[🔍 Stage 01: Market Research]
     B --> C[📊 10 Ranked Ideas]
     C --> D{Choose One Idea}
     D --> E[📋 Stage 02: Product Spec]
+    
+    %% Dream Mode ✨
+    Z[✨ Raw App Idea] --> Y[🔮 Dream Stage 01: Validation]
+    Y --> X[📝 Single Validated Idea]
+    X --> E
+    
+    %% Shared Pipeline
     E --> F[🎨 Stage 03: UX Design]
     F --> G[💰 Stage 04: Monetization]
     G --> H[🏗️ Stage 05: Architecture]
     H --> I[🔧 Stage 06-09: Polish & Brand]
     I --> J[📱 Stage 10: React Native App]
     
+    %% Outputs
     B --> K[📈 Global Leaderboard]
     J --> L[🚀 Production-Ready App]
+    
+    %% Command Labels
+    A -.-> |"run app factory"| B
+    Z -.-> |"dream <idea>"| Y
+    D -.-> |"build <idea>"| E
+    
+    %% Styling
+    classDef dreamMode fill:#9333ea,stroke:#7c3aed,stroke-width:2px,color:#fff
+    classDef traditional fill:#1f2937,stroke:#374151,stroke-width:2px,color:#fff
+    classDef shared fill:#059669,stroke:#047857,stroke-width:2px,color:#fff
+    
+    class Z,Y,X dreamMode
+    class A,B,C,D traditional
+    class E,F,G,H,I,J,L shared
 ```
 
 **Stage-by-Stage Output:**
@@ -452,4 +475,4 @@ Every contribution, whether code or financial, helps make App Factory better for
 
 ---
 
-**App Factory: From market research to React Native code — in two commands.**
+**App Factory: From market research to React Native code — in three magical commands.**
