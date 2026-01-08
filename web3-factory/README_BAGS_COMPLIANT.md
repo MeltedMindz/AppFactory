@@ -1,1 +1,197 @@
-# Web3 Factory - Bags SDK Compliant\n\n**Solana-first tokenized web app generation following official Bags documentation.**\n\nWeb3 Factory transforms Web3 app concepts into production-ready tokenized web applications using the official Bags SDK with full compliance to all documented principles and best practices.\n\n## 🎯 What Web3 Factory Does\n\nWeb3 Factory takes raw Web3 app ideas and builds complete, tokenized web applications that:\n\n- **Validate Web3 necessity**: Ensures your idea actually benefits from blockchain technology\n- **Create functional tokens**: Generates Solana tokens using official Bags SDK 3-step process\n- **Build complete web apps**: Produces production-ready Next.js or Vite + React applications\n- **Integrate Solana seamlessly**: Handles wallet connection, token operations, and transaction flows\n- **Route fees transparently**: Built-in 75%/25% fee split with immutable partner attribution\n- **Follow Bags best practices**: Rate limiting, error handling, file uploads, and idempotency\n\n## 🚀 Bags-Compliant Launch Quickstart\n\n**Prerequisites**: Node.js 18+, Solana wallet, Bags API key from https://dev.bags.fm\n\n### 1. Environment Setup\n```bash\n# Navigate to Web3 Factory\ncd web3-factory\n\n# Install dependencies (includes @bagsfm/bags-sdk)\nnpm install\n\n# Copy environment template\ncp .env.example .env\n\n# Edit .env with your configuration:\n# BAGS_API_KEY=your_api_key_from_dev_bags_fm\n# SOLANA_RPC_URL=https://api.mainnet-beta.solana.com\n# SOLANA_NETWORK=mainnet-beta\n# CREATOR_WALLET_ADDRESS=your_wallet_public_key\n# PRIVATE_KEY=your_base58_private_key\n```\n\n### 2. Validate Configuration\n```bash\n# Test environment setup and Bags API connectivity\nnpm run validate-env\n\n# Expected output: \"Environment is ready for Web3 Factory operations!\"\n# This validates API key, network connectivity, and wallet configuration\n```\n\n### 3. Standalone Token Launch\n```bash\n# Generate sample token configuration\nnpm run launch-token\n\n# This creates sample-token-config.json - edit it with your token details\n# Then launch your token:\nnpm run launch-token -- ./sample-token-config.json\n\n# Outputs:\n# - token-outputs/{buildId}/token_receipt.json\n# - token-outputs/{buildId}/token_receipt.md\n# - Complete transaction confirmation and Solana Explorer links\n```\n\n### 4. Full Web3 App Generation (via Claude)\n```bash\n# Use Claude Code to generate complete tokenized web app\nweb3 idea \"Create a decentralized marketplace where users stake tokens to list items and earn rewards for successful sales\"\n\n# Your complete app is generated at builds/your-app-name/\ncd builds/your-app-name/\nnpm install\nnpm run dev\n```\n\n**Result**: Production-ready Web3 app with functional Solana token, following all Bags SDK best practices.\n\n## 📚 Complete Bags Documentation Compliance\n\nWeb3 Factory implements **100% of required Bags documentation**:\n\n### ✅ Implemented Guides\n- **[Launch Token](https://docs.bags.fm/how-to-guides/launch-token)**: Complete 3-step SDK process\n- **[TypeScript Setup](https://docs.bags.fm/how-to-guides/typescript-node-setup)**: ESM modules, proper dependencies\n\n### ✅ Implemented Principles\n- **[Program IDs](https://docs.bags.fm/principles/program-ids)**: All mainnet addresses configured\n- **[Lookup Tables](https://docs.bags.fm/principles/lookup-tables)**: Public LUT + custom LUT for >15 fee claimers\n- **[Tipping](https://docs.bags.fm/principles/tipping)**: Optional tipping for supported endpoints\n- **[Error Handling](https://docs.bags.fm/principles/error-handling)**: Exponential backoff, retry logic\n- **[Rate Limits](https://docs.bags.fm/principles/rate-limits)**: 1,000/hour compliance with request queueing\n- **[File Uploads](https://docs.bags.fm/principles/file-uploads)**: 15MB limit, type validation, signatures\n- **[API Key Management](https://docs.bags.fm/principles/api-key-management)**: Environment-specific keys\n- **[Base URL Versioning](https://docs.bags.fm/principles/base-url-versioning)**: Centralized configuration\n\n## 🔧 Technical Implementation\n\n### Bags SDK Integration (Official 3-Step Process)\n\n**Step 1: Token Info and Metadata**\n```typescript\nconst tokenInfo = await sdk.createTokenInfoAndMetadata({\n  name: \"Your Token Name\",\n  symbol: \"YTN\", \n  description: \"Token description\",\n  image: \"https://uploaded-image-url\", // From file upload\n  website: \"https://yourapp.com\",\n  twitter: \"@yourhandle\"\n});\n```\n\n**Step 2: Fee Share Configuration**\n```typescript\nconst feeShareConfig = await sdk.createBagsFeeShareConfig({\n  partnerKey: \"FDYcVLxHkekUFz4M29hCuBH3vbf1aLm62GEFZxLFdGE7\", // App Factory\n  totalBPS: 7500, // 75% creator, 25% partner\n  feeClaimers: [{\n    wallet: process.env.CREATOR_WALLET_ADDRESS,\n    bps: 7500\n  }]\n});\n```\n\n**Step 3: Launch Transaction**\n```typescript\nconst launchTx = await sdk.createLaunchTransaction({\n  ipfs: tokenInfo.ipfsHash,\n  tokenMint: tokenInfo.mint,\n  initialBuyAmount: \"1000000\",\n  feeShareConfig: feeShareConfig,\n  // Optional tipping\n  tipWallet: process.env.TIP_WALLET,\n  tipLamports: 100000\n});\n\n// Sign and send\nlaunchTx.sign(creatorKeypair);\nconst signature = await connection.sendAndConfirmTransaction(launchTx);\n```\n\n### Rate Limiting & Error Handling\n\n**1,000 Requests/Hour Compliance**:\n```typescript\n// Automatic rate limit awareness\nconst response = await bagsApiFetch(url, {\n  headers: { 'x-api-key': apiKey }\n});\n\n// Monitors X-RateLimit-Remaining header\n// Implements exponential backoff for 429 errors\n// Request queueing to stay under ~16.7/minute\n```\n\n**Error Classification**:\n- **Retryable**: 429 (rate limit), 500, 502, 503\n- **Non-retryable**: 400, 401, 403, 404\n- **Max retries**: 5 attempts with exponential backoff\n\n### File Upload Implementation\n\n**Bags-Compliant File Handling**:\n```typescript\n// Validate per Bags constraints\nif (file.size > 15 * 1024 * 1024) {\n  throw new Error('File too large: 15MB max');\n}\n\n// Supported types: PNG, JPG, JPEG, GIF, WebP\nconst formData = new FormData();\nformData.append('image', file, filename);\n\n// Upload with retry logic\nconst result = await uploadImageFile(file, apiKey, filename);\n// Returns: { url, ipfsHash, checksum }\n```\n\n### Lookup Tables (LUT) Support\n\n**Public LUT Usage**:\n```typescript\n// Use Bags public LUT: Eq1EVs15EAWww1YtPTtWPzJRLPJoS6VYP9oW9SbNr3yp\nconst bagsLUT = await getBagsLookupTable(connection);\n\n// Custom LUT for >15 fee claimers\nif (feeClaimers.length > 15) {\n  const customLUT = await createLookupTableTransactions(\n    connection, \n    payerKey, \n    feeClaimerAddresses\n  );\n}\n```\n\n## 🏗️ Generated Application Structure\n\n```\nbuilds/<app_name>/\n├── package.json                    # Complete dependencies\n├── next.config.js                  # Framework configuration\n├── .env.example                    # Environment template\n├── README.md                       # Setup instructions\n├── src/\n│   ├── components/\n│   │   ├── WalletConnection.tsx    # Solana wallet adapter\n│   │   ├── TokenDisplay.tsx        # Token balance/info\n│   │   └── TokenActions.tsx        # Token interactions\n│   ├── hooks/\n│   │   ├── useToken.ts            # Token operations\n│   │   └── useTransactions.ts     # Transaction handling\n│   └── utils/\n│       └── constants.ts           # Token address & config\n├── token/\n│   ├── token_receipt.json         # Creation receipt\n│   ├── token_receipt.md           # Human-readable info\n│   └── token_failure.json         # Failure details (if any)\n└── deployment_guide.md            # Production deployment\n```\n\n## 🔒 Partner Attribution & Fee Routing\n\n**Immutable Partner Configuration**:\n- **Partner Key**: `FDYcVLxHkekUFz4M29hCuBH3vbf1aLm62GEFZxLFdGE7` (hardcoded)\n- **Fee Split**: 75% creator, 25% App Factory partner\n- **Attribution**: Partner key used for Bags fee routing, NOT a payout address\n- **Transparency**: All fee routing documented in token receipts\n\n**What This Means**:\n- You receive 75% of protocol-level fees from your token\n- 25% supports Web3 Factory development via Bags partner program\n- This applies ONLY to protocol fees, not your app's business model\n- Complete freedom over token economics and app monetization\n- Infrastructure compensation is onchain-enforced and transparent\n\n## 📋 Environment Variables\n\n**Required (from .env.example)**:\n```bash\n# Bags API (get from https://dev.bags.fm)\nBAGS_API_KEY=your_api_key_here\n\n# Solana Network\nSOLANA_RPC_URL=https://api.mainnet-beta.solana.com\nSOLANA_NETWORK=mainnet-beta\n\n# Wallet Configuration\nCREATOR_WALLET_ADDRESS=your_public_key\nPRIVATE_KEY=your_base58_private_key\n\n# Optional Tipping\n# TIP_WALLET=jito_or_provider_wallet\n# TIP_LAMPORTS=100000\n```\n\n**Security Notes**:\n- API keys are environment-specific (dev/staging/prod)\n- Never commit private keys to version control\n- Use separate wallets for development vs production\n- Partner key is hardcoded (FDYcVLxHkekUFz4M29hCuBH3vbf1aLm62GEFZxLFdGE7)\n\n## 🚀 Production Deployment\n\n**Framework Support**:\n- **Next.js**: Vercel, Netlify, or custom hosting\n- **Vite + React**: Static hosting, CDN deployment\n- **Environment**: Mainnet with production API keys\n\n**Monitoring & Maintenance**:\n- **Rate Limits**: Monitor usage at https://dev.bags.fm dashboard\n- **API Keys**: Rotate regularly for security\n- **Errors**: Check token_failure.json for debugging\n- **Solana**: Monitor RPC usage and costs\n\n## 🔍 Example Token Launches\n\n```bash\n# DeFi Analytics Platform\nnpm run launch-token -- defi-analytics-config.json\n# Creates fee-capture token where users pay for data access\n\n# Gaming Tournament Platform  \nnpm run launch-token -- gaming-platform-config.json\n# Creates usage token where players spend tokens to join tournaments\n\n# Decentralized Marketplace\nnpm run launch-token -- marketplace-config.json\n# Creates access token where staking grants listing privileges\n```\n\n## 📖 Documentation & Support\n\n### Official Bags Resources\n- **API Documentation**: https://docs.bags.fm/\n- **SDK Repository**: https://github.com/bagsfm/bags-sdk\n- **Developer Portal**: https://dev.bags.fm (for API keys)\n\n### Web3 Factory Resources\n- **Implementation Guide**: `/docs/bags_implementation.md`\n- **Environment Validation**: `npm run validate-env`\n- **TypeScript Setup**: Complete ESM configuration\n- **Error Handling**: Comprehensive retry logic\n\n### Troubleshooting\n1. **API Key Issues**: Check validity at https://dev.bags.fm\n2. **Rate Limits**: Monitor X-RateLimit-* headers\n3. **Network Issues**: Verify RPC URL and connection\n4. **Token Creation**: Check token_failure.json for details\n5. **Environment**: Run `npm run validate-env` for diagnostics\n\n---\n\n**Web3 Factory**: Production-ready Solana token integration following all official Bags SDK patterns and principles. ✅\n\n**Ready for Production**: Full rate limiting, error handling, idempotency, and partner attribution compliance.
+# Web3 Factory
+
+![Web3 Factory](web3factory.png)
+
+**Solana-first tokenized web app generation built on official Bags SDK.**
+
+Web3 Factory transforms Web3 app concepts into production-ready tokenized web applications using the official Bags SDK with full compliance to documented principles and best practices.
+
+## What Web3 Factory Does
+
+- **Validates Web3 necessity** — Ensures your idea actually benefits from blockchain technology
+- **Creates functional tokens** — Generates Solana tokens using official Bags SDK 3-step process  
+- **Builds complete web apps** — Produces production-ready Next.js or Vite + React applications
+- **Integrates Solana seamlessly** — Handles wallet connection, token operations, and transaction flows
+- **Routes fees transparently** — Built-in 75%/25% fee split with immutable partner attribution
+- **Follows Bags best practices** — Rate limiting, error handling, file uploads, and idempotency
+
+## When Tokens Make Sense (and When They Don't)
+
+**Tokens are functional primitives for specific use cases:**
+
+- **ACCESS** — Users spend tokens to unlock features or premium content
+- **USAGE** — Users consume tokens for each action or API call  
+- **FEE CAPTURE** — Token holders receive fees generated by app usage
+- **GOVERNANCE-LITE** — Token grants voting rights on simple app parameters
+
+**Tokens are optional.** Web3 Factory validates whether blockchain technology improves your idea. Apps that don't benefit from tokens won't include them.
+
+**Not suitable for:**
+- Simple productivity apps better served by traditional databases
+- Consumer apps where tokens add complexity without value
+- Ideas where fiat payments serve the same purpose
+
+## Bags SDK Compliance
+
+Web3 Factory implements **100% of documented Bags principles:**
+
+### ✅ Implemented Guides
+- **[Launch Token](https://docs.bags.fm/how-to-guides/launch-token)** — Complete 3-step SDK process
+- **[TypeScript Setup](https://docs.bags.fm/how-to-guides/typescript-node-setup)** — ESM modules, proper dependencies
+
+### ✅ Implemented Principles  
+- **[Program IDs](https://docs.bags.fm/principles/program-ids)** — All mainnet addresses configured
+- **[Lookup Tables](https://docs.bags.fm/principles/lookup-tables)** — Public LUT + custom LUT for >15 fee claimers
+- **[Tipping](https://docs.bags.fm/principles/tipping)** — Optional tipping for supported endpoints
+- **[Error Handling](https://docs.bags.fm/principles/error-handling)** — Exponential backoff, retry logic
+- **[Rate Limits](https://docs.bags.fm/principles/rate-limits)** — 1,000/hour compliance with request queueing
+- **[File Uploads](https://docs.bags.fm/principles/file-uploads)** — 15MB limit, type validation, signatures
+- **[API Key Management](https://docs.bags.fm/principles/api-key-management)** — Environment-specific keys
+
+**Resources:** [Bags Documentation](https://docs.bags.fm/) | [Developer Portal](https://dev.bags.fm)
+
+## Web3 Factory Pipeline (W1–W5)
+
+**W1: Web3 Idea Validation**  
+Validates that your idea meaningfully benefits from blockchain technology. Tests whether tokens serve a functional purpose vs pure speculation.
+
+**W2: Token Role Definition**  
+Chooses exactly ONE primary token role and defines economics, supply model, and fee routing. Ensures tokens serve app functionality.
+
+**W3: App Architecture**  
+Selects optimal framework (Next.js or Vite + React), designs wallet integration strategy, and plans failure modes.
+
+**W4: Bags Integration**  
+Configures Bags SDK for deterministic token creation with environment-based configuration. Prepares fee routing and token parameters.
+
+**W5: Build & Ship**  
+Creates Solana token via Bags SDK, generates complete production-ready web application, and integrates token functionality.
+
+## Fee Routing & Partner Attribution
+
+**Transparent fee structure:**
+- **75%** → App creator (you)
+- **25%** → App Factory partner
+
+**Implementation details:**
+- Partner key: `FDYcVLxHkekUFz4M29hCuBH3vbf1aLm62GEFZxLFdGE7` (hardcoded)
+- Used for Bags fee attribution, not payout addresses
+- Enforced via Bags SDK partner configuration
+- Documented in all token receipts for transparency
+
+This applies **only to protocol-level fees**. You maintain complete freedom over token economics and app monetization.
+
+## Quickstart
+
+**Prerequisites:** Node.js 18+, Solana wallet, Bags API key from https://dev.bags.fm
+
+### Environment Setup
+```bash
+# Navigate to Web3 Factory
+cd web3-factory
+
+# Copy environment template  
+cp .env.example .env
+```
+
+**Edit `.env` with your configuration:**
+```bash
+# Bags API (get from https://dev.bags.fm)
+BAGS_API_KEY=your_api_key_here
+
+# Solana Network
+SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+SOLANA_NETWORK=mainnet-beta
+
+# Wallet Configuration
+CREATOR_WALLET_ADDRESS=your_public_key
+PRIVATE_KEY=your_base58_private_key
+
+# Optional Tipping
+TIP_WALLET=jito_or_provider_wallet
+TIP_LAMPORTS=100000
+```
+
+### Generate Complete Web3 App
+```bash
+# Use Claude Code to generate tokenized web app
+web3 idea "Create a decentralized marketplace where users stake tokens to list items"
+
+# Your app is generated at builds/your-app-name/
+cd builds/your-app-name/
+npm install
+npm run dev
+```
+
+### Standalone Token Launch
+```bash
+# Test environment setup
+npm run validate-env
+
+# Create token configuration
+npm run launch-token
+
+# Launch your token
+npm run launch-token -- ./sample-token-config.json
+```
+
+## Generated App Structure
+
+```
+builds/<app_name>/
+├── package.json                    # Complete dependencies with Bags SDK
+├── next.config.js                  # Framework configuration  
+├── .env.example                    # Environment template
+├── README.md                       # Setup and deployment guide
+├── src/
+│   ├── components/
+│   │   ├── WalletConnection.tsx    # Solana wallet adapter
+│   │   ├── TokenDisplay.tsx        # Real-time token balance
+│   │   └── TokenActions.tsx        # Token functionality
+│   ├── hooks/
+│   │   ├── useToken.ts            # Token operations
+│   │   └── useTransactions.ts     # Transaction handling
+│   └── utils/
+│       └── constants.ts           # Token address & config
+├── token/
+│   ├── token_receipt.json         # Creation receipt with fee routing
+│   ├── token_receipt.md           # Human-readable token info
+│   └── token_failure.json         # Debug info (if creation fails)
+└── deployment_guide.md            # Production deployment steps
+```
+
+## Security & Key Management
+
+**Environment Variables (Required)**
+- API keys are environment-specific (dev/staging/prod)
+- Private keys must never be committed to version control
+- Use separate wallets for development vs production
+
+**Hardcoded Values (By Design)**
+- Partner key `FDYcVLxHkekUFz4M29hCuBH3vbf1aLm62GEFZxLFdGE7` for fee attribution
+- Bags program IDs for mainnet operations
+- Rate limiting and error handling parameters
+
+**Security Best Practices**
+- Rotate API keys regularly
+- Monitor usage at https://dev.bags.fm dashboard
+- Use hardware wallets for production creator keys
+- Validate all environment variables before token creation
+
+## Status & Roadmap
+
+**Current Status: Active Development**
+- Full Bags SDK v3 compliance implemented
+- Production-ready token creation and web app generation
+- Complete error handling and rate limiting
+- Comprehensive documentation and examples
+
+**Future Enhancements**
+- Dashboard for token monitoring and analytics
+- Advanced token economics templates
+- Multi-network support beyond Solana
+- Enhanced Web3 validation criteria
+
+---
+
+**Web3 Factory transforms Web3 ideas into tokenized reality with production-grade Solana integration.**
