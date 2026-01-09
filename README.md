@@ -65,7 +65,7 @@ web3 idea your tokenized app idea here...
 
 ## How App Factory Works
 
-App Factory runs in stages, with each stage building on previous outputs to create a complete, connected specification:
+App Factory runs in stages with professional-grade enforcement gates, ensuring every build is production-ready:
 
 ```mermaid
 graph TD
@@ -80,12 +80,16 @@ graph TD
     Y --> X[📝 Single Validated Idea]
     X --> E
     
-    %% Shared Pipeline
-    E --> F[🎨 Stage 03: UX Design]
+    %% Professional Quality Gates
+    E --> E1[🔒 Stage 02.5: Product Reality Gate]
+    E1 --> E2[🔧 Stage 02.7: Dependency Resolution Gate]
+    E2 --> F[🎨 Stage 03: UX Design]
     F --> G[💰 Stage 04: Monetization]
     G --> H[🏗️ Stage 05: Architecture]
     H --> I[🔧 Stage 06-09: Polish & Brand]
-    I --> J[📱 Stage 10: React Native App]
+    I --> I1[🎯 Stage 09.5: Runtime Sanity Harness]
+    I1 --> I2[🎨 Stage 10.1: Design Authenticity Check]
+    I2 --> J[📱 Stage 10: Professional Enforcement Layer]
     
     %% Outputs
     B --> K[📈 Global Leaderboard]
@@ -101,20 +105,27 @@ graph TD
     classDef traditional fill:#1f2937,stroke:#374151,stroke-width:2px,color:#fff
     classDef shared fill:#059669,stroke:#047857,stroke-width:2px,color:#fff
     
+    classDef qualityGate fill:#dc2626,stroke:#b91c1c,stroke-width:2px,color:#fff
+    
     class Z,Y,X dreamMode
     class A,B,C,D traditional
     class E,F,G,H,I,J,L shared
+    class E1,E2,I1,I2 qualityGate
 ```
 
-**Stage-by-Stage Output:**
-| Stage | Purpose | Key Output | Why It Matters |
-|-------|---------|------------|----------------|
+**Professional Pipeline with Quality Gates:**
+| Stage | Purpose | Key Output | Quality Enforcement |
+|-------|---------|------------|-------------------|
 | 01 | Market Research | `stage01.json` (10 ranked ideas) | Evidence-backed opportunities |
 | 02 | Product Spec | `stage02.json` (features, users, metrics) | What to build and why |
-| 03 | UX Design | `stage03.json` (wireframes, flows, accessibility) | How users interact |
+| **02.5** | **Product Reality Gate** | `stage02.5.json` (domain validation) | **Prevents conceptually empty apps** |
+| **02.7** | **Dependency Resolution Gate** | `stage02.7.json` (navigation/package validation) | **Ensures technical feasibility** |
+| 03 | UX Design + Design Contract | `stage03.json` + `uiux/` artifacts | Domain-appropriate UI/UX contracts |
 | 04 | Monetization | `stage04.json` (pricing, subscriptions, RevenueCat) | How it makes money |
 | 05-09 | Architecture & Brand | `stage05-09.json` (tech stack, polish, ASO) | How it's built and positioned |
-| 10 | App Generation | `builds/<idea>/app/` (complete Expo app) | What you ship |
+| **09.5** | **Runtime Sanity Harness** | `stage09.5.json` (runtime validation) | **Validates complete app requirements** |
+| **10.1** | **Design Authenticity Check** | `stage10.1.json` (UI validation) | **Prevents generic/placeholder UI** |
+| **10** | **Professional Enforcement Layer** | `builds/<idea>/app/` (zero-defect app) | **NO PROBLEMS AT ALL policy** |
 
 ## 🏭 Directory Structure
 
@@ -229,6 +240,29 @@ Most AI tools generate disconnected outputs. App Factory ensures every specifica
 
 **Result**: Every line of generated code traces back to market evidence.
 
+## 🏆 Professional Quality Enforcement
+
+**NO PROBLEMS AT ALL Policy**: Every successful build must install with ZERO npm errors, launch cleanly in iOS Simulator, and render the REAL app (not placeholders).
+
+### Quality Gate Sequence (Mandatory)
+App Factory enforces professional-grade quality through a series of validation gates:
+
+1. **🔒 Product Reality Gate (02.5)** - Validates concrete domain objects and user loops
+2. **🔧 Dependency Resolution Gate (02.7)** - Ensures Expo Router + package compatibility  
+3. **🎯 Runtime Sanity Harness (09.5)** - Validates complete app requirements and boot sequence
+4. **🎨 Design Authenticity Check (10.1)** - Prevents generic UI, enforces domain-appropriate design
+5. **📱 Professional Enforcement Layer (10)** - Zero-defect builds or hard failure
+
+### Zero Tolerance Standards
+- ❌ **ZERO npm install errors** or warnings
+- ❌ **ZERO TypeScript compilation errors**  
+- ❌ **ZERO app launch crashes** or red screens
+- ❌ **ZERO navigation errors** or dead ends
+- ❌ **ZERO generic placeholder content** (welcome screens, lorem ipsum)
+- ❌ **ZERO broken subscription integration**
+
+**Result**: Every completed build is production-ready and professional-grade.
+
 **Selective Execution, Not Batch Waste**
 
 App Factory gives you choice and control:
@@ -254,14 +288,15 @@ App Factory gives you choice and control:
 
 **Modern, Proven, Store-Ready**
 
-- **Framework**: React Native + Expo (latest stable)
-- **Navigation**: Expo Router (file-based)
-- **Monetization**: RevenueCat (subscription-first)
+- **Framework**: React Native + Expo SDK 52 + React Native 0.76
+- **Navigation**: Expo Router v4 (file-based, validated)
+- **Monetization**: RevenueCat (subscription-first, environment-based config)
 - **Storage**: AsyncStorage + SQLite
 - **Auth**: Guest-first, optional accounts
 - **Platforms**: iOS + Android simultaneously
+- **Quality**: Professional enforcement gates with zero-defect policy
 
-**Why These Choices**: Each technology decision traces back to market research and monetization strategy from your specifications.
+**Why These Choices**: Each technology decision traces back to market research, dependency validation, and professional quality standards.
 
 ## Getting Started
 
@@ -433,23 +468,44 @@ the_factory/runs/YYYY-MM-DD/your-run-name/
     └── idea_index.json                   # Master index for building
 ```
 
-**After `build "FocusFlow AI"` (selective building):**
+**After `build "FocusFlow AI"` (selective building with quality gates):**
 
 ```
-the_factory/builds/01_focusflow_ai__focus_ai_001/     # Built mobile app
+the_factory/builds/01_focusflow_ai__focus_ai_001/     # Professional-grade mobile app
 └── <build_id>/                                      # Immutable build output
-    ├── app/                                         # Complete Expo app
-    │   ├── package.json                             # Complete Expo config
-    │   ├── src/screens/                             # All mobile app screens
-    │   ├── src/services/purchases.js                # RevenueCat integration
+    ├── app/                                         # Complete zero-defect Expo app
+    │   ├── package.json                             # Validated Expo SDK 52 config
+    │   ├── src/screens/                             # Domain-specific mobile screens (NO placeholders)
+    │   ├── src/ui/tokens.ts                         # Design system implementation
+    │   ├── src/services/purchases.js                # Environment-based RevenueCat integration
     │   └── README.md                                # Setup instructions
-    ├── build_log.md                                 # Build execution log
+    ├── uiux/                                        # Design contract artifacts
+    │   ├── uiux_prompt.md                           # Binding UI/UX design contract
+    │   ├── design_tokens.json                       # Domain-appropriate color/typography
+    │   └── component_inventory.md                   # Required UI components
+    ├── build_log.md                                 # Professional enforcement log
     └── sources.md                                   # Research citations
 
 the_factory/runs/YYYY-MM-DD/your-run-name/ideas/01_focusflow_ai__focus_ai_001/
-├── stages/                                          # Now contains stages 02-10
-├── outputs/                                         # All execution logs
-└── spec/                                            # Complete specifications
+├── stages/                                          # Complete stages 02-10.1 with quality gates
+│   ├── stage02.5.json                              # Product reality validation
+│   ├── stage02.7.json                              # Dependency resolution validation
+│   ├── stage09.5.json                              # Runtime sanity validation  
+│   ├── stage10.1.json                              # Design authenticity validation
+│   └── stage10.json                                # Professional enforcement results
+├── technical/                                      # Technical validation artifacts
+│   ├── navigation_plan.json                        # Expo Router v4 architecture
+│   ├── dependency_plan.json                        # Package compatibility matrix
+│   └── compatibility_matrix.md                     # Expo SDK 52 validation
+├── runtime/                                        # Runtime validation artifacts
+│   ├── boot_sequence.json                          # <5 second boot validation
+│   ├── sanity_checklist.md                         # Stage 10 validation script
+│   └── flow_validation.json                        # Complete user flow coverage
+├── design/                                         # Design authenticity artifacts
+│   ├── authenticity_report.md                      # Domain alignment analysis
+│   └── implementation_plan.json                    # Component-to-code mapping
+├── outputs/                                        # All execution logs with quality enforcement
+└── spec/                                           # Complete specifications
 ```
 
 ### Web3 Factory Output Structure
@@ -496,11 +552,13 @@ All builds go to respective `builds/<app_dir>/` directories - never fixed locati
 - Ready-to-build idea bin for selective development
 
 **After `build <IDEA_NAME>`**:
-- Complete React Native mobile app with full source code
-- Production-ready Expo configuration
-- Integrated RevenueCat subscription system
-- Store-submission-ready mobile application
-- Complete technical specifications and documentation
+- **Zero-defect React Native mobile app** with professional-grade source code
+- **Validated Expo SDK 52 configuration** with dependency compatibility verification
+- **Environment-based RevenueCat subscription system** with functional test integration
+- **Domain-appropriate UI/UX implementation** following binding design contracts
+- **Store-submission-ready mobile application** that passes all quality gates
+- **Complete technical specifications and documentation** with quality enforcement logs
+- **Professional validation artifacts** proving zero-defect build standards
 - **Live preview capability** with QR codes for instant mobile testing
 
 ### Web3 Factory Outputs
@@ -603,6 +661,9 @@ App Factory thrives on community input. Whether you're improving the pipeline, f
 - **Filesystem truth**: No false success claims - if it's not on disk, it didn't happen
 - **Schema validation**: Everything must validate against defined schemas
 - **Connected specs**: Every decision traces back to market research evidence
+- **Professional quality gates**: NO PROBLEMS AT ALL policy with zero-defect enforcement
+- **Design authenticity**: Domain-appropriate UI, never generic placeholders
+- **Technical validation**: Expo Router v4 + SDK 52 compatibility verification
 
 **Getting Involved**: Check out issues, suggest improvements, or dive into the codebase. All skill levels welcome!
 

@@ -4,20 +4,29 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "vite",
+    "dev:backend": "tsx server/index.ts",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "sync": "node scripts/sync-leaderboard.mjs"
+    "sync": "node scripts/sync-leaderboard.mjs",
+    "cache:expo-docs": "node ../scripts/cache_expo_llms_docs.mjs"
   },
   "dependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "lucide-react": "^0.263.1",
+    "qrcode": "^1.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "lucide-react": "^0.263.1",
-    "qrcode": "^1.5.3"
+    "react-router-dom": "^7.12.0"
   },
   "devDependencies": {
     "@types/node": "^20.5.0",
-    "@types/qrcode": "^1.5.2",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
@@ -26,6 +35,7 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "tsx": "^4.21.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }

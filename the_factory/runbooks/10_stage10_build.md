@@ -83,9 +83,9 @@ package.json must include:
 ```json
 {
   "dependencies": {
-    "expo": "~50.0.0",
-    "react": "18.2.0", 
-    "react-native": "0.73.0",
+    "expo": "~54.0.0",
+    "react": "19.1.0", 
+    "react-native": "0.81.5",
     "@react-navigation/native": "^6.1.0",
     "@react-navigation/stack": "^6.3.0",
     "react-native-elements": "^3.4.3",

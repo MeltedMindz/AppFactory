@@ -86,23 +86,195 @@ If Stage 10 cannot implement something as specified, it MUST:
   - `builds/<idea_dir>/<build_id>/build_log.md` (execution log)
   - `builds/<idea_dir>/<build_id>/sources.md` (research citations)
 
-## REQUIRED RESEARCH (ONLINE)
-MUST consult these sources and cite in stage10_research.md:
-1. **Official Expo Router docs** - latest navigation patterns and file-based routing
-2. **Official RevenueCat docs** - React Native/Expo integration and subscription flows:
-   - https://www.revenuecat.com/docs/getting-started/installation/reactnative
-   - https://www.revenuecat.com/docs/getting-started/configuring-sdk 
-   - https://www.revenuecat.com/docs/getting-started/entitlements
-   - https://www.revenuecat.com/docs/getting-started/making-purchases
-   - https://www.revenuecat.com/docs/getting-started/restoring-purchases
+## VENDOR DOCS FIRST (MANDATORY)
+Use vendor/ cached llms.txt as the primary source before any web searching.
+
+### Required Research Sources (IN ORDER)
+**Primary Sources** (Use FIRST):
+1. **Expo Documentation**: Read `the_factory/vendor/expo-docs/llms.txt`
+   - Use cached docs for Expo Router v4 navigation patterns and file-based routing
+   - Reference latest Expo SDK features, configuration, and best practices
+   - Reference React Native integration patterns and development workflow
+   - Only web search docs.expo.dev if cached docs are insufficient
+
+2. **RevenueCat Documentation**: Read `the_factory/vendor/revenuecat-docs/llms.txt`
+   - Use cached docs for React Native/Expo integration and subscription flows
+   - Reference entitlements, offerings, purchase flow, and restore patterns
+   - Reference configuration, error handling, and testing approaches
+   - Only web search revenuecat.com if cached docs are insufficient
+
+**Secondary Sources** (After vendor docs):
 3. **SQLite/Expo SQLite docs** - local database setup and migrations
 4. **Category-specific patterns** - search for relevant open-source Expo app examples
+
+Do not perform exploratory web searches until vendor docs are consulted.
+If web search is required, restrict to official domains (docs.expo.dev, revenuecat.com).
 
 Research constraints:
 - Use official documentation as authoritative source
 - Translate patterns into implementation decisions, don't copy code directly
 - Document how research influenced specific architectural choices
 - Cite all sources with URLs, dates accessed, and brief relevance notes
+
+## UI/UX DESIGN CONTRACT GENERATION (MANDATORY)
+
+### Visual Personality Analysis
+Before generating any code, Stage 10 MUST analyze the app's specifications to determine its visual personality:
+
+1. **Domain Analysis**: Read Stage 02 product spec to understand app category:
+   - Paranormal tools → forensic, eerie, instrument-like
+   - Productivity → clean, focused, efficient
+   - Health/fitness → energetic, motivating, data-driven
+   - Creative tools → expressive, flexible, inspiring
+   - Education → approachable, clear, encouraging
+
+2. **User Context Analysis**: Read Stage 03 UX flows to understand user mindset:
+   - Professional use → utilitarian, trustworthy, detailed
+   - Casual use → friendly, accessible, forgiving
+   - Emergency/crisis use → urgent, clear, minimal cognitive load
+
+3. **Mood Inference**: Combine domain + user context to choose design archetype:
+   - "Forensic Instrument Panel" (EVP/paranormal tools)
+   - "Calm Productivity Hub" (focus/task apps)
+   - "Energetic Tracker" (fitness/habit apps)
+   - "Creative Canvas" (design/creative tools)
+
+### UI/UX Prompt Generation (MANDATORY OUTPUT)
+Stage 10 MUST generate app-specific design contract:
+
+**Required Files**:
+- `builds/<idea_dir>/<build_id>/uiux/uiux_prompt.md`
+- `builds/<idea_dir>/<build_id>/uiux/style_brief.json`
+
+**uiux_prompt.md Structure** (MUST match exactly):
+```markdown
+<role>
+You are an expert frontend engineer, UI/UX designer, visual design specialist, and typography expert. Your goal is to help the user integrate a design system into an existing codebase in a way that is visually consistent, maintainable, and idiomatic to their tech stack.
+
+Before proposing or writing any code, first build a clear mental model of the current system:
+- Identify the tech stack (React Native + Expo, and whether Expo Router is used).
+- Understand existing design tokens (colors, spacing, typography, radii, shadows), global styles, and utility patterns.
+- Review component architecture and naming conventions.
+- Note constraints (performance, bundle size, Expo SDK limitations, accessibility).
+
+Do NOT ask the user questions. Use the provided app spec to infer the best UI direction.
+
+Then do the following:
+- Propose a concise implementation plan:
+  - centralize design tokens,
+  - reusable components,
+  - avoid one-off styles,
+  - maintainability and clear naming.
+- When writing code, match existing patterns (folder structure, naming, styling approach).
+- Explain reasoning briefly inline in comments only (no long essays).
+
+Always aim to:
+- Preserve or improve accessibility.
+- Maintain strong visual consistency.
+- Ensure layouts are responsive.
+- Make deliberate design choices that fit the app's personality (not generic UI).
+</role>
+
+<design-system>
+# Design Philosophy
+[CUSTOM to app domain - e.g. "Professional forensic instrument interface with atmospheric dark theming"]
+
+# Design Token System
+## Colors
+[FULL PALETTE: background/foreground/primary/secondary/muted/accent/error/border]
+[MUST MATCH APP: e.g. EVP app = eerie, forensic, night-ops colors]
+
+## Typography
+[React Native/Expo compatible fonts; define sizes and usage rules]
+
+## Radius & Borders
+[define border radius values and usage patterns]
+
+## Shadows & Effects
+[define shadow values and when to use]
+
+# Component Stylings
+## Buttons
+[define button variants and styling rules]
+
+## Cards
+[define card elevation and content patterns]
+
+## Inputs
+[define input styling and states]
+
+## Navigation
+[define navigation styling and behavior]
+
+# Layout Strategy
+[define grid system and spacing patterns]
+
+# Non-Genericness
+[what makes this design specific to this app's domain]
+
+# Effects & Animation
+[purposeful motion design rules]
+
+# Iconography
+[icon style and usage guidelines]
+
+# Responsive Strategy
+[mobile-first responsive behavior]
+
+# Accessibility
+[minimum contrast, touch target, and focus management standards]
+</design-system>
+```
+
+**style_brief.json Structure**:
+```json
+{
+  "appName": "[from Stage 08 brand]",
+  "slug": "[from Stage 08 brand]",
+  "genre": "[app category - e.g. paranormal tooling, micro-productivity, journaling]",
+  "moodKeywords": ["[domain-specific]", "[atmosphere]", "[style keywords]"],
+  "designArchetype": "[e.g. 'Forensic Instrument Panel', 'Calm Productivity Hub']",
+  "palette": {
+    "bg": "[hex color]",
+    "fg": "[hex color]", 
+    "primary": "[hex color]",
+    "accent": "[hex color]",
+    "error": "[hex color]"
+  },
+  "typography": {
+    "primary": "[font family]",
+    "fallbacks": ["[fallback fonts]"]
+  },
+  "components": {
+    "buttonStyle": "[style approach]",
+    "cardStyle": "[style approach]",
+    "inputStyle": "[style approach]",
+    "navigationStyle": "[style approach]"
+  },
+  "references": [
+    {
+      "name": "[source name]",
+      "notes": "[what was learned/copied stylistically]"
+    }
+  ]
+}
+```
+
+### UI/UX Research Policy
+Stage 10 MAY use web search for UI/UX inspiration and pattern guidance:
+- **Scope**: UI/UX inspiration and pattern guidance only
+- **Preference**: Official design guidelines (Apple HIG, Material Design, platform docs)
+- **Sources**: Reputable UI galleries, design system documentation
+- **Forbidden**: Direct code copying from random repositories
+- **Usage**: Extract style direction and interaction patterns to inform design tokens
+
+### Design Contract Enforcement
+After generating the design contract, Stage 10 MUST:
+1. **Load and Apply**: Treat uiux_prompt.md as binding authority for all UI decisions
+2. **Implement Tokens**: Create src/ui/tokens.ts with colors, spacing, typography from design contract
+3. **Build Components**: Create src/ui/components/ with Button, Card, Input, ScreenShell following design system
+4. **Prevent Generic UI**: Ensure home screen reflects app domain (not generic landing page)
+5. **Quality Gate**: Verify final UI matches design archetype and personality
 
 ## BUILD OUTPUT STRUCTURE (MANDATORY)
 
@@ -112,87 +284,95 @@ Generate deterministic `build_id` from hash of:
 Create complete app structure at `builds/<idea_dir>/<build_id>/app/`:
 
 ```
-builds/<idea_dir>/<build_id>/app/
-├── package.json              # Complete dependencies from stage05 + RevenueCat + Expo + SQLite
-├── app.json                  # Expo config with ASO metadata from stage09
-├── babel.config.js           # Standard Expo Babel configuration
-├── metro.config.js           # Metro bundler configuration
-├── .env.example             # RevenueCat environment variables template
-├── App.js                    # Main entry point with RevenueCat init and navigation
-├── src/
-│   ├── screens/              # All screens from stage03 wireframes
-│   │   ├── OnboardingScreen.js
-│   │   ├── HomeScreen.js
-│   │   ├── PaywallScreen.js
-│   │   ├── SettingsScreen.js
-│   │   └── [other screens from stage02 features]
-│   ├── components/           # Reusable components from stage03
-│   │   ├── ui/              # Basic UI components (loading, error states)
-│   │   ├── feature/         # Feature-specific components
-│   │   └── paywall/         # RevenueCat paywall components
-│   ├── navigation/
-│   │   └── AppNavigator.js   # Navigation structure from stage03
-│   ├── services/
-│   │   ├── purchases.js      # Full RevenueCat integration from stage04
-│   │   ├── database.js       # SQLite setup, migrations, repositories
-│   │   ├── analytics.js      # Analytics setup for monitoring
-│   │   └── api.js           # API service layer if needed
-│   ├── database/
-│   │   ├── schema.js        # SQLite table definitions
-│   │   ├── migrations.js    # Database migration scripts
-│   │   └── repositories/    # Data access layer
-│   ├── hooks/
-│   │   ├── usePurchases.js  # RevenueCat subscription state
-│   │   └── useDatabase.js   # SQLite data hooks
-│   ├── styles/
-│   │   ├── theme.js         # Brand identity from stage08
-│   │   ├── colors.js        # Color palette from stage08
-│   │   └── typography.js    # Typography system from stage08
-│   ├── utils/
-│   │   ├── storage.js       # AsyncStorage for preferences only
-│   │   └── helpers.js       # General utility functions
-│   └── constants/
-│       ├── config.js        # App configuration with env vars
-│       ├── strings.js       # Text content and copy
-│       └── entitlements.js  # RevenueCat entitlement constants
-├── assets/
-│   ├── images/              # App icons and imagery (placeholders generated)
-│   │   ├── icon.png        # App icon placeholder
-│   │   ├── splash.png      # Splash screen placeholder
-│   │   └── adaptive-icon.png # Android adaptive icon
-│   └── fonts/               # Custom fonts if specified
-├── app.config.js            # Dynamic Expo configuration with env
-├── spec_map.md              # Evidence of stage02-09 consumption
-└── README.md                # Setup instructions and RevenueCat configuration
+builds/<idea_dir>/<build_id>/
+├── uiux/                     # UI/UX design contract (MANDATORY)
+│   ├── uiux_prompt.md       # Complete design system prompt with role + design-system
+│   └── style_brief.json     # Structured design data and references
+└── app/                      # Complete Expo React Native app
+    ├── package.json              # Complete dependencies from stage05 + RevenueCat + Expo + SQLite
+    ├── app.json                  # Expo config with ASO metadata from stage09
+    ├── babel.config.js           # Standard Expo Babel configuration
+    ├── metro.config.js           # Metro bundler configuration
+    ├── .env.example             # RevenueCat environment variables template
+    ├── App.js                    # Main entry point with RevenueCat init and navigation
+    ├── src/
+    │   ├── ui/                   # Design system implementation (MANDATORY)
+    │   │   ├── tokens.ts         # Colors, spacing, typography from design contract
+    │   │   ├── components/       # Reusable components following design system
+    │   │   │   ├── Button.tsx    # Button variants per design contract
+    │   │   │   ├── Card.tsx      # Card styling per design contract
+    │   │   │   ├── Input.tsx     # Input styling per design contract
+    │   │   │   ├── ScreenShell.tsx # Screen layout wrapper
+    │   │   │   └── [other core components]
+    │   │   └── theme.ts          # Theme provider and context
+    │   ├── screens/              # All screens from stage03 wireframes
+    │   │   ├── OnboardingScreen.tsx
+    │   │   ├── HomeScreen.tsx    # MUST reflect app domain (not generic)
+    │   │   ├── PaywallScreen.tsx
+    │   │   ├── SettingsScreen.tsx
+    │   │   └── [domain-specific screens from stage02 features]
+    │   ├── components/           # Feature-specific components
+    │   │   ├── feature/          # Business logic components
+    │   │   └── paywall/          # RevenueCat paywall components
+    │   ├── navigation/
+    │   │   └── AppNavigator.tsx  # Expo Router navigation structure from stage03
+    │   ├── services/
+    │   │   ├── purchases.ts      # Full RevenueCat integration from stage04
+    │   │   ├── database.ts       # SQLite setup, migrations, repositories
+    │   │   ├── analytics.ts      # Analytics setup for monitoring
+    │   │   └── api.ts           # API service layer if needed
+    │   ├── database/
+    │   │   ├── schema.ts        # SQLite table definitions
+    │   │   ├── migrations.ts    # Database migration scripts
+    │   │   └── repositories/    # Data access layer
+    │   ├── hooks/
+    │   │   ├── usePurchases.ts  # RevenueCat subscription state
+    │   │   └── useDatabase.ts   # SQLite data hooks
+    │   ├── utils/
+    │   │   ├── storage.ts       # AsyncStorage for preferences only
+    │   │   └── helpers.ts       # General utility functions
+    │   └── constants/
+    │       ├── config.ts        # App configuration with env vars
+    │       ├── strings.ts       # Text content and copy
+    │       └── entitlements.ts  # RevenueCat entitlement constants
+    ├── assets/
+    │   ├── images/              # App icons and imagery (placeholders generated)
+    │   │   ├── icon.png        # App icon placeholder
+    │   │   ├── splash.png      # Splash screen placeholder
+    │   │   └── adaptive-icon.png # Android adaptive icon
+    │   └── fonts/               # Custom fonts if specified
+    ├── app.config.js            # Dynamic Expo configuration with env
+    ├── spec_map.md              # Evidence of stage02-09 consumption
+    └── README.md                # Setup instructions and RevenueCat configuration
 ```
 
 ## MOBILE APP REQUIREMENTS (PRODUCTION-READY)
 
 ### Core Configuration
-- **Framework**: Expo SDK 50+ with React Native 0.73+
-- **Navigation**: Expo Router v3 file-based routing from stage03 wireframes
+- **Framework**: Expo SDK 52+ with React Native 0.76+
+- **Navigation**: Expo Router v4 file-based routing from stage03 wireframes
 - **Monetization**: RevenueCat React Native SDK fully integrated with offerings, entitlements
 - **Data Storage**: SQLite as primary data store, AsyncStorage for preferences only
 - **State Management**: Context API or Zustand (based on stage05 architecture)
-- **Styling**: React Native Elements + custom theme from stage08
+- **Styling**: Custom UI/UX design system generated per app (NOT generic themes)
 
 ### Required Dependencies
 ```json
 {
-  "expo": "~50.0.0",
-  "react": "18.2.0", 
-  "react-native": "0.73.0",
-  "expo-router": "^3.0.0",
-  "react-native-purchases": "^7.0.0",
-  "expo-sqlite": "~13.4.0",
+  "expo": "~54.0.0",
+  "react": "18.3.1", 
+  "react-native": "0.76.5",
+  "expo-router": "~4.0.0",
+  "react-native-purchases": "^8.0.0",
+  "expo-sqlite": "~14.0.0",
   "react-native-elements": "^3.4.3",
   "@react-navigation/native": "^6.1.0",
-  "expo-dev-client": "~3.3.0",
+  "expo-dev-client": "~4.0.0",
   "react-native-async-storage": "^1.19.0",
-  "expo-linear-gradient": "~12.7.0",
-  "expo-constants": "~15.4.0",
-  "expo-linking": "~6.2.2",
-  "expo-status-bar": "~1.11.1"
+  "expo-linear-gradient": "~13.0.0",
+  "expo-constants": "~16.0.0",
+  "expo-linking": "~7.0.0",
+  "expo-status-bar": "~2.0.0"
 }
 ```
 
@@ -223,6 +403,36 @@ builds/<idea_dir>/<build_id>/app/
    - Paywall includes price, billing period, trial messaging, auto-renew disclosure
    - Cancel-anytime instructions and terms/privacy links
    - Restore purchases and manage subscription entry points
+
+### Dependency Management Policy (MANDATORY)
+**CRITICAL**: Expo module versions MUST NOT be hardcoded in package.json to avoid ETARGET errors.
+
+1. **Core Dependencies (Latest Stable SDK)**:
+   - `expo`: Latest stable SDK version (e.g., "~54.0.0")
+   - `react`: React version compatible with Expo SDK
+   - `react-native`: RN version compatible with Expo SDK  
+   - `expo-router`: Latest stable version compatible with SDK
+   - `react-native-purchases`: Latest RevenueCat version
+
+2. **Expo Modules (Compatibility Resolved)**:
+   - DO NOT hardcode versions for: expo-sqlite, expo-constants, expo-status-bar, expo-haptics, expo-linking, expo-file-system, expo-av, etc.
+   - Include them in install.sh script: `npx expo install <module-list>`
+   - Let Expo's compatibility resolver determine correct versions
+
+3. **Installation Strategy**:
+   - Generate install.sh with: `npm install && npx expo install <expo-modules>`
+   - Include postinstall script: `"postinstall": "npx expo install --check"`
+   - Document exact modules needed in README
+
+### Bundle Identifier Policy (MANDATORY)
+**CRITICAL**: All apps MUST have deterministic bundle identifiers to avoid launch errors.
+
+1. **Format**: `com.appfactory.<normalized-slug>`
+2. **Normalization**: Convert dashes to dots, remove special characters, max 50 chars
+3. **Same for iOS and Android**: No `.ios` or `.android` suffixes
+4. **Scheme**: Use original slug for deep linking
+
+Example: "evp-analyzer-pro" → "com.appfactory.evp.analyzer.pro"
 
 ### SQLite Data Architecture (MANDATORY)
 - Replace AsyncStorage as primary data store with expo-sqlite
@@ -358,10 +568,11 @@ Before code generation begins, Stage 10 MUST verify:
 
 ### Phase 3: Core App Implementation
 5. **Implement App Configuration**:
-   - Generate package.json with all required dependencies (RevenueCat, SQLite, etc.)
-   - Create app.json with metadata from stage09 ASO package
-   - Set up Expo configuration files (babel.config.js, metro.config.js, app.config.js)
+   - Generate package.json with latest Expo SDK 54+ dependencies using app template
+   - Create dynamic app.config.js ONLY (no static app.json) with deterministic bundle identifiers: `com.appfactory.<normalized-slug>`
+   - Set up Expo configuration files (babel.config.js, metro.config.js)
    - Create .env.example with RevenueCat key placeholders
+   - Generate build_meta.json with SDK versions and build tracking
 
 6. **Set Up Data Layer**:
    - Implement SQLite schema and migration system
@@ -408,18 +619,188 @@ Before code generation begins, Stage 10 MUST verify:
     - Document exact mapping from each stage constraint to implementation
     - Write complete build log with constraint verification
 
-### Phase 6: Verification and Output
-13. **Validate Complete App**:
-    - Verify all stage02 features are implemented as screens/functionality
-    - Verify RevenueCat integration is functional with proper error handling
-    - Verify SQLite data layer is complete with migrations
-    - Verify brand identity is applied consistently throughout
-    - Verify app structure is complete and runnable
+### Phase 6: UI/UX Design Contract Validation (MANDATORY)
+12.5. **Verify UI/UX Design Implementation**:
+    Following the generated UI/UX design contract:
+    
+    a) **Design Contract Verification**:
+    ```bash
+    # Verify design files exist
+    ls -la builds/<idea_dir>/<build_id>/uiux/uiux_prompt.md
+    ls -la builds/<idea_dir>/<build_id>/uiux/style_brief.json
+    # Verify design files are complete (not placeholder content)
+    ```
+    
+    b) **Design System Implementation Check**:
+    ```bash
+    # Verify UI system exists
+    ls -la builds/<idea_dir>/<build_id>/app/src/ui/tokens.ts
+    ls -la builds/<idea_dir>/<build_id>/app/src/ui/components/
+    # Verify theme provider is implemented
+    grep -r "ThemeProvider" builds/<idea_dir>/<build_id>/app/src/
+    ```
+    
+    c) **Non-Generic UI Validation**:
+    ```bash
+    # Verify home screen is domain-specific (not generic placeholder)
+    grep -i "welcome\|hello world\|getting started" builds/<idea_dir>/<build_id>/app/src/screens/HomeScreen.tsx
+    # This should return NO matches for generic content
+    ```
+    
+    d) **Design Archetype Consistency Check**:
+    - Manually verify that implemented UI matches chosen design archetype
+    - For EVP apps: Check for instrument-like UI elements, dark themes, technical aesthetics
+    - For productivity apps: Check for clean, focused layouts and clear CTAs
+    - For creative apps: Check for expressive interfaces and flexible layouts
+    
+    e) **Complete User Flow Verification**:
+    - Test that at least one complete user flow works end-to-end
+    - Verify navigation between screens works without errors
+    - Check that domain-specific functionality is implemented (not just placeholders)
 
-14. **Write Final Artifacts**:
-    - Complete stage10.json with full mapping proof
-    - Write stage10_build.log with binding verification
+### Phase 7: Comprehensive Build Validation (MANDATORY)
+13. **Execute Automated Validation Pipeline**:
+    Following `templates/stage10_validation_procedure.md`:
+    
+    a) **Dependency Resolution Validation**:
+    ```bash
+    cd builds/<idea_dir>/<build_id>/app/
+    rm -rf node_modules package-lock.json
+    npm install  # Must complete without ERESOLVE conflicts
+    ```
+    
+    b) **Expo Module Compatibility**:
+    ```bash
+    npx expo install --check  # Must show "Dependencies are up to date"
+    npx expo install --fix   # Auto-fix any version issues
+    ```
+    
+    c) **Missing Peer Dependencies**:
+    ```bash
+    npx expo install react-native-safe-area-context react-native-screens
+    ```
+    
+    d) **Configuration Validation**:
+    ```bash
+    rm -f app.json  # Ensure only dynamic app.config.js
+    # Validate bundle identifier format
+    # Check plugin configuration
+    ```
+    
+    e) **Health Checks**:
+    ```bash
+    npx expo-doctor  # Must show "17/17 checks passed"
+    npx tsc --noEmit  # TypeScript validation
+    ```
+
+14. **Auto-Fix Common Issues**:
+    - Remove deprecated packages (@types/react-native)
+    - Fix ESLint version conflicts (use eslint@8.x with @typescript-eslint@6.x)
+    - Remove unsupported plugin configurations
+    - Install missing peer dependencies
+    - Resolve package.json dependency conflicts
+
+15. **Generate Build Validation Report**:
+    ```json
+    {
+      "timestamp": "ISO date",
+      "buildId": "hash",
+      "validation": {
+        "npmInstall": "passed|failed",
+        "expoCheck": "passed|failed", 
+        "expoDoctor": "passed|failed",
+        "typescript": "passed|failed",
+        "bundleTest": "passed|failed"
+      },
+      "autoFixes": ["list of fixes applied"],
+      "expoSdkVersion": "54.0.0",
+      "nodeVersion": "v22.x"
+    }
+    ```
+
+16. **Write Final Artifacts**:
+    - Complete stage10.json with full mapping proof and validation results
+    - Write stage10_build.log with binding verification and validation details
     - Render stage10 specification markdown
+
+### Phase 7: Build Registry Registration  
+17. **Register Build in Global Registry**:
+    - Import: `from appfactory.build_registry import register_pipeline_build, register_dream_build`
+    - Extract app name and slug from stage08/stage09 specifications
+    - Determine build mode from run metadata (pipeline vs dream)
+    - For pipeline builds: `register_pipeline_build(name, slug, build_path, "success", run_id, idea_slug)`
+    - For dream builds: `register_dream_build(name, slug, build_path, "success", run_id, dream_prompt_hash)`
+    - Log registration success/failure in stage10_build.log
+    - MUST happen after successful app generation AND validation, before stage10.json completion
+
+## CRITICAL FAILURE HANDLING
+
+**Stage 10 MUST NOT complete if ANY validation step fails.**
+
+### Validation Failure Protocol:
+1. **Document All Failures**:
+   ```markdown
+   # Stage 10 Validation Failure Report
+   Build: builds/<idea_dir>/<build_id>/app/
+   Failed At: [Specific validation step]
+   Error: [Exact error message and exit code]
+   Auto-Fix Attempts: [List all attempted fixes]
+   Manual Resolution Required: [Specific steps]
+   ```
+
+2. **Write Failure Artifacts**:
+   - `validation_failure.md` (detailed report)
+   - `validation_results.json` (machine-readable status)
+   - `build_incomplete.flag` (prevents false success claims)
+
+3. **Stop Execution**:
+   - DO NOT create stage10.json
+   - DO NOT mark build as completed
+   - DO NOT register build in global registry
+   - Return clear error message with remediation steps
+
+### Success Criteria for Stage 10 Completion:
+✅ **UI/UX Design Contract Generated**: uiux_prompt.md and style_brief.json exist and are complete  
+✅ **Design System Implemented**: src/ui/tokens.ts and src/ui/components/ follow design contract  
+✅ **Non-Generic UI**: Home screen reflects app domain (not placeholder/generic landing page)  
+✅ **Design Archetype Match**: Final UI matches chosen design archetype (e.g. "Forensic Instrument Panel")  
+✅ **Complete User Flow**: At least one end-to-end flow works (e.g. create → list → detail → edit/delete)  
+✅ All spec constraints implemented and mapped  
+✅ npm install completes without conflicts  
+✅ expo install --check shows "Dependencies are up to date"  
+✅ expo-doctor shows "17/17 checks passed" (or documented workarounds)  
+✅ TypeScript compilation succeeds  
+✅ Build metadata generated  
+✅ App can be bundled successfully  
+✅ All validation artifacts written
+
+## MANDATORY EXECUTION SEQUENCE
+
+Stage 10 MUST follow this exact sequence (no reordering):
+
+### Phase 1: UI/UX Design Contract Creation
+1. **Analyze App Specifications**: Read Stage 02 (product spec) and Stage 03 (UX flows)
+2. **Determine Visual Personality**: Infer app domain, user context, and mood
+3. **Choose Design Archetype**: Select appropriate archetype (e.g. "Forensic Instrument Panel")
+4. **Generate UI/UX Design Contract**:
+   - Write `uiux/uiux_prompt.md` with <role> and <design-system> sections
+   - Write `uiux/style_brief.json` with structured design data
+5. **Conduct UI/UX Research** (optional): Search for design inspiration within app domain
+
+### Phase 2: App Implementation Using Design Contract
+6. **Load Design Contract**: Read generated uiux_prompt.md as binding authority
+7. **Implement Design System**: Create src/ui/tokens.ts and src/ui/components/
+8. **Build App Structure**: Create screens, navigation, and features per specifications
+9. **Apply Design System**: Use tokens and components consistently throughout app
+10. **Ensure Domain-Specific UI**: Make home screen reflect app personality (not generic)
+
+### Phase 3: Validation and Quality Gates
+11. **UI/UX Validation**: Verify design contract compliance and non-generic implementation
+12. **Technical Validation**: Run dependency, TypeScript, and Expo validation pipeline
+13. **Build Registry Registration**: Register successful build in global registry
+14. **Final Documentation**: Complete stage10.json and binding proof artifacts
+
+**CRITICAL**: Phases must execute in order. Do NOT implement app before generating design contract.
 
 ## CONSTRAINT BINDING REQUIREMENTS (MANDATORY)
 
@@ -473,6 +854,11 @@ Write detailed failure report to `stage10_failure.md` with:
 - Missing dependencies or implementation blockers
 - Specific upstream specification that failed to implement
 - Remediation steps required to resolve the issue
+
+**Failed Build Registration**: On build failure, MUST still register the build with status="failed":
+- Import: `from appfactory.build_registry import register_pipeline_build, register_dream_build`
+- Register with status="failed" and include failure reason in notes
+- This ensures dashboard can show failed builds for debugging
 
 ## STANDARDS COMPLIANCE MAPPING
 

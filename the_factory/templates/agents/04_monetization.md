@@ -26,15 +26,23 @@ Read and comply with `standards/mobile_app_best_practices_2026.md`. Your output 
 - Render: `runs/.../ideas/<idea_dir>/spec/04_monetization.md` (specification markdown)
 - Update: `runs/.../ideas/<idea_dir>/meta/stage_status.json` (progress tracking)
 
-## FRESHNESS & SOURCES (MANDATORY WEB RESEARCH)
-You MUST browse current sources for up-to-date pricing and subscription patterns:
+## VENDOR DOCS FIRST (MANDATORY)
+Use vendor/ cached llms.txt as the primary source before any web searching.
 
-### Required Research Sources
-**Pricing Intelligence** (Must consult):
+### Required Research Sources (IN ORDER)
+**Primary Sources** (Use FIRST):
+1. **RevenueCat Documentation**: Read `the_factory/vendor/revenuecat-docs/llms.txt`
+   - Use cached docs to understand entitlements, offerings, and implementation patterns
+   - Reference subscription best practices, pricing strategies, and mobile monetization
+   - Only web search revenuecat.com if cached docs are insufficient
+   
+**Secondary Sources** (After vendor docs):
 - **Category Pricing**: Survey 5-7 apps in same category for current pricing norms
 - **App Store/Play Store**: Browse subscription apps to understand trial structures
-- **RevenueCat Documentation**: Latest best practices for subscription implementation
 - **Platform Policies**: Current App Store and Google Play subscription requirements
+
+Do not perform exploratory web searches until vendor docs are consulted.
+If web search is required, restrict to official domains (revenuecat.com for subscription guidance).
 
 ### Research Focus Areas
 1. **Pricing Benchmarks**: What users currently pay for similar app categories

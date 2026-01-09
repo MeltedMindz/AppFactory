@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://app-factory.local/schemas/stage02.5.json",
+  "title": "Stage 02.5: Product Reality Gate",
+  "description": "Validates app concept has concrete substance and meaningful user value",
+  "type": "object",
+  "required": ["meta", "product_reality", "gate_result"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["run_id", "idea_id", "idea_name", "idea_dir", "source_root", "input_stage_paths", "boundary_path"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "idea_id": {"type": "string", "minLength": 1},
+        "idea_name": {"type": "string", "minLength": 1},
+        "idea_dir": {"type": "string", "minLength": 1},
+        "source_root": {"type": "string", "minLength": 1},
+        "input_stage_paths": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "boundary_path": {"type": "string", "minLength": 1}
+      }
+    },
+    "product_reality": {
+      "type": "object",
+      "required": ["domain_validation", "user_loop", "mvp_scope"],
+      "properties": {
+        "domain_validation": {
+          "type": "object",
+          "required": ["core_objects", "object_relationships", "validation_passed"],
+          "properties": {
+            "core_objects": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "description", "user_actions", "data_structure"],
+                "properties": {
+                  "name": {"type": "string", "minLength": 1},
+                  "description": {"type": "string", "minLength": 10},
+                  "user_actions": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "minItems": 2
+                  },
+                  "data_structure": {"type": "object"}
+                }
+              },
+              "minItems": 3
+            },
+            "object_relationships": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "validation_passed": {"type": "boolean"},
+            "failure_reason": {"type": ["string", "null"]}
+          }
+        },
+        "user_loop": {
+          "type": "object",
+          "required": ["create_step", "view_step", "interact_step", "resolve_step", "loop_validation"],
+          "properties": {
+            "create_step": {
+              "type": "object",
+              "required": ["action", "object_created", "user_input_required"],
+              "properties": {
+                "action": {"type": "string", "minLength": 10},
+                "object_created": {"type": "string", "minLength": 1},
+                "user_input_required": {
+                  "type": "array",
+                  "items": {"type": "string"},
+                  "minItems": 1
+                }
+              }
+            },
+            "view_step": {
+              "type": "object",
+              "required": ["action", "context_provided", "information_displayed"],
+              "properties": {
+                "action": {"type": "string", "minLength": 10},
+                "context_provided": {"type": "string", "minLength": 10},
+                "information_displayed": {
+                  "type": "array",
+                  "items": {"type": "string"},
+                  "minItems": 1
+                }
+              }
+            },
+            "interact_step": {
+              "type": "object", 
+              "required": ["action", "modifications_possible", "tools_required"],
+              "properties": {
+                "action": {"type": "string", "minLength": 10},
+                "modifications_possible": {
+                  "type": "array",
+                  "items": {"type": "string"},
+                  "minItems": 1
+                },
+                "tools_required": {
+                  "type": "array", 
+                  "items": {"type": "string"}
+                }
+              }
+            },
+            "resolve_step": {
+              "type": "object",
+              "required": ["action", "completion_criteria", "value_delivered"],
+              "properties": {
+                "action": {"type": "string", "minLength": 10},
+                "completion_criteria": {"type": "string", "minLength": 10},
+                "value_delivered": {"type": "string", "minLength": 10}
+              }
+            },
+            "loop_validation": {
+              "type": "object",
+              "required": ["completeness", "measurable_outcome", "immediate_value"],
+              "properties": {
+                "completeness": {"type": "boolean"},
+                "measurable_outcome": {"type": "boolean"},
+                "immediate_value": {"type": "boolean"}
+              }
+            }
+          }
+        },
+        "mvp_scope": {
+          "type": "object",
+          "required": ["must_have_features", "nice_to_have_features", "success_criteria", "scope_validation"],
+          "properties": {
+            "must_have_features": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["feature", "justification", "complexity"],
+                "properties": {
+                  "feature": {"type": "string", "minLength": 1},
+                  "justification": {"type": "string", "minLength": 10},
+                  "complexity": {"enum": ["low", "medium", "high"]}
+                }
+              },
+              "minItems": 1
+            },
+            "nice_to_have_features": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "success_criteria": {"type": "string", "minLength": 20},
+            "scope_validation": {
+              "type": "object",
+              "required": ["achievable", "valuable", "testable"],
+              "properties": {
+                "achievable": {"type": "boolean"},
+                "valuable": {"type": "boolean"},
+                "testable": {"type": "boolean"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "gate_result": {
+      "type": "object",
+      "required": ["passed", "confidence_score"],
+      "properties": {
+        "passed": {"type": "boolean"},
+        "confidence_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "blocking_issues": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "recommendations": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

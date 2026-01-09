@@ -37,10 +37,13 @@ Read and parse all stage JSON files (02-09):
 #### Step 3: Generate App Configuration Files
 
 **package.json**:
-- Use package.template.json as base
+- Use package.template.json as base with Expo SDK 52 compatibility
 - Substitute {{APP_NAME_SLUG}} with sanitized app name
 - Add dependencies from Stage 05 architecture
+- Include mandatory validation scripts (validate, validate:deps, validate:typescript)
+- Configure postinstall script with "npx expo install --fix" for dependency management
 - Include prettier configuration for production hygiene
+- Use React Native 0.76 and React 18.3.1 for latest compatibility
 
 **app.json**:
 - Use app.template.json as base
@@ -58,9 +61,12 @@ Read and parse all stage JSON files (02-09):
 #### Step 4: Generate Core App Structure
 
 **App Layout (_layout.tsx)**:
-- Use app/_layout.template.tsx
-- Configure providers and initialization
+- Use app/_layout.template.tsx with Expo Router v4 file-based navigation
+- MANDATORY: Use pure Expo Router architecture (NO React Navigation components)
+- Configure Stack navigation with proper screen options and animations
+- Initialize providers (SafeAreaProvider, ThemeProvider) and error boundaries
 - NO hardcoded RevenueCat keys (env-based only)
+- Structure: app/_layout.tsx → app/(tabs)/_layout.tsx → individual screen routes
 
 **Paywall Screen**:
 - Use app/paywall.template.tsx
@@ -98,8 +104,14 @@ Read and parse all stage JSON files (02-09):
 **Main App Screens**:
 - Generate screens based on Stage 03 wireframes
 - Apply Stage 03 interaction patterns (swipe, tap, etc.)
-- Include empty states, loading states, error states
+- Implement domain-appropriate UI/UX patterns:
+  - Professional investigation tools: atmospheric headers, data visualization, status indicators
+  - Productivity apps: clean metrics, progress tracking, goal visualization  
+  - Health/fitness: biometric displays, progress charts, achievement systems
+  - Creative tools: media galleries, editing interfaces, export options
+- Include empty states, loading states, error states with domain-appropriate messaging
 - Ensure accessibility compliance (touch targets, labels, contrast)
+- Use cutting-edge visual elements: shadows, gradients, animations for professional feel
 
 #### Step 7: RevenueCat Integration
 
@@ -136,10 +148,12 @@ Read and parse all stage JSON files (02-09):
 
 #### Step 9: Production Hygiene
 
-**Error Handling**:
-- Include error boundaries on all main screens
+**Enhanced Error Handling**:
+- Include hardened error boundaries with safe theme fallbacks on all main screens
+- ErrorBoundary MUST NOT rely on external theme system (use hardcoded fallbacks)
+- Implement domain-appropriate error recovery UX
 - Use centralized error handling utilities
-- Implement user-friendly error messages
+- Implement user-friendly error messages with restart/report capabilities
 
 **Logging**:
 - All logging gated by __DEV__ flag
@@ -156,7 +170,8 @@ Read and parse all stage JSON files (02-09):
 After app generation, run ALL quality gate checks:
 
 #### Functional Checks
-- [ ] App builds without TypeScript errors
+- [ ] App builds without TypeScript errors (npm run validate:typescript)
+- [ ] All dependencies compatible with Expo SDK version (npm run validate:deps)
 - [ ] SQLite database initializes correctly  
 - [ ] RevenueCat configuration loads from env (no hardcoded keys)
 - [ ] Paywall screen renders with real offerings
@@ -164,6 +179,16 @@ After app generation, run ALL quality gate checks:
 - [ ] Restore purchases and manage subscription links work
 - [ ] Onboarding flow completes successfully
 - [ ] Main app screens handle empty/loading/error states
+- [ ] Expo Router navigation structure works without NavigationContainer conflicts
+- [ ] ErrorBoundary has safe theme fallbacks and doesn't crash on theme errors
+- [ ] expo-doctor preflight check passes (or documented workarounds)
+- [ ] Build metadata file generated with SDK versions
+- [ ] npm install completes without dependency conflicts
+- [ ] npx expo install --check validates all modules (or --fix applied automatically)
+- [ ] All required peer dependencies installed via postinstall script
+- [ ] Bundle identifiers properly configured (iOS bundleIdentifier, Android package)
+- [ ] App config uses proper structure (no nested expo object warnings)
+- [ ] tsconfig.json exists with proper Expo TypeScript configuration
 
 #### Standards Compliance Checks
 - [ ] Design system applied consistently across all screens
@@ -203,8 +228,12 @@ Stage 10 is complete ONLY when:
 - [ ] stage10_research.md documents sources
 
 The generated app MUST be immediately runnable with `expo start` after:
-1. Running `npm install`
-2. Configuring RevenueCat API keys in .env
-3. Setting up basic RevenueCat products (if testing subscriptions)
+1. Running `npm install` (must complete without ERESOLVE conflicts)
+2. Running `npx expo install --check` (must show "Dependencies are up to date")
+3. Running `npx expo-doctor` (must show "17/17 checks passed")
+4. Configuring RevenueCat API keys in .env
+5. Setting up basic RevenueCat products (if testing subscriptions)
+
+**CRITICAL**: Stage 10 execution includes automated validation of these steps and MUST NOT complete until all pass.
 
 This ensures every Stage 10 output is truly ship-ready and professional quality.

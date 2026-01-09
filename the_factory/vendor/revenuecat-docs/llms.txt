@@ -1,0 +1,222 @@
+# RevenueCat Documentation
+
+This file provides an organized guide to RevenueCat's documentation for large language models. RevenueCat is a platform that makes it easy to build, analyze, and grow in-app purchases and subscriptions on iOS, Android, and the web—no server code required.
+
+The prefix for the URL paths is: https://www.revenuecat.com/docs
+
+### Markdown Mirrors
+- Append `.md` to any listed path to fetch the LLM-optimized markdown version, for example `/projects/overview.md` or `/subscription-guidance/subscription-offers/ios-subscription-offers.md`.
+- Markdown mirrors include descriptive fallbacks for interactive content and link back to embedded media.
+
+## Overview and Getting Started
+
+- /welcome/overview - Platform introduction and core concepts of RevenueCat
+- /welcome/building-new - Adding subscriptions to your app for the first time
+- /welcome/existing-apps - Migrating existing subscription apps to RevenueCat
+- /getting-started/quickstart - Complete setup guide from account creation to first purchase
+- /getting-started/installation - SDK installation guides for all supported platforms
+- /getting-started/configuring-sdk - SDK configuration and initialization best practices
+- /getting-started/entitlements - Product configuration, entitlements, and offerings system
+- /getting-started/displaying-products - How to display products and pricing to customers
+- /getting-started/making-purchases - Implementation guide for purchase flows
+- /getting-started/restoring-purchases - Restore purchases functionality across devices
+
+## SDK Implementation Guides
+
+- /getting-started/installation/ios - iOS and Apple Platforms SDK installation
+- /getting-started/installation/android - Android SDK installation and setup
+- /getting-started/installation/flutter - Flutter cross-platform installation
+- /getting-started/installation/reactnative - React Native installation guide
+- /getting-started/installation/unity - Unity game engine integration
+- /getting-started/installation/cordova - Cordova mobile app framework setup
+- /getting-started/installation/capacitor - Capacitor (Ionic) hybrid app setup
+- /getting-started/installation/macos - macOS and Catalyst installation
+- /getting-started/installation/expo - Expo React Native framework setup
+- /getting-started/installation/app-builders - No-code and low-code app builders
+
+## SDK Migration Guides
+
+- /sdk-guides/ios-native-3x-to-4x-migration - iOS SDK migration from 3.x to 4.x
+- /sdk-guides/ios-native-4x-to-5x-migration - iOS SDK migration from 4.x to 5.x
+- /sdk-guides/android-native-4x-to-5x-migration - Android SDK version migration
+- /sdk-guides/android-native-5x-to-6x-migration - Android SDK 5.x to 6.x migration
+- /sdk-guides/android-native-6x-to-7x-migration - Android SDK 6.x to 7.x migration
+- /sdk-guides/android-native-7x-to-8x-migration - Android SDK 7.x to 8.x migration
+
+## API Reference
+
+- /api-v1/ - REST API v1 complete reference documentation
+- /api-v2/ - REST API v2 complete reference documentation  
+- /api-v2-beta/ - Beta API features and endpoints
+- /external-purchases-api-beta/ - External purchases API for alternative payment methods
+
+## Core Features and Tools
+
+- /tools/paywalls - Remote paywall configuration and management
+- /tools/paywalls/displaying-paywalls - How to present paywalls in your app
+- /tools/paywalls/creating-paywalls - Building and customizing paywalls
+- /tools/experiments-v1 - A/B testing framework for pricing optimization
+- /tools/experiments-v1/creating-offerings-to-test - Setting up price testing experiments
+- /tools/targeting - Customer targeting and segmentation tools
+- /tools/offering-metadata - Dynamic paywall configuration with metadata
+- /tools/customer-center/customer-center-integration-ios - iOS customer support center
+
+## RevenueCat MCP Server (Model Context Protocol)
+
+- /tools/mcp - Complete MCP server overview and setup guide
+- /tools/mcp/overview - What MCP is and deployment options (cloud vs local)
+- /tools/mcp/setup - Configure MCP server for cloud or local VS Code/Cursor extension
+- /tools/mcp/tools-reference - Complete reference for all 26 MCP server tools
+- /tools/mcp/usage-examples - Natural language interaction examples with MCP
+- /tools/mcp/best-practices-and-troubleshooting - Security and troubleshooting guide
+
+## Product and Offering Management
+
+- /offerings - Product offering management and configuration
+- /offerings/overview - Offerings system concepts and setup
+- /offerings/products-overview - Individual product configuration
+- /offerings/troubleshooting-offerings - Debugging empty products and offerings
+- /offerings/virtual-currency/subscriptions - Virtual currency grants for subscriptions
+- /offerings/virtual-currency/refunds - Virtual currency balance adjustments for refunds
+
+## Customer Management
+
+- /customers/customer-info - Customer data and subscription status management
+- /customers/user-ids - User identification and authentication patterns
+- /customers/customer-attributes - Custom data and device identifiers
+- /customers/trusted-entitlements - Enhanced security for entitlement verification
+
+## Analytics and Data
+
+- /dashboard-and-metrics/overview - Revenue analytics and business metrics overview
+- /dashboard-and-metrics/charts - Chart types and metrics visualization
+- /dashboard-and-metrics/charts/app-store-refund-requests-chart - Apple refund request analytics
+- /dashboard-and-metrics/customer-profile - Individual customer purchase tracking
+- /dashboard-and-metrics/customer-lists - Customer segmentation and analysis tools
+- /dashboard-and-metrics/customer-profile#entitlements - Managing active subscriptions
+- /dashboard-and-metrics/customer-profile#delete-customer - Customer account management
+
+## Integrations and Webhooks
+
+- /integrations/integrations - Third-party platform integration overview
+- /integrations/webhooks - Real-time event notification system
+- /integrations/third-party-integrations - Analytics and marketing tool connections
+- /integrations/attribution - Marketing attribution and analytics setup
+- /integrations/attribution/apple-search-ads - Apple Search Ads attribution setup
+- /integrations/stripe-app - Direct Stripe integration for payment processing
+- /integrations/scheduled-data-exports - Automated data export configuration
+- /integrations/data-onboarding - Data integration setup and configuration
+- /integrations/partner-built-integrations - Partner-developed integration solutions
+
+## Testing and Debugging
+
+- /test-and-launch/debugging - View and understand Purchases SDK logs
+- /test-and-launch/debugging/troubleshooting-the-sdks - Common SDK issues and solutions
+- /test-and-launch/debugging/caching - How caching works in RevenueCat
+- /test-and-launch/errors - Error handling and error code reference
+- /test-and-launch/sandbox - Sandbox testing environments for stores
+- /test-and-launch/sandbox/apple-app-store - iOS sandbox testing guide
+- /test-and-launch/sandbox/google-play-store - Android sandbox testing guide
+- /test-and-launch/launch-checklist - Pre-launch validation and testing checklist
+- /test-and-launch/app-store-rejections - Common app store rejection reasons
+
+## Platform Setup and Configuration
+
+- /service-credentials/itunesconnect-app-specific-shared-secret - App Store Connect credentials
+- /service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration - Apple in-app purchase key setup
+- /service-credentials/itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration - App Store Connect API key configuration
+- /service-credentials/creating-play-service-credentials - Google Play Developer API setup
+- /service-credentials/creating-play-service-credentials/google-play-checklists - Google Play troubleshooting checklists
+- /service-credentials/amazon-appstore-credentials - Amazon Appstore integration setup
+- /projects/overview - Project creation and management
+- /projects/authentication - API key management and security
+- /projects/connect-a-store - Connecting apps to app stores
+
+## Platform-Specific Resources
+
+### Apple Platform Resources
+- /platform-resources/apple-platform-resources - Apple platforms development resources
+- /platform-resources/apple-platform-resources/apple-app-privacy - App privacy disclosure requirements
+- /platform-resources/apple-platform-resources/app-store-small-business-program - Small business program enrollment
+- /platform-resources/apple-platform-resources/apple-family-sharing - Family sharing subscription support
+- /platform-resources/apple-platform-resources/handling-refund-requests - Apple refund request handling
+- /platform-resources/apple-platform-resources/legacy-mac-apps - Legacy Mac app configuration
+
+### Google Platform Resources
+- /platform-resources/google-platform-resources - Google platform development resources
+- /platform-resources/google-platform-resources/google-play-pass - Google Play Pass program integration
+- /platform-resources/google-platform-resources/google-plays-data-safety - Data safety form requirements
+
+### Amazon Platform Resources
+- /platform-resources/amazon-platform-resources - Amazon Appstore development resources
+- /platform-resources/amazon-platform-resources/amazon-small-business-accelerator-program - Amazon small business program
+
+## Server Notifications
+
+- /platform-resources/server-notifications/apple-server-notifications - Apple App Store server notifications
+- /platform-resources/server-notifications/google-server-notifications - Google Play server notifications
+- /platform-resources/server-notifications/stripe-server-notifications - Stripe webhook configuration
+
+## Subscription Management and Business Logic
+
+- /subscription-guidance/subscription-offers - Free trials and promotional offers
+- /subscription-guidance/subscription-offers/ios-subscription-offers - Apple subscription offers and trials
+- /subscription-guidance/subscription-offers/google-play-offers - Google Play subscription offers
+- /subscription-guidance/refunds - Handling refunds across platforms
+- /subscription-guidance/price-changes - Managing subscription price changes
+- /subscription-guidance/google-prepaid-plans - Google Play prepaid subscription plans
+- /subscription-guidance/managing-subscriptions - Subscription lifecycle management
+
+## Migration and Advanced Topics
+
+- /migrating-to-revenuecat/migration-paths - Migration strategies for existing subscription apps
+- /migrating-to-revenuecat/migrating-existing-subscriptions - Handling existing subscriber base
+- /migrating-to-revenuecat/current-subscriptions - Migrating active subscriptions
+- /migrating-to-revenuecat/swiftystorekit - Migrating from SwiftyStoreKit to RevenueCat
+- /migrating-to-revenuecat/sdk-or-not/finishing-transactions - Transaction completion configuration
+- /migrating-to-revenuecat/sdk-or-not/sdk-less-integration - Using RevenueCat without SDK
+
+## Web and Alternative Platforms
+
+- /web/purchases-hybrid-app - Web-based subscription implementation
+- /web/stripe-setup - Stripe integration for web subscriptions
+- /web/connect-stripe-account - Connecting your Stripe account
+- /web/integrations/stripe - Stripe checkout and payment processing
+- /getting-started/entitlements/stripe-products - Stripe product configuration
+- /getting-started/entitlements/paddle-products - Paddle payment provider setup
+- /getting-started/entitlements/ios-products - iOS product setup in App Store Connect
+- /getting-started/entitlements/android-products - Android product setup in Google Play
+- /getting-started/entitlements/amazon-product-setup - Amazon Appstore product configuration
+
+## Non-Subscription Purchases
+
+- /platform-resources/non-subscriptions - Using RevenueCat beyond subscriptions
+- /platform-resources/implementation-responsibilities - Developer vs RevenueCat responsibilities
+- /platform-resources/developer-store-payments - Store payout information and country availability
+
+## Sample Apps and Code Examples
+
+- /platform-resources/sample-apps - Example apps for all supported platforms
+- /platform-resources/sdk-reference - SDK API reference documentation
+
+## Playbooks and Business Guidance
+
+- /playbooks/overview - Implementation playbooks and best practices
+- /playbooks/guides/freemium - Freemium paywall strategy implementation
+- /playbooks/guides/hard-paywall - Hard paywall strategy implementation
+
+## Support and Troubleshooting
+
+- /revenuecat-support/support-first-steps - Getting help and support resources
+- /revenuecat-support/general-troubleshooting - Common issues and solutions
+
+## Known Issues
+
+- /known-store-issues/storekit - Known Apple StoreKit framework issues
+- /known-store-issues/storekit/ios-18-4-simulator-fails-to-load-products - iOS simulator product loading issues
+
+## Developer Tools and Testing
+
+- /guides/testing-guide/use-cases - Testing scenarios and validation steps
+- /guides/subscription-offers - Advanced pricing strategies and promotional offers
+- /guides/environment-strategies - Managing multiple development environments 

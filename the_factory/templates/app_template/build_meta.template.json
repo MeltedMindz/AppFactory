@@ -1,0 +1,20 @@
+{
+  "expoSdkVersion": "{{EXPO_SDK_VERSION}}",
+  "expoCliVersion": "{{EXPO_CLI_VERSION}}",
+  "nodeVersion": "{{NODE_VERSION}}",
+  "createdAt": "{{CREATED_AT}}",
+  "buildId": "{{BUILD_ID}}",
+  "idea": {
+    "runId": "{{RUN_ID}}",
+    "ideaId": "{{IDEA_ID}}",
+    "ideaName": "{{IDEA_NAME}}"
+  },
+  "dependencies": "{{DEPENDENCIES_HASH}}",
+  "generation": {
+    "method": "app-factory-stage10",
+    "templateVersion": "3.1",
+    "sdkUpgradeApplied": true,
+    "bundleIdentifier": "{{BUNDLE_IDENTIFIER}}",
+    "platforms": ["ios", "android"]
+  }
+}

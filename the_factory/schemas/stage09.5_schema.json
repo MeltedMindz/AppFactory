@@ -1,0 +1,197 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://app-factory.local/schemas/stage09.5.json", 
+  "title": "Stage 09.5: Runtime Sanity Harness",
+  "description": "Validates app runtime requirements and simulates build success",
+  "type": "object",
+  "required": ["meta", "runtime_validation", "sanity_checklist", "gate_result"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["run_id", "idea_id", "idea_name", "idea_dir", "source_root", "input_stage_paths", "boundary_path"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "idea_id": {"type": "string", "minLength": 1},
+        "idea_name": {"type": "string", "minLength": 1},
+        "idea_dir": {"type": "string", "minLength": 1},
+        "source_root": {"type": "string", "minLength": 1},
+        "input_stage_paths": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "boundary_path": {"type": "string", "minLength": 1}
+      }
+    },
+    "runtime_validation": {
+      "type": "object",
+      "required": ["boot_sequence", "user_flows", "error_handling", "data_validation"],
+      "properties": {
+        "boot_sequence": {
+          "type": "object",
+          "required": ["initialization_steps", "estimated_boot_time", "critical_path_validated"],
+          "properties": {
+            "initialization_steps": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["step", "dependencies", "failure_modes", "recovery_strategy"],
+                "properties": {
+                  "step": {"type": "string", "minLength": 1},
+                  "dependencies": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                  },
+                  "failure_modes": {
+                    "type": "array", 
+                    "items": {"type": "string"}
+                  },
+                  "recovery_strategy": {"type": "string", "minLength": 10}
+                }
+              },
+              "minItems": 1
+            },
+            "estimated_boot_time": {"type": "number", "maximum": 5},
+            "critical_path_validated": {"type": "boolean"}
+          }
+        },
+        "user_flows": {
+          "type": "object",
+          "required": ["primary_flows", "subscription_flows"],
+          "properties": {
+            "primary_flows": {
+              "type": "array",
+              "items": {
+                "type": "object", 
+                "required": ["flow_name", "steps", "data_requirements", "completion_criteria", "placeholder_free"],
+                "properties": {
+                  "flow_name": {"type": "string", "minLength": 1},
+                  "steps": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "minItems": 2
+                  },
+                  "data_requirements": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                  },
+                  "completion_criteria": {"type": "string", "minLength": 10},
+                  "placeholder_free": {"type": "boolean"}
+                }
+              },
+              "minItems": 1
+            },
+            "subscription_flows": {
+              "type": "object",
+              "required": ["paywall_presentation", "purchase_simulation", "entitlement_gates", "restore_purchases"],
+              "properties": {
+                "paywall_presentation": {"enum": ["validated", "failed"]},
+                "purchase_simulation": {"enum": ["validated", "failed"]},
+                "entitlement_gates": {"enum": ["validated", "failed"]},
+                "restore_purchases": {"enum": ["validated", "failed"]}
+              }
+            }
+          }
+        },
+        "error_handling": {
+          "type": "object",
+          "required": ["network_scenarios", "error_boundary_coverage"],
+          "properties": {
+            "network_scenarios": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["scenario", "detection_method", "recovery_action", "user_feedback"],
+                "properties": {
+                  "scenario": {"type": "string", "minLength": 1},
+                  "detection_method": {"type": "string", "minLength": 10},
+                  "recovery_action": {"type": "string", "minLength": 10},
+                  "user_feedback": {"type": "string", "minLength": 10}
+                }
+              },
+              "minItems": 1
+            },
+            "device_scenarios": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "user_error_scenarios": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "error_boundary_coverage": {"type": "number", "minimum": 0, "maximum": 100}
+          }
+        },
+        "data_validation": {
+          "type": "object",
+          "required": ["persistence_layers", "state_recovery", "data_integrity", "synchronization"],
+          "properties": {
+            "persistence_layers": {
+              "type": "array",
+              "items": {"enum": ["asyncstorage", "sqlite", "filesystem"]},
+              "minItems": 1
+            },
+            "state_recovery": {"enum": ["validated", "failed"]},
+            "data_integrity": {"enum": ["validated", "failed"]},
+            "synchronization": {"enum": ["validated", "failed"]}
+          }
+        }
+      }
+    },
+    "sanity_checklist": {
+      "type": "object",
+      "required": ["stage10_validation_steps", "critical_validations", "performance_benchmarks"],
+      "properties": {
+        "stage10_validation_steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["check", "validation_method", "pass_criteria", "failure_action"],
+            "properties": {
+              "check": {"type": "string", "minLength": 1},
+              "validation_method": {"enum": ["automated", "manual"]},
+              "pass_criteria": {"type": "string", "minLength": 10},
+              "failure_action": {"type": "string", "minLength": 10}
+            }
+          },
+          "minItems": 1
+        },
+        "critical_validations": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "performance_benchmarks": {
+          "type": "object",
+          "required": ["boot_time_target", "navigation_response", "data_load_timeout"],
+          "properties": {
+            "boot_time_target": {"const": "5_seconds"},
+            "navigation_response": {"const": "100ms"},
+            "data_load_timeout": {"const": "3_seconds"}
+          }
+        }
+      }
+    },
+    "gate_result": {
+      "type": "object",
+      "required": ["passed", "confidence_score"],
+      "properties": {
+        "passed": {"type": "boolean"},
+        "confidence_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "blocking_issues": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "performance_warnings": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "recommendations": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

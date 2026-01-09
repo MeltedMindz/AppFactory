@@ -1,0 +1,117 @@
+{
+  "updatedAt": "2026-01-08T16:00:00.000Z",
+  "builds": [
+    {
+      "buildId": "f4b5d2c8e9a1234567890abcdef12345",
+      "name": "EVP Analyzer Pro",
+      "slug": "evpanalyzerpro", 
+      "origin": {
+        "mode": "dream",
+        "runId": "dream-100541-10d5e81a",
+        "ideaSlug": "evpanalyzerpro",
+        "dreamPromptHash": "31f6c9775c238de5"
+      },
+      "framework": "expo",
+      "buildPath": "builds/01_evpanalyzerpro__evp_analyzer_001/31f6c9775c238de5/app",
+      "status": "success",
+      "createdAt": "2026-01-08T10:05:41.000Z",
+      "launch": {
+        "type": "expo",
+        "recommended": "npx expo start",
+        "notes": "EVP voice analysis tool with RevenueCat integration"
+      },
+      "preview": {
+        "enabled": true,
+        "instructions": [
+          "cd builds/01_evpanalyzerpro__evp_analyzer_001/31f6c9775c238de5/app",
+          "npm install",
+          "npx expo start"
+        ]
+      }
+    },
+    {
+      "buildId": "a2b3c4d5e6f7890123456789abcdef01",
+      "name": "Clear Tasks",
+      "slug": "cleartasks",
+      "origin": {
+        "mode": "pipeline",
+        "runId": "diversified-signals-2026-01-07-run",
+        "ideaSlug": "cleartasks",
+        "dreamPromptHash": null
+      },
+      "framework": "expo",
+      "buildPath": "builds/01_cleartasks__simple_tasks_001",
+      "status": "success", 
+      "createdAt": "2026-01-07T15:30:00.000Z",
+      "launch": {
+        "type": "expo",
+        "recommended": "npx expo start",
+        "notes": "Simple task management with subscription features"
+      },
+      "preview": {
+        "enabled": true,
+        "instructions": [
+          "cd builds/01_cleartasks__simple_tasks_001",
+          "npm install",
+          "npx expo start"
+        ]
+      }
+    },
+    {
+      "buildId": "c9d8e7f6a5b4321098765432109876ba",
+      "name": "Neuro Dash",
+      "slug": "neurodash",
+      "origin": {
+        "mode": "pipeline",
+        "runId": "app_factory_220354",
+        "ideaSlug": "neurodash",
+        "dreamPromptHash": null
+      },
+      "framework": "expo",
+      "buildPath": "builds/02_neurodash__neurodash_002",
+      "status": "success",
+      "createdAt": "2026-01-06T22:15:00.000Z",
+      "launch": {
+        "type": "expo",
+        "recommended": "npx expo start", 
+        "notes": "Energy tracking and pattern analysis app"
+      },
+      "preview": {
+        "enabled": true,
+        "instructions": [
+          "cd builds/02_neurodash__neurodash_002",
+          "npm install",
+          "npx expo start"
+        ]
+      }
+    },
+    {
+      "buildId": "e1f2a3b4c5d6789012345678901234cd",
+      "name": "Simple Habit Dots",
+      "slug": "simplehabitdots",
+      "origin": {
+        "mode": "pipeline",
+        "runId": "app_factory_110218", 
+        "ideaSlug": "simple_habit_dots",
+        "dreamPromptHash": null
+      },
+      "framework": "expo",
+      "buildPath": "builds/06_simple_habit_dots__simple_habit_dots_006/f4e3a9f12388732b/app",
+      "status": "success",
+      "createdAt": "2026-01-07T11:45:00.000Z",
+      "launch": {
+        "type": "expo",
+        "recommended": "npx expo start",
+        "notes": "Visual habit tracking with dot patterns"
+      },
+      "preview": {
+        "enabled": true,
+        "instructions": [
+          "cd builds/06_simple_habit_dots__simple_habit_dots_006/f4e3a9f12388732b/app",
+          "npm install", 
+          "npx expo start"
+        ]
+      }
+    }
+  ]
+}

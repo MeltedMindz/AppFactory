@@ -1,0 +1,57 @@
+# Generated artifacts
+runs/
+builds/
+dashboard/dist/
+dashboard/node_modules/
+preview/node_modules/
+
+# Temporary files
+*.tmp
+*.tmp.*
+.DS_Store
+.vscode/
+.idea/
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Vendor docs temporary files (commit the actual docs)
+vendor/**/llms.txt.tmp.*
+vendor/**/bundles/
+
+# Development
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+
+# Build artifacts
+dist/
+build/
+
+# IDE
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

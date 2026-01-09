@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://app-factory.local/schemas/stage10.1.json",
+  "title": "Stage 10.1: Design Authenticity Check",
+  "description": "Validates UI/UX design contracts are domain-authentic and implementable", 
+  "type": "object",
+  "required": ["meta", "design_authenticity", "component_mapping", "gate_result"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["run_id", "idea_id", "idea_name", "idea_dir", "source_root", "input_stage_paths", "boundary_path"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "idea_id": {"type": "string", "minLength": 1},
+        "idea_name": {"type": "string", "minLength": 1},
+        "idea_dir": {"type": "string", "minLength": 1},
+        "source_root": {"type": "string", "minLength": 1},
+        "input_stage_paths": {
+          "type": "array", 
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "boundary_path": {"type": "string", "minLength": 1}
+      }
+    },
+    "design_authenticity": {
+      "type": "object",
+      "required": ["domain_alignment", "design_contract_validation", "visual_consistency", "implementation_feasibility"],
+      "properties": {
+        "domain_alignment": {
+          "type": "object",
+          "required": ["app_domain", "required_archetype", "chosen_archetype", "archetype_match", "visual_language_score"],
+          "properties": {
+            "app_domain": {"type": "string", "minLength": 1},
+            "required_archetype": {"type": "string", "minLength": 1},
+            "chosen_archetype": {"type": "string", "minLength": 1},
+            "archetype_match": {"enum": ["authentic", "generic", "mismatched"]},
+            "visual_language_score": {"type": "number", "minimum": 0, "maximum": 100}
+          }
+        },
+        "design_contract_validation": {
+          "type": "object",
+          "required": ["uiux_prompt_complete", "design_tokens_valid", "component_inventory_complete", "interaction_patterns_defined"],
+          "properties": {
+            "uiux_prompt_complete": {"type": "boolean"},
+            "design_tokens_valid": {"type": "boolean"},
+            "component_inventory_complete": {"type": "boolean"},
+            "interaction_patterns_defined": {"type": "boolean"},
+            "missing_elements": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        },
+        "visual_consistency": {
+          "type": "object",
+          "required": ["home_screen_authentic", "cross_screen_consistency", "archetype_adherence_score"],
+          "properties": {
+            "home_screen_authentic": {"type": "boolean"},
+            "cross_screen_consistency": {"type": "boolean"},
+            "archetype_adherence_score": {"type": "number", "minimum": 0, "maximum": 100},
+            "generic_elements_detected": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "consistency_violations": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        },
+        "implementation_feasibility": {
+          "type": "object",
+          "required": ["react_native_compatibility", "component_complexity_assessment", "accessibility_compliance"],
+          "properties": {
+            "react_native_compatibility": {"type": "boolean"},
+            "component_complexity_assessment": {
+              "type": "object",
+              "required": ["simple_components", "complex_components"],
+              "properties": {
+                "simple_components": {
+                  "type": "array",
+                  "items": {"type": "string"}
+                },
+                "complex_components": {
+                  "type": "array", 
+                  "items": {"type": "string"}
+                },
+                "custom_implementation_required": {
+                  "type": "array",
+                  "items": {"type": "string"}
+                }
+              }
+            },
+            "accessibility_compliance": {"type": "boolean"},
+            "platform_adaptation_requirements": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "component_mapping": {
+      "type": "object",
+      "required": ["core_components"],
+      "properties": {
+        "core_components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["design_component", "react_native_implementation", "complexity"],
+            "properties": {
+              "design_component": {"type": "string", "minLength": 1},
+              "react_native_implementation": {"type": "string", "minLength": 1},
+              "complexity": {"enum": ["simple", "moderate", "complex"]},
+              "dependencies": {
+                "type": "array",
+                "items": {"type": "string"}
+              }
+            }
+          },
+          "minItems": 1
+        },
+        "domain_specific_components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["component", "purpose", "implementation_strategy", "complexity_assessment"],
+            "properties": {
+              "component": {"type": "string", "minLength": 1},
+              "purpose": {"type": "string", "minLength": 10},
+              "implementation_strategy": {"type": "string", "minLength": 10},
+              "complexity_assessment": {"type": "string", "minLength": 10}
+            }
+          }
+        }
+      }
+    },
+    "gate_result": {
+      "type": "object",
+      "required": ["passed", "confidence_score"],
+      "properties": {
+        "passed": {"type": "boolean"},
+        "confidence_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "blocking_issues": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "implementation_warnings": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "recommendations": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

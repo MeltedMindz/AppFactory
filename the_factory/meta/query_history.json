@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-01-07T21:34:56Z",
+  "last_updated": "2026-01-08T10:15:00Z",
   "queries": [
     {
       "run_id": "batch-specs-213456",
@@ -48,6 +48,54 @@
       "run_date": "2026-01-07",
       "vector": "intentional boredom tools",
       "query": "what to do when bored without phone"
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "vector": "lightweight home logistics",
+      "query": "grocery list app too complicated reviews app store"
+    },
+    {
+      "run_id": "factory-094718", 
+      "run_date": "2026-01-08",
+      "vector": "lightweight home logistics",
+      "query": "simple pantry tracker app kitchen inventory"
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08", 
+      "vector": "travel friction reduction",
+      "query": "travel packing checklist app review one star missing"
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "vector": "learning practice companions",
+      "query": "learn piano app reviews too complicated beginner frustrating"
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "vector": "small utilities users repeatedly search for",
+      "query": "soundboard app reviews missing sounds annoying ads"
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08", 
+      "vector": "small utilities users repeatedly search for",
+      "query": "kids timer app reviews too many options simple timer parents"
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "vector": "capture information quickly", 
+      "query": "app that translates text camera offline reviews lacking"
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "vector": "small utilities users repeatedly search for",
+      "query": "offline apps no internet connection app store reviews functionality"
     }
   ]
 }

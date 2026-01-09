@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://app-factory.local/schemas/stage02.7.json",
+  "title": "Stage 02.7: Dependency Resolution Gate", 
+  "description": "Validates navigation strategy and package dependencies",
+  "type": "object",
+  "required": ["meta", "dependency_resolution", "technical_validation", "gate_result"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["run_id", "idea_id", "idea_name", "idea_dir", "source_root", "input_stage_paths", "boundary_path"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "idea_id": {"type": "string", "minLength": 1}, 
+        "idea_name": {"type": "string", "minLength": 1},
+        "idea_dir": {"type": "string", "minLength": 1},
+        "source_root": {"type": "string", "minLength": 1},
+        "input_stage_paths": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "boundary_path": {"type": "string", "minLength": 1}
+      }
+    },
+    "dependency_resolution": {
+      "type": "object",
+      "required": ["navigation_strategy", "package_strategy", "revenuecat_integration"],
+      "properties": {
+        "navigation_strategy": {
+          "type": "object",
+          "required": ["architecture", "primary_structure", "accessibility_compliance"],
+          "properties": {
+            "architecture": {"enum": ["expo-router-v4"]},
+            "primary_structure": {"enum": ["tabs", "stack", "hybrid"]},
+            "tab_sections": {
+              "type": "array",
+              "items": {"type": "string"},
+              "maxItems": 5
+            },
+            "navigation_depth": {"type": "number", "maximum": 3},
+            "modal_screens": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "accessibility_compliance": {"type": "boolean"}
+          }
+        },
+        "package_strategy": {
+          "type": "object", 
+          "required": ["core_dependencies", "expo_sdk_compatibility"],
+          "properties": {
+            "core_dependencies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["package", "version", "purpose", "expo_compatible"],
+                "properties": {
+                  "package": {"type": "string", "minLength": 1},
+                  "version": {"type": "string", "minLength": 1},
+                  "purpose": {"type": "string", "minLength": 10},
+                  "expo_compatible": {"type": "boolean"},
+                  "alternative_if_incompatible": {"type": "string"}
+                }
+              }
+            },
+            "domain_packages": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["package", "domain", "critical"],
+                "properties": {
+                  "package": {"type": "string", "minLength": 1},
+                  "domain": {"enum": ["audio", "visualization", "health", "creative"]},
+                  "critical": {"type": "boolean"},
+                  "fallback_strategy": {"type": "string"}
+                }
+              }
+            },
+            "expo_sdk_compatibility": {
+              "type": "object",
+              "required": ["sdk_version", "react_native_version", "all_packages_compatible"],
+              "properties": {
+                "sdk_version": {"const": "52"},
+                "react_native_version": {"const": "0.76.x"},
+                "all_packages_compatible": {"type": "boolean"},
+                "incompatible_packages": {
+                  "type": "array", 
+                  "items": {"type": "string"}
+                },
+                "resolution_strategy": {"type": "string"}
+              }
+            }
+          }
+        },
+        "revenuecat_integration": {
+          "type": "object",
+          "required": ["sdk_version", "configuration_strategy"],
+          "properties": {
+            "sdk_version": {"type": "string", "minLength": 1},
+            "configuration_strategy": {"enum": ["environment-based"]},
+            "paywall_placement": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "restore_flow_integration": {"type": "string"},
+            "testing_strategy": {"enum": ["sandbox"]}
+          }
+        }
+      }
+    },
+    "technical_validation": {
+      "type": "object",
+      "properties": {
+        "navigation_conflicts": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "dependency_conflicts": {
+          "type": "array", 
+          "items": {"type": "string"}
+        },
+        "performance_concerns": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "accessibility_issues": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "resolution_plan": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "gate_result": {
+      "type": "object",
+      "required": ["passed", "confidence_score"],
+      "properties": {
+        "passed": {"type": "boolean"},
+        "confidence_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "blocking_issues": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "recommendations": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

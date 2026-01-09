@@ -1,0 +1,16 @@
+{
+  "name": "@app-factory/scripts",
+  "version": "1.0.0",
+  "description": "App Factory build scripts and utilities",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "cache-vendor-docs": "node scripts/cache_vendor_llms_docs.mjs",
+    "cache-expo-docs": "node scripts/cache_expo_llms_docs.mjs",  
+    "cache-revenuecat-docs": "node scripts/cache_revenuecat_llms_docs.mjs"
+  },
+  "keywords": ["app-factory", "expo", "revenuecat", "documentation"],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

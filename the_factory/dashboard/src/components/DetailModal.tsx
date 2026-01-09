@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
 import { LeaderboardEntry, formatCoreLoop } from '../lib/leaderboard';
-import LivePreview from './LivePreview';
+import BuildRedirectSection from './BuildRedirectSection';
 
 interface DetailModalProps {
   entry: LeaderboardEntry | null;
   isOpen: boolean;
   onClose: () => void;
+  onNavigateToBuilds?: () => void;
 }
 
-const DetailModal: React.FC<DetailModalProps> = ({ entry, isOpen, onClose }) => {
+const DetailModal: React.FC<DetailModalProps> = ({ entry, isOpen, onClose, onNavigateToBuilds }) => {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -112,10 +113,11 @@ const DetailModal: React.FC<DetailModalProps> = ({ entry, isOpen, onClose }) => 
             </div>
           )}
 
-          <LivePreview 
+          <BuildRedirectSection 
             ideaSlug={entry.idea_slug}
             ideaName={entry.idea_name}
             runId={entry.run_id}
+            onNavigateToBuilds={onNavigateToBuilds}
           />
 
           {entry.source_paths && (

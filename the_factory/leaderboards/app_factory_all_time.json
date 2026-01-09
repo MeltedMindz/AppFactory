@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-01-08T05:21:07Z",
-  "total_entries": 160,
+  "last_updated": "2026-01-08T09:58:08.278005Z",
+  "total_entries": 170,
   "entry_count_by_run": {
     "app_factory_220354": 10,
     "run_185842": 10,
@@ -17,7 +17,8 @@
     "batch-specs-160132-meadow-spark": 10,
     "batch-specs-171643-prism-delta": 10,
     "batch-specs-010718-5233": 10,
-    "batch-specs-010721-3472": 10
+    "batch-specs-010721-3472": 10,
+    "factory-094718": 10
   },
   "entries": [
     {
@@ -3165,6 +3166,166 @@
       "evidence_summary": "Habit tracking apps praised for being simple enough for quick daily check-ins",
       "source_paths": [
         "runs/2026-01-07/batch-specs-010721-3472/stage01/stages/stage01.json"
+      ]
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "rank": 2,
+      "score": 8.2,
+      "idea_id": "simple_pantry_001",
+      "idea_name": "SimpleStock",
+      "idea_slug": "simplestock",
+      "market": "Offline pantry inventory tracker with barcode scanning",
+      "target_user": "Busy households who want to reduce food waste and avoid duplicate purchases",
+      "core_loop": "Scan barcode to add item \u2192 Set simple expiration reminder \u2192 Check inventory before shopping \u2192 Get notifications for items about to expire",
+      "evidence_summary": "App Store reviews for pantry apps show users want 'simple barcode scanner' functionality without overwhelming features. One user: 'worth trying at the free level with scanner that works great'",
+      "source_paths": [
+        "runs/2026-01-08/factory-094718/stage01/stages/stage01.json"
+      ]
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "rank": 4,
+      "score": 7.8,
+      "idea_id": "travel_packer_002",
+      "idea_name": "PackEasy",
+      "idea_slug": "packeasy",
+      "market": "Simple offline packing checklist app with reliable data persistence",
+      "target_user": "Frequent travelers frustrated with unreliable packing apps",
+      "core_loop": "Select trip type template \u2192 Customize packing list \u2192 Check off items as packed \u2192 Save list for future trips",
+      "evidence_summary": "PackPoint users complain: 'app has seriously become useless' due to data loss and forced list creation. Users want 'backup features' and reliable list persistence.",
+      "source_paths": [
+        "runs/2026-01-08/factory-094718/stage01/stages/stage01.json"
+      ]
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "rank": 6,
+      "score": 7.5,
+      "idea_id": "piano_practice_003",
+      "idea_name": "PianoDaily",
+      "idea_slug": "pianodaily",
+      "market": "Simplified piano practice companion with clear daily structure",
+      "target_user": "Adult beginners who tried complex piano apps and felt overwhelmed",
+      "core_loop": "Complete daily 10-minute lesson \u2192 Practice technique exercises \u2192 Record practice session \u2192 Track weekly progress",
+      "evidence_summary": "Piano app users report 'some beginner lessons feel intermediate' and 'lack of structure a little overwhelming'. Need for 'proper technique guidance' without complexity.",
+      "source_paths": [
+        "runs/2026-01-08/factory-094718/stage01/stages/stage01.json"
+      ]
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "rank": 3,
+      "score": 8.0,
+      "idea_id": "kids_timer_004",
+      "idea_name": "VisualBell",
+      "idea_slug": "visualbell",
+      "market": "Simple visual countdown timer for kids activities",
+      "target_user": "Parents of children ages 4-10 who need routine structure",
+      "core_loop": "Set timer duration with simple controls \u2192 Start visual countdown \u2192 Watch colorful progress bar \u2192 Receive gentle alert when done",
+      "evidence_summary": "Parents want 'simple timer apps with large, easy-to-read displays' and complain about timer apps with 'too many customization options' that are confusing for kids.",
+      "source_paths": [
+        "runs/2026-01-08/factory-094718/stage01/stages/stage01.json"
+      ]
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "rank": 8,
+      "score": 7.2,
+      "idea_id": "offline_translate_005",
+      "idea_name": "CameraLingo",
+      "idea_slug": "cameralingo",
+      "market": "Offline camera text translator with local language packs",
+      "target_user": "Travelers and international students who need reliable translation without data costs",
+      "core_loop": "Download language pack once \u2192 Point camera at text \u2192 Tap to translate specific sections \u2192 Save translations for later reference",
+      "evidence_summary": "Google Translate users frustrated: 'automatically blocks out the original texts' and other apps 'make you upgrade after ONE translation'. Need for reliable offline camera translation.",
+      "source_paths": [
+        "runs/2026-01-08/factory-094718/stage01/stages/stage01.json"
+      ]
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "rank": 10,
+      "score": 6.8,
+      "idea_id": "meme_soundboard_006",
+      "idea_name": "QuickSounds",
+      "idea_slug": "quicksounds",
+      "market": "Ad-free meme soundboard with guaranteed playback",
+      "target_user": "Social media users and gamers who want quick access to meme sounds",
+      "core_loop": "Browse sound categories \u2192 Tap for instant playback \u2192 Favorite frequently used sounds \u2192 Share sounds to social apps",
+      "evidence_summary": "Soundboard users hate 'pop ups every 5 seconds' and 'TWO 15-30 second ads that you can't skip'. Want simple soundboards where 'not a single one of them would play anything' is fixed.",
+      "source_paths": [
+        "runs/2026-01-08/factory-094718/stage01/stages/stage01.json"
+      ]
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "rank": 1,
+      "score": 8.5,
+      "idea_id": "grocery_simple_007",
+      "idea_name": "ListLite",
+      "idea_slug": "listlite",
+      "market": "Minimal grocery list app focused on simplicity",
+      "target_user": "Shoppers who find current grocery apps too complicated",
+      "core_loop": "Add items to list \u2192 Check off while shopping \u2192 Items automatically move to history \u2192 Reuse items from history",
+      "evidence_summary": "Users prefer apps described as 'plain and simple app that leaves you in control. It's like a blank piece of lined paper' over apps with 'too much control' and 'steeper learning curves'.",
+      "source_paths": [
+        "runs/2026-01-08/factory-094718/stage01/stages/stage01.json"
+      ]
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "rank": 9,
+      "score": 7.0,
+      "idea_id": "kids_reward_008",
+      "idea_name": "StarChart",
+      "idea_slug": "starchart",
+      "market": "Simple digital star chart for kids with minimal setup",
+      "target_user": "Parents of children ages 3-8 who want simple behavior tracking",
+      "core_loop": "Set simple daily tasks \u2192 Tap to give stars immediately \u2192 Watch visual progress bar fill \u2192 Celebrate weekly achievements",
+      "evidence_summary": "Parents say reward chart apps 'require a time-consuming set-up, and parents tend to quit halfway through'. Need apps that are 'easy to use' without overwhelming features.",
+      "source_paths": [
+        "runs/2026-01-08/factory-094718/stage01/stages/stage01.json"
+      ]
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "rank": 5,
+      "score": 7.6,
+      "idea_id": "capture_notes_009",
+      "idea_name": "QuickCapture",
+      "idea_slug": "quickcapture",
+      "market": "Ultra-fast note capture app optimized for speed",
+      "target_user": "Busy professionals and students who lose ideas while opening complex note apps",
+      "core_loop": "Open app (instant to text field) \u2192 Type or dictate note \u2192 Auto-save in background \u2192 Search all notes later",
+      "evidence_summary": "Users need apps for 'capture information quickly' that work offline. Note apps should focus on 'getting ideas down fast' without complex organization features that slow down capture.",
+      "source_paths": [
+        "runs/2026-01-08/factory-094718/stage01/stages/stage01.json"
+      ]
+    },
+    {
+      "run_id": "factory-094718",
+      "run_date": "2026-01-08",
+      "rank": 7,
+      "score": 7.3,
+      "idea_id": "habit_visual_010",
+      "idea_name": "DotTracker",
+      "idea_slug": "dottracker",
+      "market": "Minimalist habit tracker using simple dot marking",
+      "target_user": "People who abandoned complex habit tracking apps but want simple progress visualization",
+      "core_loop": "Add habits with simple names \u2192 Tap to mark daily completion \u2192 See visual dot pattern emerge \u2192 Maintain streaks naturally",
+      "evidence_summary": "Users want 'simple habit tracking' without 'overwhelming workflows' that make tracking feel like work itself. Need visual progress that motivates without complexity.",
+      "source_paths": [
+        "runs/2026-01-08/factory-094718/stage01/stages/stage01.json"
       ]
     }
   ]

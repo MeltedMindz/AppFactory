@@ -1,0 +1,813 @@
+# Expo Documentation
+
+Expo is an open-source React Native framework for apps that run natively on Android, iOS, and the web. Expo brings together the best of mobile and the web and enables many important features for building and scaling an app such as live updates, instantly sharing your app, and web support. The company behind Expo also offers Expo Application Services (EAS), which are deeply integrated cloud services for Expo and React Native apps.
+
+## Get started
+
+- [Introduction](https://docs.expo.dev/get-started/introduction): Get started creating apps with Expo.
+- [Create a project](https://docs.expo.dev/get-started/create-a-project): Learn how to create a new Expo project.
+- [Set up your environment](https://docs.expo.dev/get-started/set-up-your-environment): Learn how to set up your development environment to start building with Expo.
+- [Start developing](https://docs.expo.dev/get-started/start-developing): Make your first change to an Expo project and see it live on your device.
+- [Next steps](https://docs.expo.dev/get-started/next-steps): Develop, review, and submit your project.
+
+## Develop
+
+- [Tools for development](https://docs.expo.dev/develop/tools): An overview of Expo tools and websites that will help you during various aspects of your project-building journey.
+- [Navigation in Expo and React Native apps](https://docs.expo.dev/develop/app-navigation): Learn about the recommended approach for integrating navigation in an Expo and React Native project.
+- [Authentication in Expo and React Native apps](https://docs.expo.dev/develop/authentication): Learn about setting up authentication in your Expo project.
+- [Unit testing with Jest](https://docs.expo.dev/develop/unit-testing): Learn how to set up and configure the jest-expo library to write unit and snapshot tests for a project with Jest.
+
+### User interface
+- [Splash screen and app icon](https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon): Learn how to add a splash screen and app icon to your Expo project.
+- [Safe areas](https://docs.expo.dev/develop/user-interface/safe-areas): Learn how to add safe areas for screen components inside your Expo project.
+- [System bars](https://docs.expo.dev/develop/user-interface/system-bars): Learn how to handle and customize system bars for safe areas and edge-to-edge layout in your Expo project.
+- [Fonts](https://docs.expo.dev/develop/user-interface/fonts): Learn how to integrate custom fonts in your app using local files or Google Font packages
+- [Assets](https://docs.expo.dev/develop/user-interface/assets): Learn about using static assets in your project, including images, videos, sounds, database files, and fonts.
+- [Color themes](https://docs.expo.dev/develop/user-interface/color-themes): Learn how to support light and dark modes in your app.
+- [Animation](https://docs.expo.dev/develop/user-interface/animation): Learn how to integrate React Native animations and use it in your Expo project.
+- [Store data](https://docs.expo.dev/develop/user-interface/store-data): Learn about different libraries available to store data in your Expo project.
+- [Next steps](https://docs.expo.dev/develop/user-interface/next-steps): A list of useful resources to learn more about implementing navigation and UI in your app.
+
+### Development builds
+- [Introduction to development builds](https://docs.expo.dev/develop/development-builds/introduction): Why use development builds and how to get started.
+- [Switch from Expo Go to a development build](https://docs.expo.dev/develop/development-builds/expo-go-to-dev-build): How to switch from your Expo Go project to use development builds.
+- [Create a development build on EAS](https://docs.expo.dev/develop/development-builds/create-a-build): Learn how to create development builds for a project.
+- [Use a development build](https://docs.expo.dev/develop/development-builds/use-development-builds): Learn how to use development builds for a project.
+- [Share a development build with your team](https://docs.expo.dev/develop/development-builds/share-with-your-team): Learn how to install and share the development with your team or run it on multiple devices.
+- [Tools, workflows and extensions](https://docs.expo.dev/develop/development-builds/development-workflows): Learn more about different tools, workflows and extensions available when working with development builds.
+- [Next steps](https://docs.expo.dev/develop/development-builds/next-steps): A list of useful resources to learn more about development builds and EAS Build.
+
+### Config plugins
+- [Introduction to config plugins](https://docs.expo.dev/config-plugins/introduction): An introduction to Expo config plugins.
+- [Create and use config plugins](https://docs.expo.dev/config-plugins/plugins): Learn how to create and use a config plugins in your Expo project.
+- [Mods](https://docs.expo.dev/config-plugins/mods): Learn about mods and how to use them when creating a config plugin.
+- [Using a dangerous mod](https://docs.expo.dev/config-plugins/dangerous-mods): Learn about dangerous mods and how to use them when creating a config plugin.
+- [Plugin development for libraries](https://docs.expo.dev/config-plugins/development-for-libraries): Learn how to develop config plugins for Expo and React Native libraries.
+- [Developing and debugging a plugin](https://docs.expo.dev/config-plugins/development-and-debugging): Learn about development best practices and debugging techniques for Expo config plugins.
+- [Using patch-project](https://docs.expo.dev/config-plugins/patch-project): Learn about how to use patch-project to create generate, apply, and preserve native changes in your Expo project.
+
+### Debugging
+- [Errors and warnings](https://docs.expo.dev/debugging/errors-and-warnings): Learn about Redbox errors and stack traces in your Expo project.
+- [Debugging runtime issues](https://docs.expo.dev/debugging/runtime-issues): Learn about different techniques available to debug your Expo project.
+- [Debugging and profiling tools](https://docs.expo.dev/debugging/tools): Learn about different tools available to inspect your Expo project at runtime.
+- [Dev tools plugins](https://docs.expo.dev/debugging/devtools-plugins): Learn about using dev tools plugins to inspect and debug your Expo project.
+- [Create a dev tools plugin](https://docs.expo.dev/debugging/create-devtools-plugins): Learn how to create a dev tools plugin to enhance your development experience.
+
+## Review
+
+- [Overview of distributing apps for review](https://docs.expo.dev/review/overview): Learn about how to distribute your app for review using app stores, internal distribution, and EAS Update.
+- [Share previews with your team](https://docs.expo.dev/review/share-previews-with-your-team): Share previews of your app with your team by publishing updates on branches.
+- [How to launch an update using Expo Orbit](https://docs.expo.dev/review/with-orbit): Learn how to open updates with Expo Orbit as part of a review workflow.
+
+## Deploy
+
+- [Build your project for app stores](https://docs.expo.dev/deploy/build-project): Learn how to create a production build for your app that is ready to be submitted to app stores from the command line using EAS Build.
+- [Submit to app stores](https://docs.expo.dev/deploy/submit-to-app-stores): Learn how to submit your app to Google Play Store and Apple App Store from the command line with EAS Submit.
+- [App stores metadata](https://docs.expo.dev/deploy/app-stores-metadata): A brief overview of how to use EAS Metadata to automate and maintain your app store presence.
+- [Send over-the-air updates](https://docs.expo.dev/deploy/send-over-the-air-updates): Learn how to send over-the-air updates to push critical bug fixes and improvements to your users.
+- [Publish your web app](https://docs.expo.dev/deploy/web): Learn how to deploy your web app using EAS Hosting.
+
+## Monitor
+
+- [Monitoring services](https://docs.expo.dev/monitoring/services): Learn how to monitor the usage of your Expo and React Native app after its release.
+
+## More
+
+- [Core concepts](https://docs.expo.dev/core-concepts): An overview of Expo tools, features and services.
+- [FAQ](https://docs.expo.dev/faq): A list of common questions and limitations about Expo and related services.
+- [Documentation for LLMs](https://docs.expo.dev/llms): A list of Expo and EAS documentation files available for large language models (LLMs) and apps that use them.
+
+- [Guides: Overview](https://docs.expo.dev/guides/overview)
+
+## Development process
+
+- [Develop an app with Expo](https://docs.expo.dev/workflow/overview): An overview of the development process of building an Expo app to help build a mental model of the core development loop.
+- [Configure with app config](https://docs.expo.dev/workflow/configuration): Learn about what app.json/app.config.js/app.config.ts files are and how you can customize and use them dynamically.
+- [Continuous Native Generation (CNG)](https://docs.expo.dev/workflow/continuous-native-generation): Learn about managing your native projects with Continuous Native Generation (CNG) and Prebuild.
+- [Using Expo SDK, React Native, and third-party libraries](https://docs.expo.dev/workflow/using-libraries): Learn how to use Expo SDK, React Native libraries, and other third-party npm packages in your project.
+- [Privacy manifests](https://docs.expo.dev/guides/apple-privacy): Learn about configuring iOS privacy manifests for your mobile app.
+- [Permissions](https://docs.expo.dev/guides/permissions): Learn about configuring and adding permissions in an app config file.
+- [Environment variables in Expo](https://docs.expo.dev/guides/environment-variables): Learn how to use environment variables in an Expo project.
+
+### Linking
+- [Overview of Linking, Deep Links, Android App Links, and iOS Universal Links](https://docs.expo.dev/linking/overview): An overview of available resources to implement Linking and Deep Links in your Expo apps.
+- [Linking into other apps](https://docs.expo.dev/linking/into-other-apps): Learn how to handle and open a URL from your app based on the URL scheme of another app.
+- [Linking into your app](https://docs.expo.dev/linking/into-your-app): Learn how to handle an incoming URL in your React Native and Expo app by creating a deep link.
+- [Android App Links](https://docs.expo.dev/linking/android-app-links): Learn how to configure Android App Links to open your Expo app from a standard web URL.
+- [iOS Universal Links](https://docs.expo.dev/linking/ios-universal-links): Learn how to configure iOS Universal Links to open your Expo app from a standard web URL.
+
+### Write native code
+- [Add custom native code](https://docs.expo.dev/workflow/customizing): Learn how to add custom native code to your Expo project.
+- [Adopt Prebuild](https://docs.expo.dev/guides/adopting-prebuild): Learn how to adopt Expo Prebuild in a project that was bootstrapped with React Native CLI.
+
+### Compile locally
+- [Compile locally: Overview](https://docs.expo.dev/guides/local-app-overview): An overview on local app compilation process for your Expo apps.
+- [Local app development](https://docs.expo.dev/guides/local-app-development): Learn how to compile and build your Expo app locally.
+- [Create a release build locally](https://docs.expo.dev/guides/local-app-production): Learn how to create a release (production) build for your Expo app locally.
+- [Use build cache providers](https://docs.expo.dev/guides/cache-builds-remotely): Accelerate local development by caching and reusing builds from a provider.
+- [Prebuilt Expo Modules for Android](https://docs.expo.dev/guides/prebuilt-expo-modules): Learn how prebuilt Expo Modules reduce Android build times by up to 25% on your machine.
+
+### Web
+- [Develop websites with Expo](https://docs.expo.dev/workflow/web): Learn how to develop your app for the web so you can build a universal app.
+- [Publish websites](https://docs.expo.dev/guides/publishing-websites): Learn how to deploy Expo websites for production.
+- [Using React DOM in Expo native apps](https://docs.expo.dev/guides/dom-components): Learn about rendering React DOM components in Expo native apps using the 'use dom' directive.
+- [Progressive web apps](https://docs.expo.dev/guides/progressive-web-apps): Learn how to add progressive web app support to Expo websites.
+- [Tailwind CSS](https://docs.expo.dev/guides/tailwind): Learn how to configure and use Tailwind CSS in your Expo project.
+- [Using local HTTPS development](https://docs.expo.dev/guides/local-https-development): Learn how to set up local HTTPS for Expo web apps.
+
+### Bundling
+- [Metro bundler](https://docs.expo.dev/guides/customizing-metro): Learn about different Metro bundler configurations that can be customized.
+- [Analyzing JavaScript bundles with Expo Atlas and Lighthouse](https://docs.expo.dev/guides/analyzing-bundles): Learn about improving the production JavaScript bundle size of Expo apps and websites with Expo Atlas and Lighthouse.
+- [Tree shaking and code removal](https://docs.expo.dev/guides/tree-shaking): Learn about how Expo CLI optimizes production JavaScript bundles.
+- [Minifying JavaScript](https://docs.expo.dev/guides/minify): Learn about customizing the JavaScript minification process in Expo CLI with Metro bundler.
+- [Why Metro?](https://docs.expo.dev/guides/why-metro): Learn why Metro is the future of universal bundling in React Native and how it benefits developers.
+
+### Reference
+- [Work with monorepos](https://docs.expo.dev/guides/monorepos): Learn about setting up Expo projects in a monorepo with workspaces.
+- [View logs](https://docs.expo.dev/workflow/logging): Learn how to view logs when using Expo CLI, native logs in Android Studio and Xcode, and system logs.
+- [Development and production modes](https://docs.expo.dev/workflow/development-mode): Learn how to run a project in development mode or production mode.
+- [Common development errors](https://docs.expo.dev/workflow/common-development-errors): A list of common development errors that are encountered by developers using Expo.
+- [Android Studio Emulator](https://docs.expo.dev/workflow/android-studio-emulator): Learn how to set up the Android Emulator to test your app on a virtual Android device.
+- [iOS Simulator](https://docs.expo.dev/workflow/ios-simulator): Learn how you can install the iOS Simulator on your Mac and use it to develop your app.
+- [React Native's New Architecture](https://docs.expo.dev/guides/new-architecture): Learn about React Native's "New Architecture" and how and why to migrate to it.
+- [React Compiler](https://docs.expo.dev/guides/react-compiler): Learn how to enable and use the React Compiler in Expo apps.
+
+### Existing React Native apps
+- [Overview of using Expo with existing React Native apps](https://docs.expo.dev/bare/overview): Learn how to use Expo tools and services with existing React Native apps.
+- [Install Expo modules in an existing React Native project](https://docs.expo.dev/bare/installing-expo-modules): Learn how to prepare your existing React Native project to install and use any Expo module.
+- [Migrate from React Native CLI to Expo CLI](https://docs.expo.dev/bare/using-expo-cli): Learn how to migrate from React Native CLI (@react-native-community/cli) to Expo CLI for any React Native project.
+- [Install expo-updates in an existing React Native project](https://docs.expo.dev/bare/installing-updates): Learn how to install and configure expo-updates in your existing React Native project.
+- [Install expo-dev-client in an existing React Native project](https://docs.expo.dev/bare/install-dev-builds-in-bare): Learn how to install and configure expo-dev-client in your existing React Native project.
+- [Native project upgrade helper](https://docs.expo.dev/bare/upgrade): View file-by-file diffs of all the changes you need to make to your native projects to upgrade them to the next Expo SDK version.
+
+### Existing native apps
+- [Integrating Expo tools into existing native apps](https://docs.expo.dev/brownfield/overview): An overview of how you can integrate Expo tools into existing native apps ("brownfield" apps).
+- [How to add Expo to an existing native (brownfield) app](https://docs.expo.dev/brownfield/get-started): A guide for adding Expo and React Native to existing native apps and adding a first view component.
+- [Configuring lifecycle listeners](https://docs.expo.dev/brownfield/lifecycle-listeners): Learn about the mechanism that allows the Expo Modules API to hook into the lifecycle of your app.
+
+## Expo Router
+
+- [Introduction to Expo Router](https://docs.expo.dev/router/introduction): Expo Router is an open-source routing library for Universal React Native applications built with Expo.
+- [Install Expo Router](https://docs.expo.dev/router/installation): Learn how to quickly get started by creating a new project with Expo Router or adding the library to an existing project.
+
+### Router 101
+- [Core concepts of file-based routing in Expo Router](https://docs.expo.dev/router/basics/core-concepts): Learn the ground rules of Expo Router and how it relates to the rest of your code.
+- [Expo Router notation](https://docs.expo.dev/router/basics/notation): Learn how to use special filenames and notation to expressively define your app's navigation tree within your project's file structure.
+- [Navigation layouts in Expo Router](https://docs.expo.dev/router/basics/layout): Learn how to construct different relationships between pages by using directories and layout files.
+- [Navigating between pages in Expo Router](https://docs.expo.dev/router/basics/navigation): Learn the different ways to link to and navigate to pages in Expo Router.
+- [Common navigation patterns in Expo Router](https://docs.expo.dev/router/basics/common-navigation-patterns): Apply Expo Router basics to real-life navigation patterns you could use in your app.
+
+### Navigation patterns
+- [Stack](https://docs.expo.dev/router/advanced/stack): Learn how to use the Stack navigator in Expo Router.
+- [JavaScript tabs](https://docs.expo.dev/router/advanced/tabs): Learn how to use the JavaScript tabs layout (React Navigation bottom tabs) in Expo Router.
+- [Native tabs](https://docs.expo.dev/router/advanced/native-tabs): Learn how to use the native tabs layout in Expo Router.
+- [Drawer](https://docs.expo.dev/router/advanced/drawer): Learn how to use the Drawer layout in Expo Router.
+- [Authentication in Expo Router](https://docs.expo.dev/router/advanced/authentication): How to implement authentication and protect routes with Expo Router.
+- [Authentication in Expo Router using redirects](https://docs.expo.dev/router/advanced/authentication-rewrites): How to implement authentication and protect routes with Expo Router.
+- [Nesting navigators](https://docs.expo.dev/router/advanced/nesting-navigators): Learn how to nest navigators in Expo Router.
+- [Modals](https://docs.expo.dev/router/advanced/modals): Learn how to use modals in Expo Router.
+- [Web modals](https://docs.expo.dev/router/advanced/web-modals): Learn how to implement and customize the behavior of a modal in your web app using Expo Router.
+- [Shared routes](https://docs.expo.dev/router/advanced/shared-routes): Learn how to define shared routes or use arrays to use the same route multiple times with different layouts using Expo Router.
+- [Protected routes](https://docs.expo.dev/router/advanced/protected): Learn how to make screens inaccessible to client-side navigation.
+
+### Advanced
+- [Platform-specific extensions and module](https://docs.expo.dev/router/advanced/platform-specific-modules): Learn how to switch modules based on the platform in Expo Router using platform-specific extensions and Platform module from React Native.
+- [Customizing links](https://docs.expo.dev/router/advanced/native-intent): Learn how to perform link redirection and utilize third-party deep links with +native-intent when using Expo Router.
+- [Router settings](https://docs.expo.dev/router/advanced/router-settings): Learn how to configure layouts with static properties in Expo Router.
+- [Apple Handoff](https://docs.expo.dev/router/advanced/apple-handoff): Learn how to seamlessly continue app navigation across Apple devices with Expo Router and Apple Handoff.
+- [Custom tab layouts](https://docs.expo.dev/router/advanced/custom-tabs): Learn how to use headless tab components to create custom tab layouts in Expo Router.
+
+### Web
+- [API Routes](https://docs.expo.dev/router/web/api-routes): Learn how to create server endpoints with Expo Router.
+- [Server middleware](https://docs.expo.dev/router/web/middleware): Learn how to create middleware that runs for every request to the server in Expo Router.
+- [Static Rendering](https://docs.expo.dev/router/web/static-rendering): Learn how to render routes to static HTML and CSS files with Expo Router.
+- [Async routes](https://docs.expo.dev/router/web/async-routes): Learn how to speed up development with async bundling in Expo Router.
+
+### Reference
+- [Error handling](https://docs.expo.dev/router/error-handling): Learn how to handle unmatched routes and errors in your app when using Expo Router.
+- [Using URL parameters](https://docs.expo.dev/router/reference/url-parameters): Learn how to access and modify route and search parameters in your app.
+- [Sitemap](https://docs.expo.dev/router/reference/sitemap): Learn how to use the sitemap to debug your app with Expo Router.
+- [Redirects](https://docs.expo.dev/router/reference/redirects): Learn how to redirect URLs in Expo Router.
+- [Link preview](https://docs.expo.dev/router/reference/link-preview): Learn how to add a preview to your link on iOS when using Expo Router.
+- [Typed routes](https://docs.expo.dev/router/reference/typed-routes): Learn how to use statically typed links and routes in Expo Router.
+- [Screen tracking for analytics](https://docs.expo.dev/router/reference/screen-tracking): Learn how to enable screen tracking for analytic when using Expo Router.
+- [Top-level src directory](https://docs.expo.dev/router/reference/src-directory): Learn how to use a top-level src directory in your Expo Router project.
+- [Testing configuration for Expo Router](https://docs.expo.dev/router/reference/testing): Learn how to create integration tests for your app when using Expo Router.
+- [Troubleshooting](https://docs.expo.dev/router/reference/troubleshooting): Fixing common issues with Expo Router setup.
+
+### Migration
+- [Migrate from React Navigation](https://docs.expo.dev/router/migrate/from-react-navigation): Learn how to migrate a project using React Navigation to Expo Router.
+- [Migrate from Expo Webpack](https://docs.expo.dev/router/migrate/from-expo-webpack): Learn how to migrate a website using Expo Webpack to Expo Router.
+
+## Expo Modules API
+
+- [Expo Modules API: Overview](https://docs.expo.dev/modules/overview): An overview of the APIs and utilities provided by Expo to develop native modules.
+- [Expo Modules API: Get started](https://docs.expo.dev/modules/get-started): Learn about getting started with Expo modules API.
+
+### Tutorials
+- [Tutorial: Create a native module](https://docs.expo.dev/modules/native-module-tutorial): A tutorial on creating a native module that persists settings with Expo Modules API.
+- [Tutorial: Create a native view](https://docs.expo.dev/modules/native-view-tutorial): A tutorial on creating a native view that renders a WebView with Expo Modules API.
+- [Tutorial: Create a module with a config plugin](https://docs.expo.dev/modules/config-plugin-and-native-module-tutorial): A tutorial on creating a native module with a config plugin using Expo Modules API.
+- [How to use a standalone Expo module](https://docs.expo.dev/modules/use-standalone-expo-module-in-your-project): Learn how to use a standalone module created with create-expo-module in your project by using a monorepo or publishing the package to npm.
+- [Wrap third-party native libraries](https://docs.expo.dev/modules/third-party-library): Learn how to create a simple wrapper around two separate native libraries using Expo Modules API.
+- [Integrate in an existing library](https://docs.expo.dev/modules/existing-library): Learn how to integrate Expo Modules API into an existing React Native library.
+- [Additional platform support](https://docs.expo.dev/modules/additional-platform-support): Learn how to add support for macOS and tvOS platforms.
+
+### Reference
+- [Module API Reference](https://docs.expo.dev/modules/module-api): An API reference of Expo modules API.
+- [Android lifecycle listeners](https://docs.expo.dev/modules/android-lifecycle-listeners): Learn about the mechanism that allows your library to hook into Android Activity and Application functions using Expo modules API.
+- [iOS AppDelegate subscribers](https://docs.expo.dev/modules/appdelegate-subscribers): Learn how to subscribe to iOS system events relevant to an app, such as inbound links and notifications using Expo modules API.
+- [Autolinking](https://docs.expo.dev/modules/autolinking): Learn how to use Expo Autolinking to automatically link native dependencies in your Expo project.
+- [Using shared objects](https://docs.expo.dev/modules/shared-objects): Learn how to use a shared object from the Expo Modules API.
+- [expo-module.config.json](https://docs.expo.dev/modules/module-config): Learn about different configuration options available in expo-module.config.json.
+- [Mocking native calls in Expo modules](https://docs.expo.dev/modules/mocking): Learn about mocking native calls in Expo modules.
+- [Expo Modules API: Design considerations](https://docs.expo.dev/modules/design): An overview of the design considerations behind the Expo Modules API.
+
+## Push notifications
+
+- [Expo push notifications: Overview](https://docs.expo.dev/push-notifications/overview): An overview of Expo push notification service.
+- [What you need to know about notifications](https://docs.expo.dev/push-notifications/what-you-need-to-know): Learn about notification types and their behavior before you get started.
+- [Expo push notifications setup](https://docs.expo.dev/push-notifications/push-notifications-setup): Learn how to set up push notifications, get credentials for development and production, and send a testing push notification.
+- [Send notifications with the Expo Push Service](https://docs.expo.dev/push-notifications/sending-notifications): Learn how to call Expo Push Service API to send push notifications from your server.
+- [Handle incoming notifications](https://docs.expo.dev/push-notifications/receiving-notifications): Learn how to respond to a notification received by your app and take action based on the event.
+
+### Reference
+- [Obtain Google Service Account Keys using FCM V1](https://docs.expo.dev/push-notifications/fcm-credentials): Learn how to create or use a Google Service Account Key for sending Android Notifications using FCM.
+- [Send notifications with FCM and APNs](https://docs.expo.dev/push-notifications/sending-notifications-custom): Learn how to send notifications with FCM and APNs.
+- [Push notifications troubleshooting and FAQ](https://docs.expo.dev/push-notifications/faq): A collection of common questions about Expo push notification service.
+
+## Integrations
+
+
+### Analytics and error reports
+- [React Native analytics SDKs and libraries](https://docs.expo.dev/guides/using-analytics): An overview of analytics services available in the Expo and React Native ecosystem.
+- [Using Sentry](https://docs.expo.dev/guides/using-sentry): A guide on installing and configuring Sentry for crash reporting.
+- [Using BugSnag](https://docs.expo.dev/guides/using-bugsnag): A guide on installing and configuring BugSnag for end-to-end error reporting and analytics.
+- [Using LogRocket](https://docs.expo.dev/guides/using-logrocket): A guide on installing and configuring LogRocket for session replays and error monitoring.
+- [Using Vexo](https://docs.expo.dev/guides/using-vexo): A guide on installing and configuring Vexo for real-time user analytics.
+
+### Authentication
+- [Using authentication SDKs and libraries](https://docs.expo.dev/guides/using-authentication): An overview of authentication integrations available in the Expo and React Native ecosystem.
+- [Using Clerk](https://docs.expo.dev/guides/using-clerk): Learn how to integrate Clerk authentication in your Expo and React Native projects.
+- [Using Facebook authentication](https://docs.expo.dev/guides/facebook-authentication): A guide on using react-native-fbsdk-next library to integrate Facebook authentication in your Expo project.
+- [Using Google authentication](https://docs.expo.dev/guides/google-authentication): A guide on using @react-native-google-signin/google-signin library to integrate Google authentication in your Expo project.
+
+### CMS
+- [Using a Content Management System (CMS)](https://docs.expo.dev/guides/using-a-cms): An overview of Content Management Systems (CMS) available in the Expo and React Native ecosystem.
+
+### Database and SDKs
+- [Using Firebase](https://docs.expo.dev/guides/using-firebase): A guide on getting started and using Firebase JS SDK and React Native Firebase library.
+- [Using Supabase](https://docs.expo.dev/guides/using-supabase): Add a Postgres Database and user authentication to your React Native app with Supabase.
+
+### Emails
+- [Using Resend](https://docs.expo.dev/guides/using-resend): Learn how to integrate Resend in your Expo and React Native app to programmatically send emails with Expo Router's API Routes.
+
+### Feature flags
+- [React Native feature flag services](https://docs.expo.dev/guides/using-feature-flags): An overview of feature flag services available in the Expo and React Native ecosystem.
+
+### In-app purchases
+- [Using in-app purchases](https://docs.expo.dev/guides/in-app-purchases): Learn about how to use in-app purchases in your Expo app.
+
+### Push notifications
+- [Using push notifications](https://docs.expo.dev/guides/using-push-notifications-services): Learn about push notification services that are compatible with Expo and React Native apps.
+
+### Tools
+- [Using ESLint and Prettier](https://docs.expo.dev/guides/using-eslint): A guide on configuring ESLint and Prettier to format Expo apps.
+- [Using TypeScript](https://docs.expo.dev/guides/typescript): An in-depth guide on configuring an Expo project with TypeScript.
+
+### TV apps
+- [Build Expo apps for TV](https://docs.expo.dev/guides/building-for-tv): A guide for building an Expo app for an Android TV or Apple TV target.
+
+### Web apps
+- [Using Next.js with Expo for Web](https://docs.expo.dev/guides/using-nextjs): A guide for integrating Next.js with Expo for the web.
+
+## More
+
+- [Upgrade Expo SDK](https://docs.expo.dev/workflow/upgrading-expo-sdk-walkthrough): Learn how to incrementally upgrade the Expo SDK version in your project.
+
+### Assorted
+- [Authentication with OAuth or OpenID providers](https://docs.expo.dev/guides/authentication): Learn how to utilize the expo-auth-session library to implement authentication with OAuth or OpenID providers.
+- [Using Hermes Engine](https://docs.expo.dev/guides/using-hermes): A guide on configuring Hermes for both Android and iOS in an Expo project.
+- [iOS Developer Mode](https://docs.expo.dev/guides/ios-developer-mode): Learn how to enable iOS Developer Mode setting on iOS 16 and above to run internal distribution builds and local development builds.
+- [Expo Vector Icons](https://docs.expo.dev/guides/icons): Learn how to use various types of icons in your Expo app, including react native vector icons, custom icon fonts, icon images, and icon buttons.
+- [Localization](https://docs.expo.dev/guides/localization): Learn about getting started and configuring localization in an Expo project using expo-localization.
+- [Configure JS engines](https://docs.expo.dev/guides/configuring-js-engines): A guide on configuring JS engines for both Android and iOS in an Expo project.
+- [Using Bun](https://docs.expo.dev/guides/using-bun): A guide on using Bun with Expo and EAS.
+- [Edit rich text](https://docs.expo.dev/guides/editing-richtext): Learn about current approaches to preview and edit rich text in React Native.
+- [Create app store assets](https://docs.expo.dev/guides/store-assets): Learn how to create screenshots and previews for your app's store pages.
+- [Local-first architecture with Expo](https://docs.expo.dev/guides/local-first): An introduction to the emerging local-first software movement, including links to relevant learning resources and tools.
+- [Keyboard handling](https://docs.expo.dev/guides/keyboard-handling): A guide for handling common keyboard interactions on an Android or iOS device.
+- [Building SwiftUI apps with Expo UI](https://docs.expo.dev/guides/expo-ui-swift-ui): Learn how to use Expo UI to integrate SwiftUI into your Expo apps.
+
+### Troubleshooting
+- [Troubleshooting overview](https://docs.expo.dev/troubleshooting/overview): An overview of troubleshooting guides for app development with Expo and EAS.
+- ["Application has not been registered" error](https://docs.expo.dev/troubleshooting/application-has-not-been-registered): Learn about what the Application has not been registered error means and how to resolve it in an Expo or React Native app.
+- [Clear bundler caches on macOS and Linux](https://docs.expo.dev/troubleshooting/clear-cache-macos-linux): Learn how to clear the bundler cache when using Yarn or npm with Expo CLI or React Native CLI on macOS and Linux.
+- [Clear bundler caches on Windows](https://docs.expo.dev/troubleshooting/clear-cache-windows): Learn how to clear the bundler cache when using Yarn or npm with Expo CLI or React Native CLI on Windows.
+- ["React Native version mismatch" errors](https://docs.expo.dev/troubleshooting/react-native-version-mismatch): Learn about what React Native version mismatch means and how to resolve it in an Expo or React Native app.
+- [Troubleshooting Proxies](https://docs.expo.dev/troubleshooting/proxies): Learn about troubleshooting proxies with a set of recommended tools.
+
+## Regulatory compliance
+
+- [Data and Privacy protection](https://docs.expo.dev/regulatory-compliance/data-and-privacy-protection): An overview of data and privacy protection policies that Expo offers.
+- [GDPR compliance and Expo](https://docs.expo.dev/regulatory-compliance/gdpr): Learn about how applications built with Expo can be GDPR compliant.
+- [HIPAA compliance and Expo](https://docs.expo.dev/regulatory-compliance/hipaa): Learn about how applications built with Expo can be HIPAA compliant.
+
+- [Overview of tutorials and UI guides](https://docs.expo.dev/tutorial/overview)
+
+## Expo tutorial
+
+- [Tutorial: Using React Native and Expo](https://docs.expo.dev/tutorial/introduction): An introduction to a React Native tutorial on how to build a universal app that runs on Android, iOS and the web using Expo.
+- [Create your first app](https://docs.expo.dev/tutorial/create-your-first-app): In this chapter, learn how to create a new Expo project.
+- [Add navigation](https://docs.expo.dev/tutorial/add-navigation): In this chapter, learn how to add navigation to the Expo app.
+- [Build a screen](https://docs.expo.dev/tutorial/build-a-screen): In this tutorial, learn how to use components such as React Native's Pressable and Expo Image to build a screen.
+- [Use an image picker](https://docs.expo.dev/tutorial/image-picker): In this tutorial, learn how to use Expo Image Picker.
+- [Create a modal](https://docs.expo.dev/tutorial/create-a-modal): In this tutorial, learn how to create a React Native modal to select an image.
+- [Add gestures](https://docs.expo.dev/tutorial/gestures): In this tutorial, learn how to implement gestures from React Native Gesture Handler and Reanimated libraries.
+- [Take a screenshot](https://docs.expo.dev/tutorial/screenshot): In this tutorial, learn how to capture a screenshot using a third-party library and Expo Media Library.
+- [Handle platform differences](https://docs.expo.dev/tutorial/platform-differences): In this tutorial, learn how to handle platform differences between native and web when creating a universal app.
+- [Configure status bar, splash screen and app icon](https://docs.expo.dev/tutorial/configuration): In this tutorial, learn the basics of how to configure a status bar, app icon, and splash screen.
+- [Learning resources](https://docs.expo.dev/tutorial/follow-up): Explore a curated list of resources to learn about Expo and React Native.
+
+## EAS tutorial
+
+- [EAS Tutorial: Introduction](https://docs.expo.dev/tutorial/eas/introduction): An introduction to the tutorial for building apps for Android and iOS using Expo Application Services (EAS) that covers the Build, Update, and Submit workflows.
+- [Configure a development build in cloud](https://docs.expo.dev/tutorial/eas/configure-development-build): Learn how to configure a development build for a project using EAS Build.
+- [Create and run a cloud build for Android](https://docs.expo.dev/tutorial/eas/android-development-build): Learn how to configure a development build for Android devices and emulators using EAS Build.
+- [Create and run a cloud build for iOS Simulator](https://docs.expo.dev/tutorial/eas/ios-development-build-for-simulators): Learn how to configure a development build for iOS Simulators using EAS Build.
+- [Create and run a cloud build for iOS device](https://docs.expo.dev/tutorial/eas/ios-development-build-for-devices): Learn how to configure a development build for iOS devices using EAS Build.
+- [Configure multiple app variants](https://docs.expo.dev/tutorial/eas/multiple-app-variants): Learn how to configure dynamic app config to install multiple app variants on a single device.
+- [Create and share internal distribution build](https://docs.expo.dev/tutorial/eas/internal-distribution-builds): Learn about internal distribution builds, why we need them, and how to create them.
+- [Manage different app versions](https://docs.expo.dev/tutorial/eas/manage-app-versions): Learn about developer-facing and user-facing app versions and how EAS Build automatically manages developer-facing versions.
+- [Create a production build for Android](https://docs.expo.dev/tutorial/eas/android-production-build): Learn about the process of creating a production build for Android and automating the release process.
+- [Create a production build for iOS](https://docs.expo.dev/tutorial/eas/ios-production-build): Learn about the process of creating a production build for iOS and automating the release process.
+- [Share previews with your team](https://docs.expo.dev/tutorial/eas/team-development): Learn how to use EAS Update to send OTA updates and share previews with a team.
+- [Trigger builds from a GitHub repository](https://docs.expo.dev/tutorial/eas/using-github): Learn about the process of triggering builds from a GitHub repository.
+- [Next steps](https://docs.expo.dev/tutorial/eas/next-steps): Learn about the next steps in your journey with EAS.
+
+## More
+
+- [Additional resources](https://docs.expo.dev/additional-resources)
+
+- [Introduction](https://docs.expo.dev/eas)
+- [Configuration with eas.json](https://docs.expo.dev/eas/json): Learn about available properties for EAS Build and EAS Submit to configure and override their default behavior from within your project.
+- [EAS CLI reference](https://docs.expo.dev/eas/cli): EAS CLI is a command-line tool that allows you to interact with Expo Application Services (EAS) from your terminal.
+- [Environment variables in EAS](https://docs.expo.dev/eas/environment-variables): Learn how to use and manage environment variables in EAS with examples.
+
+## AI
+
+- [Using Model Context Protocol (MCP) with Expo](https://docs.expo.dev/eas/ai/mcp): A guide on integrating Model Context Protocol with Expo projects to enhance AI model capabilities.
+
+## EAS Workflows
+
+- [Get started with EAS Workflows](https://docs.expo.dev/eas/workflows/get-started): Learn how to use EAS Workflows to automate your React Native CI/CD development and release processes.
+- [Pre-packaged jobs in EAS Workflows](https://docs.expo.dev/eas/workflows/pre-packaged-jobs): Learn how to set up and use pre-packaged jobs in EAS Workflows.
+- [Syntax for EAS Workflows](https://docs.expo.dev/eas/workflows/syntax): Reference guide for the EAS Workflows configuration file syntax.
+- [Automating EAS CLI commands](https://docs.expo.dev/eas/workflows/automating-eas-cli): Learn how to automate sequences of EAS CLI commands with EAS Workflows.
+- [EAS Workflows limitations](https://docs.expo.dev/eas/workflows/limitations): Learn about the current limitations of EAS Workflows.
+
+### Examples
+- [EAS Workflows examples](https://docs.expo.dev/eas/workflows/examples/introduction): Common React Native CI/CD workflows for developing, reviewing, and releasing your app.
+- [Create development builds with EAS Workflows](https://docs.expo.dev/eas/workflows/examples/create-development-builds): Learn how to create development builds with EAS Workflows.
+- [Publish preview updates with EAS Workflows](https://docs.expo.dev/eas/workflows/examples/publish-preview-update): Learn how to publish preview updates with EAS Workflows.
+- [Deploy to production with EAS Workflows](https://docs.expo.dev/eas/workflows/examples/deploy-to-production): Learn how to deploy to production with EAS Workflows.
+- [Run E2E tests on EAS Workflows and Maestro](https://docs.expo.dev/eas/workflows/examples/e2e-tests): Learn how to set up and run E2E tests on EAS Workflows with Maestro.
+
+## EAS Build
+
+- [EAS Build](https://docs.expo.dev/build/introduction): EAS Build is a hosted service for building app binaries for your Expo and React Native projects.
+- [Create your first build](https://docs.expo.dev/build/setup): Learn how to create a build for your app with EAS Build.
+- [Configure EAS Build with eas.json](https://docs.expo.dev/build/eas-json): Learn how a project using EAS services is configured with eas.json.
+- [Internal distribution](https://docs.expo.dev/build/internal-distribution): Learn how EAS Build provides shareable URLs for your builds with your team for internal distribution.
+- [Automate submissions](https://docs.expo.dev/build/automate-submissions): Learn how to enable automatic submissions with EAS Build.
+- [Using EAS Update](https://docs.expo.dev/build/updates): Learn how to use EAS Update with EAS Build.
+- [Trigger builds from CI](https://docs.expo.dev/build/building-on-ci): Learn how to trigger builds on EAS for your app from a CI environment such as GitHub Actions and more.
+- [Trigger builds from the Expo GitHub App](https://docs.expo.dev/build/building-from-github): Learn how to trigger builds on EAS for your app using the Expo GitHub App.
+- [Expo Orbit](https://docs.expo.dev/build/orbit): Accelerate your development workflow with one-click build and update launches and simulator management.
+
+### App signing
+- [App credentials](https://docs.expo.dev/app-signing/app-credentials): Learn about what app credentials Android and iOS require.
+- [Using automatically managed credentials](https://docs.expo.dev/app-signing/managed-credentials): Learn how to automatically manage your app credentials with EAS.
+- [Using local credentials](https://docs.expo.dev/app-signing/local-credentials): Learn how to configure and use local credentials when using EAS.
+- [Using existing credentials](https://docs.expo.dev/app-signing/existing-credentials): Learn about different options for supplying your app signing credentials to EAS Build.
+- [Sync credentials between remote and local sources](https://docs.expo.dev/app-signing/syncing-credentials): Learn how to sync credentials between remote and local sources.
+- [Security](https://docs.expo.dev/app-signing/security): Learn how credentials and other sensitive data are handled when using EAS.
+- [Apple Developer Program roles and permissions for EAS Build](https://docs.expo.dev/app-signing/apple-developer-program-roles-and-permissions): Learn about the Apple Developer account membership requirements for creating an EAS Build.
+
+### Custom builds
+- [Get started with custom builds](https://docs.expo.dev/custom-builds/get-started): Learn how to extend EAS Build with custom builds.
+- [Custom build configuration schema](https://docs.expo.dev/custom-builds/schema): A reference of configuration options for custom builds with EAS Build.
+- [TypeScript functions](https://docs.expo.dev/custom-builds/functions): Learn how to create and use EAS Build functions in your custom build configurations.
+
+### Reference
+- [Build lifecycle hooks](https://docs.expo.dev/build-reference/npm-hooks): Learn how to use the EAS Build lifecycle hooks with npm to customize your build process.
+- [Using private npm packages](https://docs.expo.dev/build-reference/private-npm-packages): Learn how to configure EAS Build to use private npm packages.
+- [Using Git submodules](https://docs.expo.dev/build-reference/git-submodules): Learn how to configure EAS Build to use git submodules.
+- [Using npm cache with Yarn 1 (Classic)](https://docs.expo.dev/build-reference/npm-cache-with-yarn): Learn how to use npm cache by overriding the registry in Yarn 1 (Classic).
+- [Set up EAS Build with a monorepo](https://docs.expo.dev/build-reference/build-with-monorepos): Learn how to set up EAS Build with a monorepo.
+- [Build APKs for Android Emulators and devices](https://docs.expo.dev/build-reference/apk): Learn how to configure and install a .apk for Android Emulators and devices when using EAS Build.
+- [Build for iOS Simulators](https://docs.expo.dev/build-reference/simulators): Learn how to configure and install build for iOS simulators when using EAS Build.
+- [App version management](https://docs.expo.dev/build-reference/app-versions): Learn about different version types and how to manage them remotely or locally.
+- [Troubleshoot build errors and crashes](https://docs.expo.dev/build-reference/troubleshooting): A reference for troubleshooting build errors and crashes when using EAS Build.
+- [Install app variants on the same device](https://docs.expo.dev/build-reference/variants): Learn how to install multiple variants of an app on the same device.
+- [iOS capabilities](https://docs.expo.dev/build-reference/ios-capabilities): Learn about built-in iOS capabilities supported in EAS Build and how to enable or disable them.
+- [Run EAS Build locally with local flag](https://docs.expo.dev/build-reference/local-builds): Learn how to use EAS Build locally on your machine or a custom infrastructure using the --local flag.
+- [Cache dependencies](https://docs.expo.dev/build-reference/caching): Learn how to speed up your builds by caching dependencies.
+- [Android build process](https://docs.expo.dev/build-reference/android-builds): Learn how an Android project is built on EAS Build.
+- [iOS build process](https://docs.expo.dev/build-reference/ios-builds): Learn how an iOS project is built on EAS Build.
+- [Build configuration process](https://docs.expo.dev/build-reference/build-configuration): Learn how EAS CLI configures a project for EAS Build.
+- [Build server infrastructure](https://docs.expo.dev/build-reference/infrastructure): Learn about the current build server infrastructure when using EAS.
+- [iOS App Extensions](https://docs.expo.dev/build-reference/app-extensions): Learn how to use app extensions with EAS Build to add custom functionality.
+- [Ignore files via .easignore](https://docs.expo.dev/build-reference/easignore): Learn how to configure EAS to ignore unnecessary files during the build process.
+- [npx testflight command](https://docs.expo.dev/build-reference/npx-testflight): A single command that allows you to build, sign, and submit your iOS app to TestFlight.
+- [EAS Build Limitations](https://docs.expo.dev/build-reference/limitations): Learn about the current limitations of EAS Build.
+
+## EAS Submit
+
+- [EAS Submit](https://docs.expo.dev/submit/introduction): EAS Submit is a hosted service for uploading and submitting an app binary to the app stores.
+- [Submit to the Google Play Store](https://docs.expo.dev/submit/android): Learn how to submit your app to the Google Play Store from your computer and CI/CD services.
+- [Submit to the Apple App Store](https://docs.expo.dev/submit/ios): Learn how to submit your app to the Apple App Store from your computer and CI/CD services.
+- [Configure EAS Submit with eas.json](https://docs.expo.dev/submit/eas-json): Learn how to configure your project for EAS Submit with eas.json.
+
+## EAS Hosting
+
+- [Introduction to EAS Hosting](https://docs.expo.dev/eas/hosting/introduction): EAS Hosting is a service for quickly deploying the web projects built using the Expo Router library and React Native web.
+- [Deploy your first Expo Router and React app](https://docs.expo.dev/eas/hosting/get-started): Learn how to deploy your Expo Router and React apps to EAS Hosting.
+- [Assign aliases and promote to production](https://docs.expo.dev/eas/hosting/deployments-and-aliases): Learn about deployment URLs and how to set up aliases.
+- [Environment variables in EAS Hosting](https://docs.expo.dev/eas/hosting/environment-variables): Learn how to use environment variables in your project when using EAS Hosting.
+- [Custom domain](https://docs.expo.dev/eas/hosting/custom-domain): Set up a custom domain for your production deployment.
+- [API Routes](https://docs.expo.dev/eas/hosting/api-routes): Learn how to inspect requests from API routes on the EAS Hosting dashboard.
+- [Web deployments with EAS Workflows](https://docs.expo.dev/eas/hosting/workflows): Learn how to automate website and server deployments with EAS Hosting and Workflows.
+
+### Reference
+- [Caching with EAS Hosting deployments](https://docs.expo.dev/eas/hosting/reference/caching): Learn how caching works on EAS Hosting.
+- [Default responses and headers](https://docs.expo.dev/eas/hosting/reference/responses-and-headers): Defaults that are added automatically on requests when using EAS Hosting.
+- [EAS Hosting worker runtime](https://docs.expo.dev/eas/hosting/reference/worker-runtime): Learn about EAS Hosting worker runtime and Node.js compatibility.
+
+## EAS Update
+
+- [EAS Update](https://docs.expo.dev/eas-update/introduction): An introduction to EAS Update which is a hosted service for projects using the expo-updates library.
+- [Get started with EAS Update](https://docs.expo.dev/eas-update/getting-started): Learn how to get started with the setup required to configure and use EAS Update in your project.
+
+### Preview
+- [Preview updates](https://docs.expo.dev/eas-update/preview): Learn how to preview updates in development, preview, and production builds.
+- [Override update configuration at runtime](https://docs.expo.dev/eas-update/override): Learn how to override the update URL and request headers at runtime to control which update is loaded on the client side.
+- [Preview updates in development builds](https://docs.expo.dev/eas-update/expo-dev-client): Learn how to use the expo-dev-client library to preview a published EAS Update inside a development build.
+- [GitHub Action for PR previews](https://docs.expo.dev/eas-update/github-actions): Learn how to use GitHub Actions to automate publishing updates with EAS Update.
+
+### Deployment
+- [Deploy updates](https://docs.expo.dev/eas-update/deployment): Learn a simple but powerful process for safely deploying updates to your users.
+- [Downloading updates](https://docs.expo.dev/eas-update/download-updates): Learn strategies for downloading and launching updates.
+- [Rollouts](https://docs.expo.dev/eas-update/rollouts): Learn how to incrementally deploy updates to your users by using a rollout mechanism.
+- [Rollbacks](https://docs.expo.dev/eas-update/rollbacks): Rollback a branch to a previous update or the embedded update.
+- [Optimize assets for EAS Update](https://docs.expo.dev/eas-update/optimize-assets): Learn how EAS Update downloads assets and how to optimize them for download size.
+- [Alternative deployment patterns](https://docs.expo.dev/eas-update/deployment-patterns): Learn about different deployment patterns for your project when using EAS Update.
+
+### Concepts
+- [How EAS Update works](https://docs.expo.dev/eas-update/how-it-works): A conceptual overview of how EAS Update works.
+- [Manage branches and channels with EAS CLI](https://docs.expo.dev/eas-update/eas-cli): Learn how to link a branch to a channel and publish updates with EAS CLI.
+- [Runtime versions and updates](https://docs.expo.dev/eas-update/runtime-versions): Learn about different runtime version policies and how they may suit your project.
+
+### Troubleshooting
+- [EAS Update Debugging](https://docs.expo.dev/eas-update/debug): Learn how to use basic debugging techniques to fix an update issue.
+- [Error recovery](https://docs.expo.dev/eas-update/error-recovery): Learn how to take advantage of using built-in error recovery when using expo-updates library.
+
+### Reference
+- [End-to-end code signing with EAS Update](https://docs.expo.dev/eas-update/code-signing): Learn how code signing and key rotation work in EAS Update.
+- [Asset selection and exclusion](https://docs.expo.dev/eas-update/asset-selection): Learn how to use the asset selection feature and verify that an update includes all required app assets.
+- [Using EAS Update without other EAS services](https://docs.expo.dev/eas-update/standalone-service): Learn how to use EAS Update independently of other EAS services, such as Build.
+- [Request proxying](https://docs.expo.dev/eas-update/request-proxying): Proxy requests to the EAS Update server through your own server.
+- [Migrate from CodePush](https://docs.expo.dev/eas-update/codepush): A guide to help migrate from CodePush to EAS Update.
+- [Migrate from Classic Updates](https://docs.expo.dev/eas-update/migrate-from-classic-updates): A guide to help migrate from Classic Updates to EAS Update.
+- [How to trace an update ID back to the EAS dashboard](https://docs.expo.dev/eas-update/trace-update-id-expo-dashboard): Learn how to trace an update ID back to the EAS dashboard when using EAS Update and expo-updates library.
+- [Estimate bandwidth usage](https://docs.expo.dev/eas-update/estimate-bandwidth): Learn how to estimate bandwidth usage for EAS Update.
+- [Using EAS Update in an existing native app](https://docs.expo.dev/eas-update/integration-in-existing-native-apps): Learn how to integrate EAS Update into your existing native Android and iOS app to enable over-the-air updates.
+- [EAS Update FAQ](https://docs.expo.dev/eas-update/faq): Frequently asked questions about EAS Update.
+
+## EAS Metadata
+
+- [Introduction](https://docs.expo.dev/eas/metadata)
+- [Get started with EAS Metadata](https://docs.expo.dev/eas/metadata/getting-started): Learn how to automate and maintain your app store presence from the command line with EAS Metadata.
+
+### Reference
+- [Configuring EAS Metadata](https://docs.expo.dev/eas/metadata/config): Learn about different ways to configure EAS Metadata.
+- [Schema for EAS Metadata](https://docs.expo.dev/eas/metadata/schema): A reference of store config in EAS Metadata.
+- [EAS Metadata FAQ](https://docs.expo.dev/eas/metadata/faq): Frequently asked questions about EAS Metadata.
+
+## EAS Insights
+
+- [EAS Insights](https://docs.expo.dev/eas-insights/introduction): An introduction to EAS Insights which is a preview service for projects using the expo-insights library.
+
+## Distribution
+
+- [Distribution: Overview](https://docs.expo.dev/distribution/introduction): An overview of submitting an app to the app stores or with the internal distribution.
+- [App stores best practices](https://docs.expo.dev/distribution/app-stores): Learn about the best practices when submitting an app to the app stores.
+- [App transfers](https://docs.expo.dev/distribution/app-transfers): An overview of transferring the ownership of an app to a different entity.
+- [Understanding app size](https://docs.expo.dev/distribution/app-size): Learn about how to determine what the actual size of your app will be when distributed to users, and how to get insights into your app size and optimize it.
+
+## Reference
+
+- [Webhooks](https://docs.expo.dev/eas/webhooks): Learn how to configure webhooks to get alerts on EAS Build and Submit completion.
+
+### Expo accounts
+- [Account types](https://docs.expo.dev/accounts/account-types): Learn about the different types of Expo accounts and how to use them.
+- [Two-factor authentication](https://docs.expo.dev/accounts/two-factor): Learn about how you leverage two-factor authentication (2FA) to secure your Expo account.
+- [Programmatic access](https://docs.expo.dev/accounts/programmatic-access): Learn about types of access tokens and how to use them.
+- [Single Sign-On (SSO)](https://docs.expo.dev/accounts/sso): Learn how your organization can use your identity provider to manage Expo users on your team.
+- [Audit logs](https://docs.expo.dev/accounts/audit-logs): Learn how to track and analyze your account's activities by using the audit logs.
+
+### Billing
+- [Billing: Overview](https://docs.expo.dev/billing/overview): An overview of information on billing and subscriptions to manage your EAS account's plans, invoices, receipts, payments, and usage.
+- [Subscriptions, plans, and add-ons](https://docs.expo.dev/billing/plans): In-depth guide on available Expo Application Services (EAS) plans and how they work, usage-based pricing and add-ons.
+- [Manage plans and billing](https://docs.expo.dev/billing/manage): Learn how to update, downgrade, or cancel your Expo account's plans and manage billing details.
+- [View payment history, invoices, and receipts](https://docs.expo.dev/billing/invoices-and-receipts): Learn how to view your account's payment history, download invoices and receipts, and request a refund for a charge.
+- [Usage-based pricing](https://docs.expo.dev/billing/usage-based-pricing): Learn how Expo applies usage-based billing for customers who exceed their plan quotas and how to monitor your EAS Build usage.
+- [Plans, Billing, and Payment FAQs](https://docs.expo.dev/billing/faq): A reference of commonly asked questions on Expo Application Services (EAS) plans, billing, and payment.
+
+## Configuration files
+
+- [app.json / app.config.js](https://docs.expo.dev/versions/latest/config/app): A reference of available properties in Expo app config.
+- [babel.config.js](https://docs.expo.dev/versions/latest/config/babel): A reference for Babel configuration file.
+- [metro.config.js](https://docs.expo.dev/versions/latest/config/metro): A reference of available configurations in Metro.
+- [package.json](https://docs.expo.dev/versions/latest/config/package-json): A reference for Expo-specific properties that can be used in the package.json file.
+
+## Expo SDK
+
+- [Expo](https://docs.expo.dev/versions/latest/sdk/expo): Set of common methods and types for Expo and related packages.
+- [Accelerometer](https://docs.expo.dev/versions/latest/sdk/accelerometer): A library that provides access to the device's accelerometer sensor.
+- [AgeRange](https://docs.expo.dev/versions/latest/sdk/age-range): A library that provides access to age range information using Play Age Signals API on Android and Declared Age Range framework on iOS.
+- [AppIntegrity](https://docs.expo.dev/versions/latest/sdk/app-integrity): A library that provides access to Google's Play Integrity API on Android and Apple's App Attest service on iOS.
+- [AppleAuthentication](https://docs.expo.dev/versions/latest/sdk/apple-authentication): A library that provides Sign-in with Apple capability for iOS.
+- [Application](https://docs.expo.dev/versions/latest/sdk/application): A universal library that provides information about the native application's ID, app name, and build version at runtime.
+- [Asset](https://docs.expo.dev/versions/latest/sdk/asset): A universal library that allows downloading assets and using them with other libraries.
+- [Audio (expo-audio)](https://docs.expo.dev/versions/latest/sdk/audio): A library that provides an API to implement audio playback and recording in apps.
+- [Audio (expo-av)](https://docs.expo.dev/versions/latest/sdk/audio-av): A library that provides an API to implement audio playback and recording in apps.
+- [AuthSession](https://docs.expo.dev/versions/latest/sdk/auth-session): A universal library that provides an API to handle browser-based authentication.
+- [AV](https://docs.expo.dev/versions/latest/sdk/av): A universal library that provides separate APIs for Audio and Video playback.
+- [BackgroundFetch](https://docs.expo.dev/versions/latest/sdk/background-fetch): A library that provides API for performing background fetch tasks.
+- [BackgroundTask](https://docs.expo.dev/versions/latest/sdk/background-task): A library that provides an API for running background tasks.
+- [Barometer](https://docs.expo.dev/versions/latest/sdk/barometer): A library that provides access to device's barometer sensor.
+- [Battery](https://docs.expo.dev/versions/latest/sdk/battery): A library that provides battery information for the physical device, as well as corresponding event listeners.
+- [Blob](https://docs.expo.dev/versions/latest/sdk/blob): A web standards-compliant Blob implementation for React Native.
+- [BlurView](https://docs.expo.dev/versions/latest/sdk/blur-view): A React component that blurs everything underneath the view.
+- [Brightness](https://docs.expo.dev/versions/latest/sdk/brightness): A library that provides access to an API for getting and setting the screen brightness.
+- [BuildProperties](https://docs.expo.dev/versions/latest/sdk/build-properties): A config plugin that allows customizing native build properties during prebuild.
+- [Calendar](https://docs.expo.dev/versions/latest/sdk/calendar): A library that provides an API for interacting with the device's system calendars, events, reminders, and associated records.
+- [Camera](https://docs.expo.dev/versions/latest/sdk/camera): A React component that renders a preview for the device's front or back camera.
+- [Cellular](https://docs.expo.dev/versions/latest/sdk/cellular): An API that provides information about the user's cellular service provider.
+- [Checkbox](https://docs.expo.dev/versions/latest/sdk/checkbox): A universal React component that provides basic checkbox functionality.
+- [Clipboard](https://docs.expo.dev/versions/latest/sdk/clipboard): A universal library that allows getting and setting Clipboard content.
+- [Constants](https://docs.expo.dev/versions/latest/sdk/constants): An API that provides system information that remains constant throughout the lifetime of your app's installation.
+- [Contacts](https://docs.expo.dev/versions/latest/sdk/contacts): A library that provides access to the phone's system contacts.
+- [Crypto](https://docs.expo.dev/versions/latest/sdk/crypto): A universal library for crypto operations.
+- [DevClient](https://docs.expo.dev/versions/latest/sdk/dev-client): A library that allows creating a development build and includes useful development tools.
+- [Device](https://docs.expo.dev/versions/latest/sdk/device): A universal library provides access to system information about the physical device.
+- [DeviceMotion](https://docs.expo.dev/versions/latest/sdk/devicemotion): A library that provides access to a device's motion and orientation sensors.
+- [DocumentPicker](https://docs.expo.dev/versions/latest/sdk/document-picker): A library that provides access to the system's UI for selecting documents from the available providers on the user's device.
+- [FileSystem](https://docs.expo.dev/versions/latest/sdk/filesystem): A library that provides access to the local file system on the device.
+- [FileSystem (legacy)](https://docs.expo.dev/versions/latest/sdk/filesystem-legacy): A library that provides access to the local file system on the device.
+- [Expo Fingerprint](https://docs.expo.dev/versions/latest/sdk/fingerprint): A library to generate a fingerprint from a React Native project.
+- [Font](https://docs.expo.dev/versions/latest/sdk/font): A library that allows loading fonts at runtime and using them in React Native components.
+- [GlassEffect](https://docs.expo.dev/versions/latest/sdk/glass-effect): React components that render a liquid glass effect using iOS's native UIVisualEffectView.
+- [GLView](https://docs.expo.dev/versions/latest/sdk/gl-view): A library that provides GLView that acts as an OpenGL ES render target and provides GLContext. Useful for rendering 2D and 3D graphics.
+- [Gyroscope](https://docs.expo.dev/versions/latest/sdk/gyroscope): A library that provides access to the device's gyroscope sensor.
+- [Haptics](https://docs.expo.dev/versions/latest/sdk/haptics): A library that provides access to the system's vibration effects on Android, the haptics engine on iOS, and the Web Vibration API on web.
+- [Image](https://docs.expo.dev/versions/latest/sdk/image): A cross-platform and performant React component that loads and renders images.
+- [ImageManipulator](https://docs.expo.dev/versions/latest/sdk/imagemanipulator): A library that provides an API for image manipulation on the local file system.
+- [ImagePicker](https://docs.expo.dev/versions/latest/sdk/imagepicker): A library that provides access to the system's UI for selecting images and videos from the phone's library or taking a photo with the camera.
+- [IntentLauncher](https://docs.expo.dev/versions/latest/sdk/intent-launcher): A library that provides an API to launch Android intents.
+- [KeepAwake](https://docs.expo.dev/versions/latest/sdk/keep-awake): A React component that prevents the screen from sleeping when rendered.
+- [LightSensor](https://docs.expo.dev/versions/latest/sdk/light-sensor): A library that provides access to the device's light sensor.
+- [LinearGradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient): A universal React component that renders a gradient view.
+- [Linking](https://docs.expo.dev/versions/latest/sdk/linking): An API that provides methods to create and open deep links universally.
+- [LivePhoto](https://docs.expo.dev/versions/latest/sdk/live-photo): A library that allows displaying Live Photos on iOS.
+- [LocalAuthentication](https://docs.expo.dev/versions/latest/sdk/local-authentication): A library that provides functionality for implementing the Fingerprint API (Android) or FaceID and TouchID (iOS) to authenticate the user with a face or fingerprint scan.
+- [Localization](https://docs.expo.dev/versions/latest/sdk/localization): A library that provides an interface for native user localization information.
+- [Location](https://docs.expo.dev/versions/latest/sdk/location): A library that provides access to reading geolocation information, polling current location or subscribing location update events from the device.
+- [Magnetometer](https://docs.expo.dev/versions/latest/sdk/magnetometer): A library that provides access to the device's magnetometer sensor.
+- [MailComposer](https://docs.expo.dev/versions/latest/sdk/mail-composer): A library that provides functionality to compose and send emails with the system's specific UI.
+- [Manifests](https://docs.expo.dev/versions/latest/sdk/manifests): A library that provides types for Expo Manifests.
+- [Maps](https://docs.expo.dev/versions/latest/sdk/maps): A library that provides access to Google Maps on Android and Apple Maps on iOS.
+- [MediaLibrary](https://docs.expo.dev/versions/latest/sdk/media-library): A library that provides access to the device's media library.
+- [MeshGradient](https://docs.expo.dev/versions/latest/sdk/mesh-gradient): A module that exposes MeshGradient view from SwiftUI to React Native.
+- [NavigationBar](https://docs.expo.dev/versions/latest/sdk/navigation-bar): A library that provides access to various interactions with the native navigation bar on Android.
+- [Network](https://docs.expo.dev/versions/latest/sdk/network): A library that provides access to the device's network such as its IP address, MAC address, and airplane mode status.
+- [Notifications](https://docs.expo.dev/versions/latest/sdk/notifications): A library that provides an API to fetch push notification tokens and to present, schedule, receive and respond to notifications.
+- [Pedometer](https://docs.expo.dev/versions/latest/sdk/pedometer): A library that provides access to the device's pedometer sensor.
+- [Print](https://docs.expo.dev/versions/latest/sdk/print): A library that provides printing functionality for Android and iOS (AirPrint).
+- [Router](https://docs.expo.dev/versions/latest/sdk/router): A file-based routing library for React Native and web applications.
+- [Router native tabs](https://docs.expo.dev/versions/latest/sdk/router-native-tabs): An Expo Router submodule that provides native tabs layout.
+- [Router UI](https://docs.expo.dev/versions/latest/sdk/router-ui): An Expo Router submodule that provides headless tab components to create custom tab layouts.
+- [ScreenCapture](https://docs.expo.dev/versions/latest/sdk/screen-capture): A library that allows you to protect screens in your app from being captured or recorded.
+- [ScreenOrientation](https://docs.expo.dev/versions/latest/sdk/screen-orientation): A universal library for managing a device's screen orientation.
+- [SecureStore](https://docs.expo.dev/versions/latest/sdk/securestore): A library that provides a way to encrypt and securely store key-value pairs locally on the device.
+- [Sensors](https://docs.expo.dev/versions/latest/sdk/sensors): A library that provides access to a device's accelerometer, barometer, motion, gyroscope, light, magnetometer, and pedometer.
+- [Server](https://docs.expo.dev/versions/latest/sdk/server): Server-side API and runtime for Expo Router projects.
+- [Sharing](https://docs.expo.dev/versions/latest/sdk/sharing): A library that provides implementing sharing files.
+- [SMS](https://docs.expo.dev/versions/latest/sdk/sms): A library that provides access to the system's UI/app for sending SMS messages.
+- [Speech](https://docs.expo.dev/versions/latest/sdk/speech): A library that provides access to text-to-speech functionality.
+- [SplashScreen](https://docs.expo.dev/versions/latest/sdk/splash-screen): A library that provides access to controlling the visibility behavior of native splash screen.
+- [SQLite](https://docs.expo.dev/versions/latest/sdk/sqlite): A library that provides access to a database that can be queried through a SQLite API.
+- [StatusBar](https://docs.expo.dev/versions/latest/sdk/status-bar): A library that provides the same interface as the React Native StatusBar API, but with slightly different defaults to work great in Expo environments.
+- [StoreReview](https://docs.expo.dev/versions/latest/sdk/storereview): A library that provides access to native APIs for in-app reviews.
+- [Symbols](https://docs.expo.dev/versions/latest/sdk/symbols): A library that allows access to native symbols.
+- [SystemUI](https://docs.expo.dev/versions/latest/sdk/system-ui): A library that allows interacting with system UI elements.
+- [TaskManager](https://docs.expo.dev/versions/latest/sdk/task-manager): A library that provides support for tasks that can run in the background.
+- [TrackingTransparency](https://docs.expo.dev/versions/latest/sdk/tracking-transparency): A library for tracking app users and managing tracking permissions.
+- [Updates](https://docs.expo.dev/versions/latest/sdk/updates): A library that enables your app to manage remote updates to your application code.
+- [Video (expo-av)](https://docs.expo.dev/versions/latest/sdk/video-av): A library that provides an API to implement video playback and recording in apps.
+- [Video (expo-video)](https://docs.expo.dev/versions/latest/sdk/video): A library that provides an API to implement video playback in apps.
+- [VideoThumbnails](https://docs.expo.dev/versions/latest/sdk/video-thumbnails): A library that allows you to generate an image to serve as a thumbnail from a video file.
+- [WebBrowser](https://docs.expo.dev/versions/latest/sdk/webbrowser): A library that provides access to the system's web browser and supports handling redirects.
+
+### UI
+- [Overview](https://docs.expo.dev/versions/latest/sdk/ui)
+- [Jetpack Compose](https://docs.expo.dev/versions/latest/sdk/ui/jetpack-compose): Jetpack Compose components for building native Android interfaces with @expo/ui.
+- [SwiftUI](https://docs.expo.dev/versions/latest/sdk/ui/swift-ui): SwiftUI components for building native iOS interfaces with @expo/ui.
+
+## Third-party libraries
+
+- [Third-party libraries supported in Expo Go](https://docs.expo.dev/versions/latest/sdk/third-party-overview): A set of third-party libraries which support for is included by default in Expo Go environment.
+- [@react-native-async-storage/async-storage](https://docs.expo.dev/versions/latest/sdk/async-storage): A library that provides an asynchronous, unencrypted, persistent, key-value storage API.
+- [@react-native-community/datetimepicker](https://docs.expo.dev/versions/latest/sdk/date-time-picker): A component that provides access to the system UI for date and time selection.
+- [@react-native-community/netinfo](https://docs.expo.dev/versions/latest/sdk/netinfo): A cross-platform API that provides access to network information.
+- [@react-native-community/slider](https://docs.expo.dev/versions/latest/sdk/slider): A React Native component library that provides access to the system UI for a slider control.
+- [@react-native-masked-view/masked-view](https://docs.expo.dev/versions/latest/sdk/masked-view): A library that provides a masked view.
+- [@react-native-picker/picker](https://docs.expo.dev/versions/latest/sdk/picker): A cross-platform component that provides access to the system UI for picking between several options.
+- [@react-native-segmented-control/segmented-control](https://docs.expo.dev/versions/latest/sdk/segmented-control): A React Native library that provides a component to render UISegmentedControl from iOS.
+- [@shopify/flash-list](https://docs.expo.dev/versions/latest/sdk/flash-list): A React Native component that provides a fast and performant way to render lists.
+- [@shopify/react-native-skia](https://docs.expo.dev/versions/latest/sdk/skia): A React Native library for creating graphics using Skia.
+- [@stripe/stripe-react-native](https://docs.expo.dev/versions/latest/sdk/stripe): A library that provides access to native APIs for integrating Stripe payments.
+- [react-native-gesture-handler](https://docs.expo.dev/versions/latest/sdk/gesture-handler): A library that provides an API for handling complex gestures.
+- [react-native-keyboard-controller](https://docs.expo.dev/versions/latest/sdk/keyboard-controller): A library that provides a Keyboard manager that works in an identical way on Android and iOS
+- [react-native-maps](https://docs.expo.dev/versions/latest/sdk/map-view): A library that provides a Map component that uses Google Maps on Android and Apple Maps or Google Maps on iOS.
+- [react-native-pager-view](https://docs.expo.dev/versions/latest/sdk/view-pager): A component library that provides a carousel-like view to swipe through pages of content.
+- [react-native-reanimated](https://docs.expo.dev/versions/latest/sdk/reanimated): A library that provides an API that greatly simplifies the process of creating smooth, powerful, and maintainable animations.
+- [react-native-safe-area-context](https://docs.expo.dev/versions/latest/sdk/safe-area-context): A library with a flexible API for accessing the device's safe area inset information.
+- [react-native-screens](https://docs.expo.dev/versions/latest/sdk/screens): A library that provides native primitives to represent screens for better operating system behavior and screen optimizations.
+- [react-native-svg](https://docs.expo.dev/versions/latest/sdk/svg): A library that allows using SVGs in your app.
+- [react-native-view-shot](https://docs.expo.dev/versions/latest/sdk/captureRef): A library that allows you to capture a React Native view and save it as an image.
+- [react-native-webview](https://docs.expo.dev/versions/latest/sdk/webview): A library that provides a WebView component.
+
+## Technical specs
+
+- [Expo Updates v1](https://docs.expo.dev/technical-specs/expo-updates-1): Version 1
+- [Expo Structured Field Values](https://docs.expo.dev/technical-specs/expo-sfv-0): Version 0
+
+## More
+
+- [Expo CLI](https://docs.expo.dev/more/expo-cli): The Expo CLI is a command-line tool that is the primary interface between a developer and other Expo tools.
+- [create-expo-app](https://docs.expo.dev/more/create-expo): A command-line tool to create a new Expo and React Native project.
+- [qr.expo.dev](https://docs.expo.dev/more/qr-codes): Reference for the QR code generator at qr.expo.dev.
+- [Release statuses](https://docs.expo.dev/more/release-statuses): Learn about alpha, beta, and stable release statuses and how they affect feature stability when using Expo SDK and Expo Application Services (EAS).
+- [Glossary of terms](https://docs.expo.dev/more/glossary-of-terms): List of non-obvious terms used within the documentation, related to Expo or cross-platform development in general.
+
+## Conference Talks
+
+- [Keynote: streamline React Native development](https://www.youtube.com/watch?v=lnxanzsP1rM)
+- [Deploy Everywhere with Expo Router](https://www.youtube.com/watch?v=GKQ_0VfYweg)
+- [Embracing Native Code and Capabilities](https://www.youtube.com/watch?v=TLoHua8bzPg)
+- [Keynote: flexibility & iteration speed](https://www.youtube.com/watch?v=StTYy9Duk3E)
+- [Getting the most out of Expo Development Builds](https://www.youtube.com/watch?v=7J8LRpja9_o)
+- [Fetch Once, Render Everywhere](https://www.youtube.com/watch?v=BK2xbPW2uUU)
+- [Launching Desktop Apps to Orbit with React Native](https://www.youtube.com/watch?v=K7yC3JKfWYU)
+- [Keynote: community & workflows](https://www.youtube.com/watch?v=xHMu4oT6-SQ)
+- [EAS: Iterate with confidence](https://www.youtube.com/watch?v=LTui_5dqXyM)
+- [Expo Router: Write Once, Route Everywhere](https://www.youtube.com/watch?v=608r8etX_cg)
+- [Debugging should be easier](https://www.youtube.com/watch?v=sRLunWEzwHI)
+- [React Native on Linux with the New Architecture](https://www.youtube.com/watch?v=Ca4SNa6kL_M)
+- [Not your grandparents' Expo](https://www.youtube.com/watch?v=YufZFVL-BJc)
+- [Expo keynote](https://www.youtube.com/watch?v=ObeaMae0hug)
+- [The Hidden Features from V8 to Boost React Native](https://www.youtube.com/watch?v=6e0b2O6NRz4)
+- [Publish Updates with Expo and React Native](https://www.youtube.com/watch?v=d0wzwVp8dug)
+- [Limitless App Development](https://www.youtube.com/watch?v=YjJ0NG9MFkg)
+
+## Podcasts
+
+- [Expo SDK 54, Expo Router v6 & Expo UI Beta for iOS with Beto Moedano](https://podcast.galaxies.dev/episodes/081-expo-sdk-54-expo-router-v6-expo-ui-beta-for-ios-with-beto-moedano)
+- [RN Web vs React Strict DOM: Part 2, with Evan Bacon and James Ide](https://infinite.red/react-native-radio/rnr-340-rn-web-vs-react-strict-dom-part-2-with-evan-bacon-and-james-ide)
+- [Expo Atlas with Cedric van Putten](https://infinite.red/react-native-radio/rnr-333-expo-atlas-with-cedric-van-putten)
+- [Expo Router, RSC & DOM Components](https://podcast.galaxies.dev/episodes/059-expo-router-rsc-dom-components-with-evan-bacon)
+- [Universal React Native Apps with DOM & RSC](https://www.callstack.com/podcasts/universal-react-native-apps-with-dom-react-server-components)
+- [Streamlined React Native Development](https://softwareengineeringdaily.com/2025/01/01/streamlined-react-native-development-with-charlie-cheever-and-james-ide/)
+- [Debugging the Debugger](https://infinite.red/react-native-radio/rnr-316-debugging-the-debugger-with-cedric-van-putten-and-alex-hunt)
+- [What to do without App Center](https://infinite.red/react-native-radio/rnr-315-what-to-do-without-app-center)
+- [Expo Workflows with Jon Samp](https://infinite.red/react-native-radio/rnr-314-announcing-expo-workflows-with-jon-samp)
+- [How to Handle App Center Retirement](https://www.callstack.com/podcasts/how-to-handle-app-center-retirement)
+- [Using RSCs in Expo Router](https://podrocket.logrocket.com/using-rscs-expo-router-evan-bacon)
+- [Expo EAS and 100 Snakes](https://podcast.galaxies.dev/episodes/038-expo-eas-and-100-snakes-with-jon-samp)
+- [React Native Performance in 2024](https://www.callstack.com/podcasts/react-native-performance-in-2024-challenges-solutions-forecasts)
+- [Expo Router & Universal React Native Apps](https://podcast.galaxies.dev/episodes/028-expo-router-universal-react-native-apps-with-evan-bacon)
+- [Expo, build react-native app quicker](https://www.youtube.com/watch?v=Hnh5ew0jfKQ)
+- [EAS, Expo Prebuild & SDK 50](https://podcast.galaxies.dev/episodes/025-eas-expo-prebuild-sdk-50-with-kadi-kraman)
+- [Improving Developer Experience with Expo](https://www.youtube.com/watch?v=4PPDAvgfLHk)
+- [Expo Launch Party](https://infinite.red/react-native-radio/rnr-277-expo-launch-party)
+- [Expo Router with Evan Bacon](https://infinite.red/react-native-radio/rnr-256-expo-router-with-evan-bacon)
+- [Expo, Router & Debugging](https://podcast.galaxies.dev/episodes/007-expo-router-debugging-with-cedric-van-putten)
+
+## Live Streams
+
+- [Announcing the 2025 Expo App Award winners!](https://www.youtube.com/watch?v=KnZ3LWkXzSk)
+- [What's new in Expo SDK 54?](https://www.youtube.com/watch?v=KBlbkjqxNbM)
+- [Shipping with Expo: How to get your Bolt app to the app stores](https://www.youtube.com/watch?v=ViU7207_W54)
+- [How to use Protected Routes in Expo Router V5 for smooth auth](https://www.youtube.com/watch?v=XCTaMu0qnFY)
+- [Best practices for using Unistyles 3.0 to style cross platform applications](https://www.youtube.com/watch?v=K3wZg-Pxt3k)
+- [How to build mobile apps without writing a line of code with Bolt and Expo](https://www.youtube.com/watch?v=dT7hlszpO04)
+- [What is Legend List?](https://www.youtube.com/watch?v=XpZMveUCke8)
+- [How to add Apple home screen widgets to React apps](https://www.youtube.com/watch?v=hgmAMrVRzRM)
+- [Your 2025 React Native Tech Stack](https://www.youtube.com/watch?v=kqdrn-jEaXY)
+- [Radon IDE: the VS Code extension for React Native](https://www.youtube.com/watch?v=UeYmRKWhwFI)
+- [Building 4 apps in 4 weeks with Expo](https://www.youtube.com/watch?v=YOfLHtK8B04)
+- [Launch Week 2024 AMA](https://www.youtube.com/watch?v=NHpS9JaL7jA)
+- [Expo DOM component live demo](https://www.youtube.com/watch?v=jU4_1vpjahw)
+- [RNL Conf Fireside Interview: Charlie Cheever & Mo Javad](https://www.youtube.com/watch?v=ZBEkeRy3wjk)
+- [How to migrate a React website to native with Expo DOM components](https://www.youtube.com/watch?v=lLlu4fPMXes)
+- [New Architecture adoption strategies](https://www.youtube.com/watch?v=VqFwrEoni40)
+- [Hidden gems of the Expo Modules API](https://www.youtube.com/watch?v=nWY4GbIN0vY)
+- [Debugging with Sentry](https://www.youtube.com/watch?v=HO_KT0LbPs0)
+- [How to do React Native styling with Tamagui](https://www.youtube.com/watch?v=5ubbsSD-iXg)
+- [How to do React Native styling with NativeWind](https://www.youtube.com/watch?v=TtmWw0NfsQk)
+- [An introduction to built-in styling in React Native](https://www.youtube.com/watch?v=M1ma6Y5Ih_c)
+- [What React devs need to know about React Native](https://www.youtube.com/watch?v=iB7sc-fzpWw)
+- [Expo SDK 51: New Architecture, Router 3.5, expo.new and more](https://www.youtube.com/watch?v=k1ISWPgP4S4)
+- [What is Expo Orbit? Live demo of speeding up dev workflow](https://www.youtube.com/watch?v=vUoIoYq8WNM)
+- [How to build TV apps from scratch, and with Ignite stack](https://www.youtube.com/watch?v=PUMBWeLVuiw)
+- [Expo SDK 50: API Routes, Fingerprint, Dev Tools and SQLite](https://www.youtube.com/watch?v=cKFSVUo3AnI)
+
+## YouTube Tutorials
+
+- [How to add native iOS Widgets to your Expo app](https://www.youtube.com/watch?v=UH4ejdz3fko)
+- [How to send emails with Resend from your Expo app](https://www.youtube.com/watch?v=8sPD8SNcUFA)
+- [The fastest mobile QA workflow: Expo pull request previews in GitHub Actions](https://www.youtube.com/watch?v=7UVIrqrrrso)
+- [Getting started with Meta Horizon Development using Expo](https://www.youtube.com/watch?v=24G2tui0Ts8)
+- [How to make Expo apps faster | Expo app development best practices](https://www.youtube.com/watch?v=vFbim_U1Lmc)
+- [Learn how to use the new Icon Composer with Expo](https://www.youtube.com/watch?v=RZ_QMym3adw)
+- [Introducing Expo MCP Server](https://www.youtube.com/watch?v=dp9dpIgDxZQ)
+- [How to adopt Liquid Glass in an Expo app](https://www.youtube.com/watch?v=NMCQOBIwW2M)
+- [Liquid Glass Tabs with Expo Router v6 | Native Tabs](https://www.youtube.com/watch?v=QqNZXdGFl44)
+- [Expo UI iOS Liquid Glass Tutorial](https://www.youtube.com/watch?v=2wXYLWz3YEQ)
+- [Expo SDK 54: Liquid Glass, Expo UI, Expo Router v6, React 19, Link Previews](https://www.youtube.com/watch?v=iYh-7WfJTR0)
+- [How to upgrade from Expo SDK 53 to SDK 54 in 5 minutes](https://www.youtube.com/watch?v=QuN63BRRhAM)
+- [When to use over the air updates | Three important OTA use cases](https://www.youtube.com/watch?v=PMRekmaeb1o)
+- [Top 5 Expo SDK Features You're Not Using](https://www.youtube.com/watch?v=HQ_xzbq_BnQ)
+- [Repack Workflow Demo | Speed up CI builds by ~80%](https://www.youtube.com/watch?v=peZ36U87k-M)
+- [How to Add In-App Subscriptions with RevenueCat + Expo](https://www.youtube.com/watch?v=R3fLKC-2Qh0)
+- [How to build a Custom Expo Module](https://www.youtube.com/watch?v=zReFsPgUdMs)
+- [Speed up your Expo Builds with Remote Build Cache](https://www.youtube.com/watch?v=5SmaC-JQS_k)
+- [Build a Local-First Sketch App with Expo, Instant & Reanimated](https://www.youtube.com/watch?v=DEJIcaGN3vY)
+- [How to use Expo Background Tasks](https://www.youtube.com/watch?v=4lFus7TvayI)
+- [Building auth and onboarding flows with protected routes](https://www.youtube.com/watch?v=zHZjJDTTHJg)
+- [Golden Workflow: Automate the creation of development builds](https://www.youtube.com/watch?v=u8MAJ0F18s0)
+- [Golden Workflow: Share preview updates with your team](https://www.youtube.com/watch?v=v_rzRcVSQYQ)
+- [Golden Workflow: Deploy your app to production with an automated workflow](https://www.youtube.com/watch?v=o-peODF6E2o)
+- [How to publish your AI app to the app store | No code needed](https://www.youtube.com/watch?v=T1akm3DPNus)
+- [Learn how to build with the new expo-maps library](https://www.youtube.com/watch?v=jDCuaIQ9vd0)
+- [Building an Auth Flow with Expo Router](https://www.youtube.com/watch?v=yNaOaR2kIa0)
+- [Using Modals with Expo Router](https://www.youtube.com/watch?v=gNzuJVRmyDk)
+- [Using a Tab Navigator with Expo Router](https://www.youtube.com/watch?v=BElPB4Ai3j0)
+- [Using a Stack Navigator with Expo Router](https://www.youtube.com/watch?v=izZv6a99Roo)
+- [Introduction to Expo Router Layout Files](https://www.youtube.com/watch?v=Yh6Qlg2CYwQ)
+- [Sign in with Apple and Expo Router Tutorial](https://www.youtube.com/watch?v=tqxTijhYhp8)
+- [How to integrate Google Sign-In with Expo using Expo Router API Routes](https://www.youtube.com/watch?v=V2YdhR1hVNw)
+- [Master Expo Router API Routes | Handle Requests & Stream Data](https://www.youtube.com/watch?v=2_UzR1wdimI)
+- [EAS Workflows: React Native CI/CD for app developers](https://www.youtube.com/watch?v=OJ2u9tQCpr4)
+- [How to set up iOS Universal Links and Android App Links with Expo Router](https://www.youtube.com/watch?v=kNbEEYlFIPs)
+- [App icon and splash screen](https://www.youtube.com/watch?v=3Bsw8a1BJoQ)
+- [How to manage Multiple App Environments with Expo](https://www.youtube.com/watch?v=uKGx3gRrhx0)
+- [How to create a production build for Android](https://www.youtube.com/watch?v=nxlt8uwqhpE)
+- [How to create a production build for iOS](https://www.youtube.com/watch?v=VZL_e0cEwo8)
+- [How to configure multiple app variants](https://www.youtube.com/watch?v=UtJJCAfrjIg)
+- [How to create and share internal distribution builds](https://www.youtube.com/watch?v=1fQuGLHxWks)
+- [How to use over the air updates to share previews with your team](https://www.youtube.com/watch?v=vPKh-tNm-yI)
+- [How to configure a development build](https://www.youtube.com/watch?v=uQCE9zl3dXU)
+- [How to trigger builds from a GitHub repository](https://www.youtube.com/watch?v=fBLFEFC0ip0)
+- [How to create and run a cloud build for iOS Simulator](https://www.youtube.com/watch?v=SgL97PFZctg)
+- [How to create and run a cloud build for iOS devices](https://www.youtube.com/watch?v=HbfWU7_o4cU)
+- [How to create and run a cloud build for Android](https://www.youtube.com/watch?v=D612BUtvvl8)
+- [How to automate App Version code](https://www.youtube.com/watch?v=C8x4N9UmzS8)
+- [How to deploy an app with EAS Hosting from Expo](https://www.youtube.com/watch?v=NaKsfWciJLo)
+- [Universal Full-Stack Expo Stripe Payment Integration](https://www.youtube.com/watch?v=J0tyxUV_omY)
+- [How to implement a Rich Text Editor using DOM Components](https://www.youtube.com/watch?v=CxORa1tXMjw)
+- [How to build local-first native apps with LiveStore and Expo](https://www.youtube.com/watch?v=zQIhJqYU1Qw)
+- [EAS Workflows: React Native CI/CD for Android, iOS, & web apps](https://www.youtube.com/watch?v=4VvI0ZVp0cw)
+- [Expo SDK 52](https://www.youtube.com/watch?v=quZv3uKSEfY)
+- [How to run end to end tests on EAS Build](https://www.youtube.com/watch?v=-o-bfIRrg9U)
+- [How to configure status bar, splash screen & app icon](https://www.youtube.com/watch?v=OgGCYdElcZo)
+- [How to handle platform differences](https://www.youtube.com/watch?v=mEKQvF4irBM)
+- [How to take and save screenshots](https://www.youtube.com/watch?v=Jft3_Yfr-p4)
+- [How to add gestures to an Expo App](https://www.youtube.com/watch?v=0q48LLvTGDU)
+- [How to create a modal in React Native](https://www.youtube.com/watch?v=HRAMzrBwVeo)
+- [How to use an image picker](https://www.youtube.com/watch?v=iEQZU58naS8)
+- [How to build a screen in an Expo app](https://www.youtube.com/watch?v=3rcOP8xDwTQ)
+- [How to add navigation to your app with Expo Router](https://www.youtube.com/watch?v=8336fcFV_T4)
+- [How to create your first Expo app](https://www.youtube.com/watch?v=m1-bc53EGh8)
+- [Expo Go & Development Builds: Which should you use?](https://www.youtube.com/watch?v=FdjczjkwQKE)
+- [How to create a native module with the Expo modules API](https://www.youtube.com/watch?v=CdaQSlyGik8)
+- [How to wrap native libraries](https://www.youtube.com/watch?v=M8eNfH1o0eE)
+- [Keyboard Handling tutorial for React Native apps](https://www.youtube.com/watch?v=Y51mDfAhd4E)
+- [EAS Update + Github = Automatic OTA updates](https://www.youtube.com/watch?v=s2iIfXK-o0I)
+- [How to start your first Expo project in 2 minutes](https://www.youtube.com/watch?v=yOUAEfDuI44)
+- [How to debug EAS Update](https://www.youtube.com/watch?v=m9PLTr3t3S4)
+- [Network Debugging | Three ways to use the built in network inspector](https://www.youtube.com/watch?v=eTq_4NwCO-A)
+- [How to use Logcat & macOS Console to debug](https://www.youtube.com/watch?v=LvCci4Bwmpc)
+

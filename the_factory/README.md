@@ -94,10 +94,10 @@ the_factory/
 
 ## ⚡ Technology Stack
 
-- **Mobile Framework**: React Native with Expo
+- **Mobile Framework**: React Native with Expo SDK 54+
 - **Language**: TypeScript for type safety
 - **Monetization**: RevenueCat for subscriptions
-- **Navigation**: React Navigation
+- **Navigation**: Expo Router file-based navigation
 - **Storage**: AsyncStorage for local data
 - **Deployment**: App Store + Google Play submission ready
 
@@ -382,12 +382,145 @@ The App Factory Build Preview System has been **fully hardened** and is producti
 - ✅ **Developer Experience** - Improved UI, clear documentation, troubleshooting guides
 - ✅ **API Ready** - RESTful endpoints for automation and CI/CD integration
 
+## 🖥️ Local Execution System
+
+App Factory now includes an **integrated local execution system** within the dashboard for seamless one-click build previews.
+
+### 🎯 **Overview**
+
+The local execution system provides:
+- **One-Click Launch**: Start Expo dev server directly from dashboard build preview modal
+- **Real-Time Logs**: Live streaming of npm install, Expo setup, and bundler output
+- **Automatic Fixups**: Intelligent preflight repairs for missing bundle identifiers and configuration
+- **Security-First**: Localhost-only execution with comprehensive validation and sandboxing
+- **Status Monitoring**: Live session tracking with platform readiness indicators
+
+### 🚀 **Quick Start**
+
+#### Enable Local Execution
+```bash
+# Enable local execution (localhost-only for security)
+export DASHBOARD_ENABLE_LOCAL_EXEC=1
+
+cd dashboard
+npm run dev
+```
+
+#### Launch Build Previews
+1. Open dashboard at `http://localhost:5173`
+2. Navigate to builds page
+3. Click "Preview Build" on any build
+4. Click "Launch Preview" in the modal
+5. iOS simulator launches automatically when ready
+
+### 🔧 **Features**
+
+#### **Intelligent Build Automation**
+- ✅ **Automatic Dependency Resolution**: Uses `npx expo install` for compatibility
+- ✅ **Bundle Identifier Fixups**: Generates deterministic IDs for missing configurations  
+- ✅ **Port Management**: Intelligent port selection and conflict resolution
+- ✅ **Platform Detection**: iOS/Android readiness monitoring
+
+#### **Real-Time Experience**
+- ✅ **Live Log Streaming**: See npm install, Metro bundler, and Expo CLI output
+- ✅ **Status Indicators**: Running/stopped states with session management
+- ✅ **Progress Tracking**: Visual feedback for all execution phases
+- ✅ **Error Handling**: Clear error messages with actionable troubleshooting
+
+#### **Security & Isolation**
+- ✅ **Localhost-Only**: IP validation prevents external access
+- ✅ **Path Sandboxing**: Execution limited to builds/ directory
+- ✅ **Environment Flag**: Explicit opt-in via `DASHBOARD_ENABLE_LOCAL_EXEC=1`
+- ✅ **Process Management**: Automatic cleanup and resource monitoring
+
+### 🛡️ **Security Model**
+
+#### Execution Constraints
+```javascript
+// Localhost-only validation
+const allowedIPs = ['127.0.0.1', '::1', '::ffff:127.0.0.1'];
+
+// Path sandboxing
+const buildsDir = resolve(repoRoot, 'builds');
+const buildPath = validateBuildPath(requestedPath, buildsDir);
+
+// Explicit enable check  
+if (process.env.DASHBOARD_ENABLE_LOCAL_EXEC !== '1') {
+  throw new Error('Local execution disabled');
+}
+```
+
+#### Process Safety
+- **Working Directory**: Restricted to specific build directories
+- **Command Whitelist**: Only approved Expo/npm commands executed
+- **Timeout Protection**: Automatic termination of long-running processes
+- **Resource Monitoring**: Memory and CPU usage tracking
+
+### 🔌 **API Endpoints**
+
+#### Local Execution API
+```bash
+# Get preview status
+GET    /api/preview/status
+
+# Start build preview  
+POST   /api/preview/start
+Body:  { "buildId": "dream_abc123_def456" }
+
+# Stop current preview
+POST   /api/preview/stop
+
+# iOS simulator launch
+POST   /api/preview/open/ios
+
+# Reset Metro bundler
+POST   /api/preview/reset-watchman
+
+# Live log streaming
+GET    /api/preview/logs  (Server-Sent Events)
+```
+
+### 📱 **iOS Integration**
+
+#### Automatic Simulator Launch
+```bash
+# Automatic detection and launch when iOS platform is ready
+# Uses xcrun simctl for device management
+# Supports environment-based device selection
+
+export EXPO_IOS_SIMULATOR_DEVICE_NAME="iPhone 16 Pro"
+```
+
+### 🚨 **Troubleshooting**
+
+#### Local Execution Issues
+```bash
+# Local execution not available
+✅ Set DASHBOARD_ENABLE_LOCAL_EXEC=1 in environment
+✅ Ensure dashboard is running on localhost
+✅ Check build exists in builds/ directory
+✅ Verify Expo CLI is available: npx expo --version
+```
+
+#### Build Launch Failures
+```bash
+# Build fails to start
+✅ Check build directory has package.json and app.json
+✅ Run npm install manually in build directory
+✅ Verify bundle identifier in app.json is valid
+✅ Reset Metro cache with "Reset Watchman" button
+```
+
 ### **Key Files Added/Updated**
 - 📄 `docs/ios_simulator_guide.md` - Comprehensive iOS setup guide
 - 📄 `scripts/preview/validate_build.js` - Build health validation
 - 📄 `scripts/preview/launch_preview.js` - Enhanced with iOS support
 - 📄 `preview/src/server.js` - Added health check endpoints
 - 📄 `dashboard/src/components/LivePreview.tsx` - Enhanced UI
+- 📄 `dashboard/server/previewService.ts` - Local execution backend
+- 📄 `dashboard/src/lib/previewAPI.ts` - Client API integration
+- 📄 `dashboard/src/components/BuildPreviewModal.tsx` - Local execution UI
+- 📄 `dashboard/vite.config.ts` - API middleware integration
 - 📄 `preview/.env.example` - Environment configuration template
 
 ### **Testing Status**
