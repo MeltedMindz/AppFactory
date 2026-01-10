@@ -2,811 +2,98 @@
   <img src="./the_factory/AppFactory.png" alt="App Factory" width="800" />
 </p>
 
-# App Factory & Web3 Factory
+# App Factory
 
-**Dual AI-Native Development Systems**
+**From idea to store-ready mobile app in one command.**
 
-This repository contains two isolated factory systems:
-- **App Factory** (`/the_factory/`) - Consumer mobile apps with subscription monetization  
-- **Web3 Factory** (`/web3-factory/`) - **🚧 IN DEVELOPMENT 🚧** - Tokenized web apps with onchain integration
+App Factory is an AI-native pipeline that researches markets, validates ideas, and builds complete React Native mobile applications. Every generated app traces back to real market evidence.
 
-## 🏭 Choose Your Factory
+## Quick Start
 
-### 📱 App Factory - Consumer Mobile Apps
-**From market research to production-ready mobile apps in three magical commands.**
-
-App Factory is an intelligent pipeline that researches real market opportunities, generates validated app ideas, and builds complete React Native mobile applications.
-
-**What makes it different**: Every generated app traces back to real market evidence. No generic templates, no disconnected specs—just apps built to solve actual user problems with validated business models.
-
-### 🌐 Web3 Factory - Tokenized Web Applications  
-**Transform ideas into tokenized web apps with Solana integration.**
-
-**🚧 IN DEVELOPMENT 🚧**
-
-Web3 Factory validates Web3 concepts, defines token economics, and builds complete tokenized web applications with Bags SDK integration.
-
-**What makes it different**: Every token has a justified utility role, and every web app meaningfully benefits from onchain state.
-
-## 🚀 Quick Start Guide
-
-### Option 1: Using Claude Code (Interactive)
+### Using Claude Code
 ```bash
 cd the_factory
 
-# Generate 10 ranked mobile app ideas
-run app factory
-
-# Build a selected app
-build <IDEA_NAME>
-
-# Or transform any idea into an app instantly ✨
-dream your app idea here...
+run app factory          # Generate 10 ranked app ideas
+build <IDEA_NAME>        # Build selected idea into complete app
+dream <your idea>        # Skip research, build any idea directly
 ```
 
-### Option 2: Using the Standalone CLI (API Key)
+### Using the Standalone CLI
 ```bash
 cd CLI
-
-# Install dependencies
-npm install
-
-# Configure your Anthropic API key
-cp .env.example .env
-# Edit .env and add: ANTHROPIC_API_KEY=sk-ant-your-key
-
-# Start the interactive CLI
-npm start
+npm install && cp .env.example .env
+# Add ANTHROPIC_API_KEY=sk-ant-your-key to .env
+npm start                # Interactive menu with arrow keys
 ```
 
-The CLI provides the same pipeline through an interactive menu - navigate with arrow keys, select with Enter. No Claude Code subscription required, just an Anthropic API key.
+The CLI runs the same pipeline using your Anthropic API key. No Claude Code subscription required.
 
-### For Web3 Factory (Tokenized Web Apps)  
-```bash
-cd web3-factory
-
-# Transform idea into tokenized web app
-web3 idea your tokenized app idea here...
-```
-
-## 📊 Architecture Comparison
-
-| Aspect | App Factory | Web3 Factory | Standalone CLI |
-|--------|-------------|--------------|----------------|
-| **Target Platform** | iOS/Android Mobile | Web Browsers | iOS/Android Mobile |
-| **Framework** | React Native + Expo | Next.js/Vite + React | React Native + Expo |
-| **Monetization** | Subscriptions (RevenueCat) | Tokens (Bags SDK) | Subscriptions (RevenueCat) |
-| **Pipeline** | Stages 01-10 | Stages W1-W5 | Stages 01-10 |
-| **Output** | Complete mobile apps | Complete web apps | Complete mobile apps |
-| **Execution** | Claude Code | Claude Code | Anthropic API Key |
-| **Interface** | Natural language commands | Natural language commands | Interactive terminal menu |
-
-## How App Factory Works
-
-App Factory runs in stages with professional-grade enforcement gates, ensuring every build is production-ready. You can run the pipeline through **Claude Code** (interactive commands) or the **Standalone CLI** (API key):
+## How It Works
 
 ```mermaid
-graph TD
-    %% Entry Points
-    subgraph ENTRY ["Entry Points"]
-        CC[🤖 Claude Code]
-        CLI[💻 Standalone CLI]
+flowchart LR
+    subgraph entry [" "]
+        A[Claude Code]
+        B[Standalone CLI]
     end
 
-    %% Both entry points lead to the same pipeline
-    CC --> A
-    CLI --> A
+    A --> C[Pipeline]
+    B --> C
 
-    %% Traditional Research Mode
-    A[📝 Stage 00: Intake] --> B[🔍 Stage 01: Market Research]
-    B --> C[📊 10 Ranked Ideas]
-    C --> D{Choose One Idea}
-    D --> E[📋 Stage 02: Product Spec]
+    C --> D[Stage 01: Research]
+    D --> E[10 Ranked Ideas]
+    E --> F{Select One}
+    F --> G[Stages 02-10]
+    G --> H[Store-Ready App]
 
-    %% Dream Mode ✨
-    Z[✨ Raw App Idea] --> Y[🔮 Dream Stage 01: Validation]
-    Y --> X[📝 Single Validated Idea]
-    X --> E
-
-    CC -.-> Z
-    CLI -.-> Z
-
-    %% Professional Quality Gates
-    E --> E1[🔒 Stage 02.5: Product Reality Gate]
-    E1 --> E2[🔧 Stage 02.7: Dependency Resolution Gate]
-    E2 --> F[🎨 Stage 03: UX Design]
-    F --> G[💰 Stage 04: Monetization]
-    G --> H[🏗️ Stage 05: Architecture]
-    H --> I[🔧 Stage 06-09: Polish & Brand]
-    I --> I1[🎯 Stage 09.5: Runtime Sanity Harness]
-    I1 --> I2[🎨 Stage 10.1: Design Authenticity Check]
-    I2 --> J[📱 Stage 10: Professional Enforcement Layer]
-
-    %% Outputs
-    B --> K[📈 Global Leaderboard]
-    J --> L[🚀 Production-Ready App]
-
-    %% Command Labels
-    A -.-> |"run app factory"| B
-    Z -.-> |"dream <idea>"| Y
-    D -.-> |"build <idea>"| E
-
-    %% Styling
-    classDef entryPoint fill:#3b82f6,stroke:#2563eb,stroke-width:2px,color:#fff
-    classDef dreamMode fill:#9333ea,stroke:#7c3aed,stroke-width:2px,color:#fff
-    classDef traditional fill:#1f2937,stroke:#374151,stroke-width:2px,color:#fff
-    classDef shared fill:#059669,stroke:#047857,stroke-width:2px,color:#fff
-    classDef qualityGate fill:#dc2626,stroke:#b91c1c,stroke-width:2px,color:#fff
-
-    class CC,CLI entryPoint
-    class Z,Y,X dreamMode
-    class A,B,C,D traditional
-    class E,F,G,H,I,J,L shared
-    class E1,E2,I1,I2 qualityGate
+    I[Dream Mode] --> J[Skip to Build]
+    J --> G
 ```
 
-**Professional Pipeline with Quality Gates:**
-| Stage | Purpose | Key Output | Quality Enforcement |
-|-------|---------|------------|-------------------|
-| 01 | Market Research | `stage01.json` (10 ranked ideas) | Evidence-backed opportunities |
-| 02 | Product Spec | `stage02.json` (features, users, metrics) | What to build and why |
-| **02.5** | **Product Reality Gate** | `stage02.5.json` (domain validation) | **Prevents conceptually empty apps** |
-| **02.7** | **Dependency Resolution Gate** | `stage02.7.json` (navigation/package validation) | **Ensures technical feasibility** |
-| 03 | UX Design + Design Contract | `stage03.json` + `uiux/` artifacts | Domain-appropriate UI/UX contracts |
-| 04 | Monetization | `stage04.json` (pricing, subscriptions, RevenueCat) | How it makes money |
-| 05-09 | Architecture & Brand | `stage05-09.json` (tech stack, polish, ASO) | How it's built and positioned |
-| **09.1** | **App Naming & Availability** | `stage09.1.json` + `naming.md` | **Web research for collision avoidance** |
-| **09.2** | **Privacy Policy Generation** | `stage09.2.json` + policy artifacts | **App Store/Play Store compliance** |
-| **09.5** | **Runtime Sanity Harness** | `stage09.5.json` (runtime validation) | **Validates complete app requirements** |
-| **10.1** | **Design Authenticity Check** | `stage10.1.json` (UI validation) | **Prevents generic/placeholder UI** |
-| **10** | **Professional Enforcement Layer** | `builds/<idea>/app/` (zero-defect app) | **14 enforcement gates, zero-defect policy** |
-
-## 🏭 Directory Structure
-
-### App Factory (`/the_factory/`)
-```
-the_factory/
-├── CLAUDE.md                     # App Factory control plane
-├── README.md                     # App Factory documentation
-├── templates/                    # Stage execution templates
-├── schemas/                      # JSON validation schemas
-├── runs/                         # Generated pipeline outputs
-├── builds/                       # Built React Native apps
-└── ...                          # Core App Factory system
-```
-
-### Standalone CLI (`/CLI/`)
-```
-CLI/
-├── README.md                     # CLI documentation
-├── src/                          # TypeScript source
-│   ├── index.ts                  # CLI entrypoint
-│   ├── interactive.ts            # Interactive menu runner
-│   ├── commands/                 # run, build, dream, doctor, list, resume
-│   ├── core/                     # API client, pipeline, stages
-│   └── ui/                       # Banner, prompts, menus
-├── .env.example                  # Environment template
-└── package.json                  # Dependencies (Anthropic SDK, etc.)
-```
-
-### Web3 Factory (`/web3-factory/`)
-```
-web3-factory/
-├── CLAUDE.md                     # Web3 Factory control plane
-├── README.md                     # Web3 Factory documentation
-├── templates/                    # W1-W5 stage templates
-├── schemas/                      # Web3 validation schemas
-├── constants/                    # Bags SDK configuration
-├── utils/                        # Web3 utilities
-├── runs/                         # Generated Web3 outputs
-└── builds/                       # Built tokenized web apps
-```
-
-## App Factory Commands
-
-**Navigate to `/the_factory/` and open Claude in that directory:**
-
-### Generate 10 Ranked App Ideas
-```
-run app factory
-```
-*Researches markets and generates 10 ranked mobile app ideas for selective building*
-
-### Build Selected App  
-```
-build <IDEA_NAME>
-```  
-*Builds ONE chosen idea into a complete production-ready mobile app*
-
-### ✨ Dream Mode: Instant App from Raw Idea
-```
-dream your app idea here...
-```
-*Transform any mobile app idea into a complete app in one shot!*
-
-## Standalone CLI
-
-**For users who prefer to use their own Anthropic API key instead of Claude Code:**
-
-The CLI provides an interactive menu interface with the same pipeline capabilities:
-
-```bash
-cd CLI
-npm install
-cp .env.example .env
-# Add your ANTHROPIC_API_KEY to .env
-npm start
-```
-
-### Interactive Menu Options
-| Option | Description |
-|--------|-------------|
-| **Run App Factory** | Generate 10 ranked app ideas (Stage 01) |
-| **Build an Idea** | Build a selected idea into a complete app (Stages 02-10) |
-| **Dream Mode** | Your idea → complete app (end-to-end) |
-| **List Runs & Builds** | View recent runs and builds |
-| **Resume Run** | Resume an interrupted pipeline |
-| **System Check** | Verify environment and dependencies |
-
-See [CLI/README.md](CLI/README.md) for full documentation.
-
-## Web3 Factory Commands
-
-**Navigate to `/web3-factory/` and open Claude in that directory:**
-
-### Transform Idea into Tokenized Web App
-```
-web3 idea your tokenized app idea here...
-```
-*Validates Web3 concept, defines token economics, and builds complete tokenized web app*
-
-## Example Workflows
-
-### App Factory Workflows (Mobile Apps)
-
-**Traditional Workflow (Research → Build):**
-```bash
-cd the_factory
-
-# Step 1: Generate 10 ranked mobile app ideas
-run app factory
-
-# Step 2: Pick your favorite idea and build it completely
-build "FocusFlow AI"
-
-# Result: One complete mobile app ready for App Store submission
-```
-
-**✨ Dream Workflow (Idea → App):**
-```bash
-cd the_factory
-
-# Single command: Turn any idea into a complete mobile app
-dream I want to create a meditation app that generates personalized soundscapes based on your current location and weather
-
-# Result: Complete production-ready mobile app built from your imagination ✨
-```
-
-### Web3 Factory Workflow (Tokenized Web Apps)
-
-**Tokenized App Creation:**
-```bash
-cd web3-factory
-
-# Single command: Transform idea into tokenized web app
-web3 idea Create a decentralized habit tracking app where users earn tokens for consistency and can tip other users for motivation
-
-# Result: Complete tokenized web app with Solana integration and justified token utility
-```
-
-## Why This Is Different
-
-**Connected Decisions, Not Isolated Templates**
-
-Most AI tools generate disconnected outputs. App Factory ensures every specification connects:
-
-- Market research **directly informs** product features
-- Product features **directly inform** UX wireframes  
-- UX wireframes **directly inform** technical architecture
-- Technical architecture **directly informs** the actual React Native code
-- Monetization strategy **directly informs** RevenueCat integration
-- Brand identity **directly informs** UI theme and styling
-
-**Result**: Every line of generated code traces back to market evidence.
-
-## 🏆 Production-Grade Pipeline Enforcement
-
-**Ship-Ready Apps Only**: The App Factory pipeline is engineered to produce fully polished, store-ready Expo React Native apps that can be submitted to the Apple App Store and Google Play without additional manual work.
-
-### Comprehensive Enforcement System (Fully Implemented)
-App Factory enforces production quality through **executable verification scripts** with **fail-fast behavior**:
-
-#### 🔧 **Pipeline Infrastructure Enforcement**
-- **Template Canonicalization**: Single source of truth for all 15 stage templates verified by `verify_no_duplicate_stage_templates.sh`
-- **Deterministic Stage Resolution**: 21 test cases verify predictable template resolution via `verify_stage_resolution_is_deterministic.sh`  
-- **Documentation Compliance**: Vendor docs + upstream cache enforced by `verify_reference_compliance.sh` and `verify_rn_upstream_usage.sh`
-
-#### 📋 **Asset & Dependency Enforcement**
-- **Asset Contract**: `asset_preflight_check.sh` validates all referenced assets exist or auto-generates placeholders
-- **PNG Asset Validation**: `verify_assets_are_png.sh` ensures all assets are valid PNG binaries with pixel data (not SVG content)
-- **Expo Compatibility Gate**: `verify_expo_compatibility_gate.sh` enforces dependency alignment before installation
-- **React Native Upstream Cache**: `rn_upstream_cache.sh` caches authoritative files with SHA256 integrity verification
-
-#### 📝 **Launch Readiness Enforcement**
-- **App Naming Research**: `generate_app_naming.sh` + `verify_app_naming.sh` ensures distinctive names with collision research
-- **Privacy Policy Generation**: `generate_privacy_policy.sh` + `verify_privacy_policy.sh` produces App Store/Play Store compliant policies
-- **Launch Plan Synthesis**: `generate_launch_plan.sh` + `verify_launch_plan_present.sh` condenses pipeline research into 9-section launch document
-
-#### 🎨 **Design & Quality Enforcement**  
-- **Design System Compliance**: `verify_design_system_compliance.sh` verifies design tokens, component primitives, and accessibility
-- **Professional Quality Gates**: Stage 02.5, 02.7, 09.5, 10.1 with executable enforcement
-- **Zero-Defect Building**: Stage 10 professional enforcement layer with comprehensive validation
-
-### Enforcement Wiring (Production Ready)
-All verification scripts are **wired to pipeline execution points**:
-
-| Stage | Verification | Purpose | Failure Behavior |
-|-------|-------------|---------|------------------|
-| **Stage 02 Start** | `upstream_reference_sync.sh` | Initialize vendor docs validation | Hard-fail if docs missing |
-| **Stage 07 Complete** | `asset_preflight_check.sh` | Validate/generate required assets | Hard-fail if cannot satisfy contract |
-| **Stage 10 Preflight** | All compatibility verifiers | Comprehensive pre-build validation | Hard-fail on any violation |
-| **Post-Build** | Design & quality verifiers | Verify production readiness | Mark build non-compliant |
-
-### Verified Enforcement Examples
-- ✅ **Deliberate failure test**: Removing `vendor/revenuecat-docs/llms.txt` → verification correctly fails
-- ✅ **Asset recovery test**: Missing `icon.png` → automatically regenerated with deterministic placeholders  
-- ✅ **Template isolation test**: All 15 stage templates verified in canonical location
-- ✅ **Upstream cache test**: SHA256 verification of 3 cached React Native files
-
-**Result**: Every completed build is guaranteed production-ready through **executable enforcement**, not documentation.
-
-**Selective Execution, Not Batch Waste**
-
-App Factory gives you choice and control:
-
-- Generate 10 ideas quickly, then choose your winner  
-- Build only the idea you want
-- No wasted tokens on apps you'll never use
-- No commitment until you explicitly choose to build
-
-## Truth Enforcement
-
-**Success is files-on-disk.** No stubs, no placeholders, no false success claims.
-
-✅ All 100+ JSON outputs validate against schemas  
-✅ All execution steps documented in logs  
-✅ All specifications rendered to markdown  
-✅ Built apps are complete and runnable for the selected idea  
-✅ Every constraint maps to actual implementation  
-
-**If it's not written to disk with binding proof, it didn't happen.**
-
-## Tech Stack
-
-**Modern, Proven, Store-Ready**
-
-- **Framework**: React Native + Expo SDK 52 + React Native 0.76
-- **Navigation**: Expo Router v4 (file-based, validated)
-- **Monetization**: RevenueCat (subscription-first, environment-based config)
-- **Storage**: AsyncStorage + SQLite
-- **Auth**: Guest-first, optional accounts
-- **Platforms**: iOS + Android simultaneously
-- **Quality**: Professional enforcement gates with zero-defect policy
-
-**Why These Choices**: Each technology decision traces back to market research, dependency validation, and professional quality standards.
-
-## Getting Started
-
-**Prerequisites**: Claude subscription + this repository
-
-### For App Factory (Mobile Apps)
-```bash
-# 1. Clone the repository
-git clone <this-repo>
-cd app-factory
-
-# 2. Navigate to App Factory
-cd the_factory
-
-# 3. Open Claude and point it to the_factory directory  
-# (Claude will automatically read CLAUDE.md constitution)
-
-# 4. Generate complete specifications for 10 mobile app ideas
-run app factory
-
-# 5. Build your favorite idea into a complete mobile app
-build "Your Chosen Idea Name"
-
-# OR: Skip research and turn any idea directly into a mobile app! ✨
-dream your amazing mobile app idea in plain English...
-
-# 6. Your mobile app is ready in builds/ directory
-cd builds/01_your_idea__idea_id_001/<build_id>/app
-npm install
-npm start
-```
-
-### For Web3 Factory (Tokenized Web Apps)
-```bash
-# 1. Clone the repository (if not already done)
-git clone <this-repo>
-cd app-factory
-
-# 2. Navigate to Web3 Factory
-cd web3-factory
-
-# 3. Open Claude and point it to web3-factory directory
-# (Claude will automatically read Web3 Factory CLAUDE.md)
-
-# 4. Transform any idea into a tokenized web app
-web3 idea your tokenized app concept here...
-
-# 5. Your tokenized web app is ready in builds/ directory
-cd builds/<app_name>/
-npm install
-npm start
-```
-
-**That's it.** No configuration, no prompts, no hand-holding.
-
----
-
-## ✨ Dream Mode: Where Ideas Become Apps ✨
-
-**Sometimes you have an idea and you just want it to exist. Right now. Dream Mode is magic for your brain.**
-
-### 🌟 What is Dream Mode?
-
-Dream Mode takes any app idea you can imagine and transforms it into a complete, production-ready React Native app in a single command. No research phase, no choosing from options—just pure idea-to-app alchemy.
-
-### 🪄 How It Works
-
-1. **Speak your mind**: Describe your app in plain English
-2. **Dream validates**: Instantly validates your idea and structures it 
-3. **Magic happens**: Runs the complete pipeline from research to code
-4. **App appears**: Your idea becomes a working React Native app ✨
-
-### 🎭 Dream Examples
-
-```bash
-# 🎵 Music & Audio
-dream Create a white noise app that learns your sleep patterns and automatically adjusts sounds throughout the night
-
-# 📚 Learning & Education  
-dream I want a flashcard app for medical students that uses spaced repetition and tracks which topics you struggle with most
-
-# 🎮 Games & Entertainment
-dream Build a daily word puzzle game where you have to guess the word by its shadow shape
-
-# 🏠 Life & Productivity
-dream Make an app that helps roommates split bills and chores fairly without the awkward conversations
-
-# 🌱 Health & Wellness
-dream Design a plant care app that sends smart reminders based on each plant's actual needs and your local weather
-
-# 🎨 Creative & Design
-dream I want to create a color palette generator that uses your phone's camera to extract colors from real world objects
-
-# 🧠 Mind & Focus
-dream Build a meditation app that creates personalized guided sessions based on your stress level and available time
-```
-
-### 🎪 Dream Mode Special Powers
-
-- **🚀 Instant Gratification**: One command from idea to working app
-- **🧠 Mind Reading**: Understands vague ideas and makes them concrete
-- **⚡ No Decisions Required**: No choosing from 10 options—just build YOUR idea
-- **🎨 Creative Freedom**: Any app idea you can imagine, Dream Mode can build
-- **🔮 Magic Pipeline**: Validates, specifies, designs, and codes automatically
-- **✨ Pure Joy**: Skip the planning, get straight to the fun part
-
-### 🌈 Perfect For...
-
-- **💡 Late Night Inspiration**: "What if there was an app that..."
-- **🚀 Rapid Prototyping**: Get from concept to working app in minutes
-- **🎯 Specific Solutions**: "I need an app that does exactly this thing"
-- **🎪 Creative Experiments**: Wild ideas that need to exist in the world
-- **⚡ Speed Demons**: When research feels like too much work
-- **🦄 Unicorn Hunting**: Building something that doesn't exist yet
-
-### 🪄 The Dream Experience
-
-```
-You: dream Create a habit tracker that only tracks one habit at a time and uses visual dots to show progress
-
-Claude: ✨ *Understanding your vision...*
-         🔍 *Researching similar apps...*  
-         📝 *Structuring your idea...*
-         🎨 *Designing the experience...*
-         💰 *Planning monetization...*
-         🏗️  *Building your app...*
-         
-         🎉 Your dream is reality! 
-         
-         App created: builds/01_habit_dot__habit_dot_001/
-```
-
-**Dream Mode turns "what if" into "here it is" ✨**
-
----
-
-## Who This Is For
-
-**Builders who want outcomes, not processes:**
-
-✅ **Indie developers** - Generate validated app ideas + complete implementations  
-✅ **Agencies** - Deliver complete mobile apps with full documentation  
-✅ **Product managers** - Get market-backed specifications for any app concept  
-✅ **Entrepreneurs** - Turn market research into store-ready applications  
-✅ **Technical founders** - Skip months of specification work  
-
-**Not for**: Teams that enjoy writing specifications manually, or developers who prefer building everything from scratch.
-
-**Perfect for**: Anyone who wants to ship mobile apps faster with market validation baked in.
-
-## Output Structure
-
-### App Factory Output Structure
-
-**After `run app factory` (idea generation):**
-
-```
-the_factory/runs/YYYY-MM-DD/your-run-name/
-├── stage01/
-│   ├── stages/stage01.json               # 10 ranked mobile app ideas
-│   └── spec/01_market_research.md
-├── ideas/                                # Idea bin (metadata only)
-│   ├── 01_focusflow_ai__focus_ai_001/
-│   │   └── meta/                         # Metadata only
-│   ├── 02_mindful_habits__habits_002/
-│   │   └── meta/                         # Metadata only
-│   └── ...                               # 8 more idea directories
-└── meta/
-    └── idea_index.json                   # Master index for building
-```
-
-**After `build "FocusFlow AI"` (selective building with quality gates):**
-
-```
-the_factory/builds/01_focusflow_ai__focus_ai_001/     # Professional-grade mobile app
-└── <build_id>/                                      # Immutable build output
-    ├── app/                                         # Complete zero-defect Expo app
-    │   ├── package.json                             # Validated Expo SDK 52 config
-    │   ├── assets/                                  # Validated PNG assets (icon, splash, adaptive-icon)
-    │   ├── src/screens/                             # Domain-specific mobile screens (NO placeholders)
-    │   ├── src/ui/tokens.ts                         # Design system implementation
-    │   ├── src/services/purchases.js                # Environment-based RevenueCat integration
-    │   ├── assets_validation_report.md              # PNG asset validation proof
-    │   └── README.md                                # Setup instructions
-    ├── uiux/                                        # Design contract artifacts
-    │   ├── uiux_prompt.md                           # Binding UI/UX design contract
-    │   ├── design_tokens.json                       # Domain-appropriate color/typography
-    │   └── component_inventory.md                   # Required UI components
-    ├── launch_plan.md                               # 9-section launch readiness document
-    ├── naming.md                                    # App name + alternates + collision research
-    ├── privacy_policy.md                            # Human-readable privacy policy
-    ├── privacy_policy.html                          # Static HTML for hosting
-    ├── privacy_policy_snippet.md                    # Store listing summary
-    ├── build_log.md                                 # Professional enforcement log
-    └── sources.md                                   # Research citations
-
-the_factory/runs/YYYY-MM-DD/your-run-name/ideas/01_focusflow_ai__focus_ai_001/
-├── stages/                                          # Complete stages 02-10.1 with quality gates
-│   ├── stage02.5.json                              # Product reality validation
-│   ├── stage02.7.json                              # Dependency resolution validation
-│   ├── stage09.1.json                              # App naming + availability research
-│   ├── stage09.2.json                              # Privacy policy data
-│   ├── stage09.5.json                              # Runtime sanity validation
-│   ├── stage10.1.json                              # Design authenticity validation
-│   └── stage10.json                                # Professional enforcement results
-├── technical/                                      # Technical validation artifacts
-│   ├── navigation_plan.json                        # Expo Router v4 architecture
-│   ├── dependency_plan.json                        # Package compatibility matrix
-│   └── compatibility_matrix.md                     # Expo SDK 52 validation
-├── runtime/                                        # Runtime validation artifacts
-│   ├── boot_sequence.json                          # <5 second boot validation
-│   ├── sanity_checklist.md                         # Stage 10 validation script
-│   └── flow_validation.json                        # Complete user flow coverage
-├── design/                                         # Design authenticity artifacts
-│   ├── authenticity_report.md                      # Domain alignment analysis
-│   └── implementation_plan.json                    # Component-to-code mapping
-├── outputs/                                        # All execution logs with quality enforcement
-└── spec/                                           # Complete specifications
-```
-
-### Web3 Factory Output Structure
-
-**After `web3 idea "Tokenized habit tracker"` (tokenized web app):**
-
-```
-web3-factory/builds/<app_name>/
-├── src/                                 # Complete Next.js/Vite web app
-├── package.json                         # Web app dependencies
-├── token_metadata.json                  # Created Solana token details
-└── README.md                            # Deployment instructions
-
-web3-factory/runs/YYYY-MM-DD/web3-<timestamp>-<hash>/
-├── w1/web3_idea.json                   # Validated Web3 concept
-├── w2/token_model.json                 # Token economics
-├── w3/web3_architecture.json           # Web app architecture
-├── w4/bags_config.json                 # Bags SDK configuration
-└── w5/build_manifest.json              # Build plan and token creation
-```
-
-## Repository Hygiene
-
-**Generated outputs** are ignored by git and never committed:
-
-- **`the_factory/runs/`** - All App Factory pipeline execution outputs and specifications
-- **`the_factory/builds/`** - Complete React Native apps built from selected ideas
-- **`web3-factory/runs/`** - All Web3 Factory pipeline execution outputs
-- **`web3-factory/builds/`** - Complete tokenized web apps with Solana integration
-
-**Clean repository**: `the_factory/scripts/clean_repo.sh`  
-**Check ship-readiness**: `the_factory/scripts/ship_check.sh`
-
-All builds go to respective `builds/<app_dir>/` directories - never fixed locations.
+| Stage | What Happens |
+|-------|--------------|
+| 01 | Market research generates 10 ranked app ideas |
+| 02-09 | Product spec, UX design, monetization, architecture, brand |
+| 10 | Professional enforcement layer builds zero-defect Expo app |
 
 ## What You Get
 
-### App Factory Outputs
+**After building:**
+- Complete Expo React Native app with TypeScript
+- RevenueCat subscription integration
+- Store-ready assets, privacy policy, launch plan
+- Passes 14 quality gates before completion
 
-**After `run app factory`**:
-- 10 ranked, validated mobile app ideas with market evidence
-- Complete market research specifications in markdown
-- Global leaderboard tracking all ideas across runs
-- Ready-to-build idea bin for selective development
+## Repository Structure
 
-**After `build <IDEA_NAME>`**:
-- **Zero-defect React Native mobile app** with professional-grade source code
-- **Validated Expo SDK 52 configuration** with dependency compatibility verification
-- **Environment-based RevenueCat subscription system** with functional test integration
-- **Domain-appropriate UI/UX implementation** following binding design contracts
-- **Validated PNG assets** (icon, splash, adaptive-icon) verified as real binary PNGs with pixel data
-- **App naming report** with 8+ alternates and web research collision findings
-- **Privacy policy artifacts** (markdown, HTML, snippet) for App Store/Play Store compliance
-- **Launch plan document** condensing all pipeline research into 9 actionable sections
-- **Store-submission-ready mobile application** that passes all 14 quality gates
-- **Complete technical specifications and documentation** with quality enforcement logs
-- **Professional validation artifacts** proving zero-defect build standards
-- **Live preview capability** with QR codes for instant mobile testing
+```
+/the_factory/     # App Factory - mobile apps with subscriptions
+/CLI/             # Standalone CLI - same pipeline, your API key
+/web3-factory/    # Web3 Factory - tokenized web apps (in development)
+```
 
-### Web3 Factory Outputs
+## Tech Stack
 
-**After `web3 idea <CONCEPT>`**:
-- Validated Web3 concept with justified token utility
-- Complete token economics and supply model
-- Production-ready web app with Solana integration
-- Created Solana token via Bags SDK
-- Deterministic deployment configuration
-- Complete Web3 specifications and documentation
+- **Framework**: React Native + Expo SDK 52
+- **Navigation**: Expo Router v4
+- **Monetization**: RevenueCat subscriptions
+- **Platforms**: iOS + Android
 
-## Quickstart
+## Documentation
 
-### App Factory (Mobile Apps)
-
-**🔬 Research Mode (Traditional)**
-1. **Navigate**: `cd the_factory`
-2. **Open Claude** in the_factory directory
-3. **Type**: `run app factory`  
-4. **Choose** your favorite from 10 ranked mobile app ideas
-5. **Type**: `build "Your Chosen Idea"`
-6. **Test**: Launch live preview with QR codes for instant mobile testing
-7. **Ship**: Your mobile app is ready in `builds/` directory
-
-**✨ Dream Mode (Magic)**
-1. **Navigate**: `cd the_factory`
-2. **Open Claude** in the_factory directory
-3. **Type**: `dream your amazing mobile app idea here...`
-4. **Wait**: Watch your idea become a complete mobile app
-5. **Test**: Launch live preview with QR codes for instant mobile testing
-6. **Ship**: Your dream mobile app is ready in `builds/` directory
-
-### Web3 Factory (Tokenized Web Apps)
-
-**🌐 Tokenized App Creation**
-1. **Navigate**: `cd web3-factory`
-2. **Open Claude** in web3-factory directory  
-3. **Type**: `web3 idea your tokenized app concept here...`
-4. **Wait**: Watch your Web3 idea become a complete tokenized web app
-5. **Test**: Launch your web app locally with `npm start`
-6. **Ship**: Your tokenized web app is ready in `builds/` directory
-
-No configuration, no prompts, no hand-holding.
-
-## Leaderboard Explained
-
-App Factory tracks every idea generated across all runs:
-
-**Raw Leaderboard**: Permanent record of all ideas with original rankings  
-**Global Leaderboard**: Best ideas across all runs, automatically updated  
-
-Top ideas remain discoverable regardless of when they were generated.
-
-## Live Preview
-
-Test your built apps instantly on mobile devices with integrated live preview:
-
-**Features**:
-- 📱 **QR Code Generation** - Scan with Expo Dev Client for instant testing
-- 🔗 **One-click DevTools** - Direct access to React DevTools and Metro
-- 🔄 **Live Reloading** - See changes instantly on your device
-- 🎯 **Auto-detection** - Automatically finds built apps for preview
-
-**Quick Start**:
-1. Build an app: `build "Your Idea"`
-2. Start preview service: `cd preview && npm install && npm start`
-3. Open dashboard, click any built app idea
-4. Click "Launch Live Preview" and scan the QR code
-
-**Requirements**: Node.js and Expo Dev Client on your mobile device
-
----
-
-## Bags App
-
-$FACTORY
-
-**CA**: BkSbFrDMkfkoG4NDUwadEGeQgVwoXkR3F3P1MPUnBAGS
-
-https://bags.fm/BkSbFrDMkfkoG4NDUwadEGeQgVwoXkR3F3P1MPUnBAGS
-
----
+- [App Factory Details](the_factory/README.md) - Full pipeline documentation
+- [CLI Documentation](CLI/README.md) - Standalone CLI setup and usage
+- [Web3 Factory](web3-factory/README.md) - Tokenized web apps (in development)
 
 ## Contributing
 
-**Welcome Contributors!**
-
-App Factory thrives on community input. Whether you're improving the pipeline, fixing bugs, or adding features, your contributions help everyone build better apps faster.
-
-**Easy Ways to Start:**
-- 🐛 **Report issues** - Found a bug? Let us know
-- 💡 **Suggest improvements** - Ideas for better pipeline stages or features
-- 📝 **Improve docs** - Make templates and guides clearer
-- 🧪 **Add quality checks** - Help improve validation and reliability
-- 🔧 **Submit PRs** - Code contributions always welcome
-
-**Key Development Principles:**
-- **Agent-native execution**: Claude is the primary runner
-- **Filesystem truth**: No false success claims - if it's not on disk, it didn't happen
-- **Schema validation**: Everything must validate against defined schemas
-- **Connected specs**: Every decision traces back to market research evidence
-- **Professional quality gates**: NO PROBLEMS AT ALL policy with zero-defect enforcement
-- **Design authenticity**: Domain-appropriate UI, never generic placeholders
-- **Technical validation**: Expo Router v4 + SDK 52 compatibility verification
-
-**Getting Involved**: Check out issues, suggest improvements, or dive into the codebase. All skill levels welcome!
+Contributions welcome. See issues for ways to help.
 
 ## License
 
-**MIT License** - This project is open source and free to use. See LICENSE file for details.
-
-## Support Open Source Development
-
-App Factory is developed and maintained as an **open source project**. If this tool helps you build better mobile applications faster, please consider supporting its continued development.
-
-### ⭐ Ways to Support
-
-- **Star this repository** - Help others discover App Factory
-- **Share the project** - Tell other developers about agent-native app generation
-- **Contribute code** - Submit improvements and new features
-- **Report issues** - Help us improve reliability and usability
-- **Sponsor development** - Support ongoing maintenance and new features
-
-### 💖 Become a Sponsor
-
-Your sponsorship helps:
-- 🚀 **Add new pipeline stages** for advanced app features
-- 🔧 **Improve validation** and error handling
-- 📱 **Support new frameworks** beyond React Native
-- 🌐 **Enhance signal sources** for better market research
-- 📚 **Create tutorials** and documentation
-- 🐛 **Fix bugs** and performance issues
-
-[**Sponsor App Factory on GitHub →**](https://github.com/sponsors/MeltedMindz)
-
-Every contribution, whether code or financial, helps make App Factory better for the entire developer community. Thank you for supporting open source! 🙏
+MIT License - See LICENSE file.
 
 ---
 
-**App Factory: From market research to React Native code — in three magical commands.**
+**$FACTORY** - [bags.fm/BkSbFrDMkfkoG4NDUwadEGeQgVwoXkR3F3P1MPUnBAGS](https://bags.fm/BkSbFrDMkfkoG4NDUwadEGeQgVwoXkR3F3P1MPUnBAGS)
